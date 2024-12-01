@@ -1,0 +1,148 @@
+{
+  "global": {
+    "title": "MasterRecipe",
+    "browsehappy": "Ön egy <strong>elavult</strong> böngészőt használ. Kérjük, <a href=\"http://browsehappy.com/?locale=hu\">frissítse böngészőjét</a>, hogy javítsa a felhasználói élményt.",
+    "page": "Oldal",
+    "menu": {
+      "new-recipe": "Recept hozzáadása",
+      "recipe-books": "Receptkönyvek",
+      "home": "Kezdőlap",
+      "search": "Keresés",
+      "recipe-book": "Receptkönyvek",
+      "browse-recipe-book": "Receptkönyvek böngészése",
+      "my-recipe-book": "Saját receptkönyveim",
+      "jhipster-needle-menu-add-element": "A JHipster itt ad hozzá további menüpontokat (ne fordítsa!)",
+      "entities": {
+        "main": "Entitások",
+        "jhipster-needle-menu-add-entry": "A JHipster itt ad hozzá további entitásokat (ne fordítsa!)",
+        "recipe": "Recept",
+        "ingredient": "Hozzávaló",
+        "instruction": "Utasítás",
+        "rating": "Értékelés",
+        "recipeBook": "Receptkönyv",
+        "recipeBookRelation": "Receptkönyv Kapcsolat",
+        "favoriteRelation": "Kedvenc Kapcsolat"
+      },
+      "account": {
+        "main": "Fiók",
+        "settings": "Beállítások",
+        "password": "Jelszó",
+        "profile": "Profil",
+        "login": "Bejelentkezés",
+        "logout": "Kijelentkezés",
+        "register": "Regisztráció"
+      },
+      "admin": {
+        "main": "Adminisztráció",
+        "userManagement": "Felhasználókezelés",
+        "tracker": "Felhasználófigyelő",
+        "apidocs": "API",
+        "database": "Adatbázis",
+        "jhipster-needle-menu-add-admin-element": "A JHipster itt ad hozzá további adminisztrációs menüpontokat (ne fordítsa!)"
+      },
+      "language": "Nyelv"
+    },
+    "form": {
+      "username.label": "Felhasználónév",
+      "username.placeholder": "Az Ön felhasználóneve",
+      "currentpassword.label": "Jelenlegi jelszó",
+      "currentpassword.placeholder": "Jelenlegi jelszó",
+      "newpassword.label": "Új jelszó",
+      "newpassword.placeholder": "Új jelszó",
+      "confirmpassword.label": "Új jelszó megerősítése",
+      "confirmpassword.placeholder": "Új jelszó megerősítése",
+      "email.label": "Email",
+      "email.placeholder": "Az Ön email címe"
+    },
+    "messages": {
+      "info": {
+        "authenticated": {
+          "prefix": "",
+          "link": "",
+          "suffix": ""
+        },
+        "register": {
+          "noaccount": "Nincs még fiókja? Regisztráljon itt.",
+          "link": ""
+        }
+      },
+      "error": {
+        "dontmatch": "A jelszó és a megerősítés nem egyezik meg!"
+      },
+      "validate": {
+        "newpassword": {
+          "required": "A jelszó megadása kötelező.",
+          "minlength": "A jelszónak legalább 4 karakter hosszúnak kell lennie.",
+          "maxlength": "A jelszó nem lehet hosszabb, mint 50 karakter.",
+          "strength": "Jelszó erőssége:"
+        },
+        "confirmpassword": {
+          "required": "A megerősítő jelszó megadása kötelező.",
+          "minlength": "A megerősítő jelszónak legalább 4 karakter hosszúnak kell lennie.",
+          "maxlength": "A megerősítő jelszó nem lehet hosszabb, mint 50 karakter."
+        }
+      }
+    },
+    "field": {
+      "id": "Azonosító"
+    },
+    "item-count": "Megjelenítés { first } - { second } a(z) { total } elemből."
+  },
+  "entity": {
+    "action": {
+      "addblob": "Blob hozzáadása",
+      "addimage": "Kép hozzáadása",
+      "back": "Vissza",
+      "cancel": "Mégse",
+      "delete": "Törlés",
+      "edit": "Szerkesztés",
+      "open": "Megnyitás",
+      "save": "Mentés",
+      "view": "Megtekintés",
+      "show": "{ otherEntity } megtekintése"
+    },
+    "detail": {
+      "field": "Mező",
+      "value": "Érték"
+    },
+    "delete": {
+      "title": "Törlési művelet megerősítése"
+    },
+    "validation": {
+      "required": "Ez a mező kötelező.",
+      "minlength": "Ez a mező legalább { min } karakter hosszú kell legyen.",
+      "maxlength": "Ez a mező nem lehet hosszabb, mint { max } karakter.",
+      "min": "Ez a mező legalább { min } kell legyen.",
+      "max": "Ez a mező nem lehet nagyobb, mint { max }. ",
+      "minbytes": "Ez a mező legalább { min } bájt kell legyen.",
+      "maxbytes": "Ez a mező nem lehet több, mint { max } bájt.",
+      "pattern": "Ennek a mezőnek meg kell felelnie a(z) { pattern } mintának.",
+      "number": "Ez a mező szám kell legyen.",
+      "datetimelocal": "Ez a mező dátumot és időt kell tartalmazzon.",
+      "patternLogin": "Ez a mező csak betűket, számokat és e-mail címeket tartalmazhat."
+    },
+    "filters": {
+      "set": "Az alábbi szűrők vannak beállítva",
+      "clear": "Szűrő törlése",
+      "clearAll": "Összes szűrő törlése"
+    }
+  },
+  "error": {
+    "internalServerError": "Belső szerverhiba",
+    "server.not.reachable": "A szerver nem elérhető",
+    "url.not.found": "Nem található",
+    "NotNull": "A(z) { fieldName } mező nem lehet üres!",
+    "Size": "A(z) { fieldName } mező nem felel meg a minimális/méretkövetelményeknek!",
+    "userexists": "Ez a felhasználónév már foglalt!",
+    "emailexists": "Ez az email cím már használatban van!",
+    "idexists": "Egy új { entityName } nem rendelkezhet azonosítóval",
+    "idnull": "Érvénytelen azonosító",
+    "idinvalid": "Érvénytelen azonosító",
+    "idnotfound": "Az azonosító nem található",
+    "file": {
+      "could.not.extract": "A fájl nem nyerhető ki",
+      "not.image": "A fájlnak képnek kellett volna lennie, de \"{ fileType }\" típust találtunk"
+    }
+  },
+  "footer": "Ételajánló webalkalmazás - Szakdolgozat - Készítette: Gál Rupert Bence - 2024"
+}

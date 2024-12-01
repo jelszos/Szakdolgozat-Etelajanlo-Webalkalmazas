@@ -1,0 +1,25 @@
+{
+  "szakdolgozatApp": {
+    "recipeBookRelation": {
+      "home": {
+        "title": "Recipe Book Relations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Recipe Book Relation",
+        "createOrEditLabel": "Create or edit a Recipe Book Relation",
+        "notFound": "No Recipe Book Relations found"
+      },
+      "created": "A new Recipe Book Relation is created with identifier { param }",
+      "updated": "A Recipe Book Relation is updated with identifier { param }",
+      "deleted": "A Recipe Book Relation is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Recipe Book Relation { id }?"
+      },
+      "detail": {
+        "title": "Recipe Book Relation"
+      },
+      "id": "Id",
+      "recipe": "Recipe",
+      "recipeBook": "Recipe Book"
+    }
+  }
+}

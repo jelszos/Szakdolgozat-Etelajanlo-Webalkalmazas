@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RatingService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service</a> &gt; <span class="el_source">RatingService.java</span></div><h1>RatingService.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service;
+
+import com.szakdologzat.repiceapp.domain.Rating;
+import com.szakdologzat.repiceapp.repository.RatingRepository;
+import com.szakdologzat.repiceapp.service.dto.RatingDTO;
+import com.szakdologzat.repiceapp.service.mapper.RatingMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link com.szakdologzat.repiceapp.domain.Rating}.
+ */
+@Service
+@Transactional
+public class RatingService {
+
+<span class="nc" id="L23">    private static final Logger LOG = LoggerFactory.getLogger(RatingService.class);</span>
+
+    private final RatingRepository ratingRepository;
+
+    private final RatingMapper ratingMapper;
+
+<span class="nc" id="L29">    public RatingService(RatingRepository ratingRepository, RatingMapper ratingMapper) {</span>
+<span class="nc" id="L30">        this.ratingRepository = ratingRepository;</span>
+<span class="nc" id="L31">        this.ratingMapper = ratingMapper;</span>
+<span class="nc" id="L32">    }</span>
+
+    /**
+     * Save a rating.
+     *
+     * @param ratingDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public RatingDTO save(RatingDTO ratingDTO) {
+<span class="nc" id="L41">        LOG.debug(&quot;Request to save Rating : {}&quot;, ratingDTO);</span>
+<span class="nc" id="L42">        Rating rating = ratingMapper.toEntity(ratingDTO);</span>
+<span class="nc" id="L43">        rating = ratingRepository.save(rating);</span>
+<span class="nc" id="L44">        return ratingMapper.toDto(rating);</span>
+    }
+
+    /**
+     * Update a rating.
+     *
+     * @param ratingDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public RatingDTO update(RatingDTO ratingDTO) {
+<span class="nc" id="L54">        LOG.debug(&quot;Request to update Rating : {}&quot;, ratingDTO);</span>
+<span class="nc" id="L55">        Rating rating = ratingMapper.toEntity(ratingDTO);</span>
+<span class="nc" id="L56">        rating = ratingRepository.save(rating);</span>
+<span class="nc" id="L57">        return ratingMapper.toDto(rating);</span>
+    }
+
+    /**
+     * Partially update a rating.
+     *
+     * @param ratingDTO the entity to update partially.
+     * @return the persisted entity.
+     */
+    public Optional&lt;RatingDTO&gt; partialUpdate(RatingDTO ratingDTO) {
+<span class="nc" id="L67">        LOG.debug(&quot;Request to partially update Rating : {}&quot;, ratingDTO);</span>
+
+<span class="nc" id="L69">        return ratingRepository</span>
+<span class="nc" id="L70">            .findById(ratingDTO.getId())</span>
+<span class="nc" id="L71">            .map(existingRating -&gt; {</span>
+<span class="nc" id="L72">                ratingMapper.partialUpdate(existingRating, ratingDTO);</span>
+
+<span class="nc" id="L74">                return existingRating;</span>
+            })
+<span class="nc" id="L76">            .map(ratingRepository::save)</span>
+<span class="nc" id="L77">            .map(ratingMapper::toDto);</span>
+    }
+
+    /**
+     * Get all the ratings.
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List&lt;RatingDTO&gt; findAll() {
+<span class="nc" id="L87">        LOG.debug(&quot;Request to get all Ratings&quot;);</span>
+<span class="nc" id="L88">        return ratingRepository.findAll().stream().map(ratingMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    /**
+     * Get one rating by id.
+     *
+     * @param id the id of the entity.
+     * @return the entity.
+     */
+    @Transactional(readOnly = true)
+    public Optional&lt;RatingDTO&gt; findOne(Long id) {
+<span class="nc" id="L99">        LOG.debug(&quot;Request to get Rating : {}&quot;, id);</span>
+<span class="nc" id="L100">        return ratingRepository.findById(id).map(ratingMapper::toDto);</span>
+    }
+
+    /**
+     * Delete the rating by id.
+     *
+     * @param id the id of the entity.
+     */
+    public void delete(Long id) {
+<span class="nc" id="L109">        LOG.debug(&quot;Request to delete Rating : {}&quot;, id);</span>
+<span class="nc" id="L110">        ratingRepository.deleteById(id);</span>
+<span class="nc" id="L111">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

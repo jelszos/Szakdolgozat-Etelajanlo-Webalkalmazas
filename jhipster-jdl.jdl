@@ -1,0 +1,105 @@
+entity RecipeBook {
+  id Long
+  title String
+  theme String
+  description String
+  tags String
+  createdDate ZonedDateTime
+}
+
+entity RecipeBookRelation {
+  id Long
+}
+
+entity FavoriteRelation {
+  id Long
+}
+
+entity Recipe {
+  id Long
+  title String
+  description String
+  ingredientNames String
+  foodCategory FoodCategory
+  foodType FoodType
+  imageUrl String
+  createdDate ZonedDateTime
+}
+
+entity Rating {
+  id Long
+  rate Integer
+  title String
+  description String
+  imageUrl String
+  createdDate ZonedDateTime
+}
+
+entity Ingredient {
+  id Long
+  name String
+  amount Integer
+  unit Unit
+}
+
+entity Instruction {
+  id Long
+  title String
+  requiredTime Integer
+  description String
+}
+
+enum Unit {
+  GRAM, MILLILITRES, PIECE
+}
+
+enum FoodType {
+  APPETIZER,
+  DESSERT,
+  SOUP
+  STEW,
+  SAUCE,
+  SALAD,
+  NOODLE
+}
+
+enum FoodCategory {
+  CHINESE,
+  ITALIAN,
+  HUNGARIAN,
+  MEXICAN,
+  INDIAN,
+  JAPANESE,
+  THAI,
+  AMERICAN,
+  EASTERN_EUROPEAN,
+  VIETNAMESE,
+  RUSSIAN,
+  SPANISH,
+  FRENCH,
+  GREEK,
+  MIDDLE_EASTERN,
+  LATIN_AMERICAN,
+  BRITISH,
+  AUSTRALIAN,
+  UKRAINIAN,
+  GERMAN
+}
+
+relationship OneToMany {
+  Recipe to Instruction
+  Recipe to Rating
+  Recipe to RecipeBookRelation
+  RecipeBook to RecipeBookRelation
+  Instruction to Ingredient
+  Recipe to FavoriteRelation
+}
+
+relationship ManyToOne {
+  RecipeBook to User with builtInEntity
+  Recipe to User with builtInEntity
+  Rating to User with builtInEntity
+  FavoriteRelation to User with builtInEntity
+}
+
+dto RecipeBookRelation, FavoriteRelation, RecipeBook, Recipe, Rating, Instruction, Ingredient with mapstruct

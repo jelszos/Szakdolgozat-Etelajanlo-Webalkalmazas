@@ -1,0 +1,15 @@
+{
+  "alert": {
+    "success": "Sikeres",
+    "error": "Hiba",
+    "info": "Információ",
+    "http": {
+      "400": "Hibás kérés.",
+      "403": "Nincs jogosultsága a hozzáféréshez.",
+      "404": "Az oldal nem található.",
+      "405": "Az Ön által használt HTTP módszer nem támogatott ezen az URL-en.",
+      "500": "Belső szerver hiba."
+    },
+    "validation": "Hibás validáció a szerveren."
+  }
+}

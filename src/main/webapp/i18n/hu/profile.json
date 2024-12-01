@@ -1,0 +1,16 @@
+{
+  "profile": {
+    "title": "Profil",
+    "subtitle": "Válaszd ki, hogyan szeretnéd megtalálni a receptedet!",
+    "question": "Ha bármilyen kérdésed van a JHipsterről:",
+    "recentRecipes": "Legutóbb hozzáadott receptek innen: ",
+    "tabRecipeBooks": "receptkönyvei",
+    "noData": "Nincs találat!",
+    "recipes": "Receptek",
+    "recipeBooks": "Recept könyvek",
+    "deletemodal": {
+      "title": "Biztos vagy benne?",
+      "description": "Ez véglegesen törlésre kerül, utólag nem tudod visszavonni!"
+    }
+  }
+}

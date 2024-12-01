@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service</a> &gt; <span class="el_source">RecipeService.java</span></div><h1>RecipeService.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service;
+
+import com.szakdologzat.repiceapp.domain.Recipe;
+import com.szakdologzat.repiceapp.domain.User;
+import com.szakdologzat.repiceapp.domain.enumeration.FoodCategory;
+import com.szakdologzat.repiceapp.repository.FavoriteRelationRepository;
+import com.szakdologzat.repiceapp.repository.IngredientRepository;
+import com.szakdologzat.repiceapp.repository.InstructionRepository;
+import com.szakdologzat.repiceapp.repository.RecipeRepository;
+import com.szakdologzat.repiceapp.service.dto.InstructionDTO;
+import com.szakdologzat.repiceapp.service.dto.RatingDTO;
+import com.szakdologzat.repiceapp.service.dto.RecipeDTO;
+import com.szakdologzat.repiceapp.service.mapper.*;
+import java.security.Principal;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link com.szakdologzat.repiceapp.domain.Recipe}.
+ */
+@Service
+@Transactional
+public class RecipeService {
+
+<span class="fc" id="L36">    private static final Logger LOG = LoggerFactory.getLogger(RecipeService.class);</span>
+
+    private final RecipeRepository recipeRepository;
+
+    private final RecipeMapper recipeMapper;
+    private final RatingMapper ratingMapper;
+    private final UserService userService;
+    private final UserMapper userMapper;
+    private final InstructionRepository instructionRepository;
+    private final IngredientRepository ingredientRepository;
+    private final IngredientMapper ingredientMapper;
+    private final InstructionMapper instructionMapper;
+    private final FavoriteRelationRepository favoriteRelationRepository;
+
+    public RecipeService(
+        RecipeRepository recipeRepository,
+        RecipeMapper recipeMapper,
+        RatingMapper ratingMapper,
+        UserService userService,
+        UserMapper userMapper,
+        InstructionRepository instructionRepository,
+        IngredientRepository ingredientRepository,
+        IngredientMapper ingredientMapper,
+        InstructionMapper instructionMapper,
+        FavoriteRelationRepository favoriteRelationRepository
+<span class="fc" id="L61">    ) {</span>
+<span class="fc" id="L62">        this.recipeRepository = recipeRepository;</span>
+<span class="fc" id="L63">        this.recipeMapper = recipeMapper;</span>
+<span class="fc" id="L64">        this.ratingMapper = ratingMapper;</span>
+<span class="fc" id="L65">        this.userService = userService;</span>
+<span class="fc" id="L66">        this.userMapper = userMapper;</span>
+<span class="fc" id="L67">        this.instructionRepository = instructionRepository;</span>
+<span class="fc" id="L68">        this.ingredientRepository = ingredientRepository;</span>
+<span class="fc" id="L69">        this.ingredientMapper = ingredientMapper;</span>
+<span class="fc" id="L70">        this.instructionMapper = instructionMapper;</span>
+<span class="fc" id="L71">        this.favoriteRelationRepository = favoriteRelationRepository;</span>
+<span class="fc" id="L72">    }</span>
+
+    public Boolean isFavoriteByUser(Long recipeId) {
+<span class="fc" id="L75">        Optional&lt;User&gt; loggedInUser = userService.getUserWithAuthorities();</span>
+<span class="fc" id="L76">        return loggedInUser.filter(user -&gt; favoriteRelationRepository.existsByUserIdAndRecipeId(user.getId(), recipeId)).isPresent();</span>
+    }
+
+    /**
+     * Save a recipe.
+     *
+     * @param recipeDTO the entity to save.
+     * @return the persisted entity.
+     */
+    @Transactional
+    public RecipeDTO save(RecipeDTO recipeDTO) {
+<span class="fc" id="L87">        LOG.debug(&quot;Request to save Recipe : {}&quot;, recipeDTO);</span>
+
+        // Associate user with recipeDTO or throw an exception if the user isn't found
+<span class="fc" id="L90">        recipeDTO.setUser(</span>
+<span class="pc" id="L91">            userService.getUserWithAuthorities().map(userMapper::userToUserDTO).orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;))</span>
+        );
+
+        // Map RecipeDTO to Recipe, save it, and map back to RecipeDTO
+<span class="fc" id="L95">        RecipeDTO savedRecipeDTO = recipeMapper.toDto(recipeRepository.save(recipeMapper.toEntity(recipeDTO)));</span>
+
+        // If instructions are present, iterate and save them with their ingredients
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        if (recipeDTO.getInstructions() != null) {</span>
+<span class="fc" id="L99">            recipeDTO</span>
+<span class="fc" id="L100">                .getInstructions()</span>
+<span class="fc" id="L101">                .forEach(instructionDTO -&gt; {</span>
+<span class="nc" id="L102">                    instructionDTO.setRecipe(savedRecipeDTO); // Associate saved recipe with each instruction</span>
+
+                    // Save instruction entity
+<span class="nc" id="L105">                    InstructionDTO savedInstructionDTO = instructionMapper.toDto(</span>
+<span class="nc" id="L106">                        instructionRepository.save(instructionMapper.toEntity(instructionDTO))</span>
+                    );
+
+                    // Set ingredients for each instruction, if present, and save them
+<span class="nc bnc" id="L110" title="All 2 branches missed.">                    if (instructionDTO.getIngredients() != null) {</span>
+<span class="nc" id="L111">                        instructionDTO</span>
+<span class="nc" id="L112">                            .getIngredients()</span>
+<span class="nc" id="L113">                            .forEach(ingredientDTO -&gt; {</span>
+<span class="nc" id="L114">                                ingredientDTO.setInstruction(savedInstructionDTO); // Associate saved instruction with each ingredient</span>
+<span class="nc" id="L115">                                ingredientRepository.save(ingredientMapper.toEntity(ingredientDTO));</span>
+<span class="nc" id="L116">                            });</span>
+                    }
+<span class="nc" id="L118">                });</span>
+        }
+
+<span class="fc" id="L121">        return savedRecipeDTO;</span>
+    }
+
+    /**
+     * Update a recipe.
+     *
+     * @param recipeDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public RecipeDTO update(RecipeDTO recipeDTO) {
+<span class="fc" id="L131">        LOG.debug(&quot;Request to update Recipe : {}&quot;, recipeDTO);</span>
+<span class="fc" id="L132">        Recipe recipe = recipeMapper.toEntity(recipeDTO);</span>
+<span class="fc" id="L133">        recipe = recipeRepository.save(recipe);</span>
+<span class="fc" id="L134">        return recipeMapper.toDto(recipe);</span>
+    }
+
+    /**
+     * Partially update a recipe.
+     *
+     * @param recipeDTO the entity to update partially.
+     * @return the persisted entity.
+     */
+    public Optional&lt;RecipeDTO&gt; partialUpdate(RecipeDTO recipeDTO) {
+<span class="fc" id="L144">        LOG.debug(&quot;Request to partially update Recipe : {}&quot;, recipeDTO);</span>
+
+<span class="fc" id="L146">        return recipeRepository</span>
+<span class="fc" id="L147">            .findById(recipeDTO.getId())</span>
+<span class="fc" id="L148">            .map(existingRecipe -&gt; {</span>
+<span class="fc" id="L149">                recipeMapper.partialUpdate(existingRecipe, recipeDTO);</span>
+
+<span class="fc" id="L151">                return existingRecipe;</span>
+            })
+<span class="fc" id="L153">            .map(recipeRepository::save)</span>
+<span class="fc" id="L154">            .map(recipeMapper::toDto);</span>
+    }
+
+    /**
+     * Get all the recipes.
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List&lt;RecipeDTO&gt; findAll() {
+<span class="fc" id="L164">        LOG.debug(&quot;Request to get all Recipes&quot;);</span>
+<span class="fc" id="L165">        return recipeRepository.findAll().stream().map(recipeMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;RecipeDTO&gt; findLatestRecipes() {
+<span class="fc" id="L170">        LOG.debug(&quot;Request to get most lately added Recipes&quot;);</span>
+<span class="fc" id="L171">        return recipeRepository.findLatestRecipes().stream().map(recipeMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;RecipeDTO&gt; findHighestFavoriteCounts() {
+<span class="fc" id="L176">        LOG.debug(&quot;Request to get highest favorite count Recipes&quot;);</span>
+<span class="fc" id="L177">        return recipeRepository</span>
+<span class="fc" id="L178">            .findHighestFavoriteCounts()</span>
+<span class="fc" id="L179">            .stream()</span>
+<span class="fc" id="L180">            .map(recipeMapper::toDto)</span>
+<span class="fc" id="L181">            .collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;RecipeDTO&gt; findSameFoodCategoryRecipes(FoodCategory foodCategory) {
+<span class="fc" id="L186">        LOG.debug(&quot;Request to get same food category Recipes&quot;);</span>
+<span class="fc" id="L187">        return recipeRepository</span>
+<span class="fc" id="L188">            .findSameFoodCategoryRecipes(foodCategory)</span>
+<span class="fc" id="L189">            .stream()</span>
+<span class="fc" id="L190">            .map(recipeMapper::toDto)</span>
+<span class="fc" id="L191">            .collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    /**
+     * Get one recipe by id.
+     *
+     * @param id the id of the entity.
+     * @return the entity.
+     */
+    @Transactional(readOnly = true)
+    public Optional&lt;RecipeDTO&gt; findOne(Long id) {
+<span class="fc" id="L202">        LOG.debug(&quot;Request to get Recipe : {}&quot;, id);</span>
+<span class="fc" id="L203">        return recipeRepository.findById(id).map(recipeMapper::toDto);</span>
+    }
+
+    // Service Method
+    @Transactional(readOnly = true)
+    public Optional&lt;List&lt;RatingDTO&gt;&gt; findRecipeRatings(Long id) {
+<span class="fc" id="L209">        LOG.debug(&quot;Request to get Ratings for Recipe ID: {}&quot;, id);</span>
+
+        // Fetch the ratings for the specified recipe and map to DTOs
+<span class="fc" id="L212">        return recipeRepository</span>
+<span class="fc" id="L213">            .findRecipeRatings(id)</span>
+<span class="fc" id="L214">            .map(ratings -&gt; ratings.stream().map(ratingMapper::toDto).collect(Collectors.toList()));</span>
+    }
+
+    /**
+     * Delete the recipe by id.
+     *
+     * @param id the id of the entity.
+     */
+    @Transactional
+    public ResponseEntity&lt;?&gt; delete(Long id) {
+<span class="fc" id="L224">        LOG.debug(&quot;Request to delete Recipe : {}&quot;, id);</span>
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">        if (!recipeRepository.isUserTheOwner(id)) {</span>
+<span class="nc" id="L226">            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(&quot;User don't have permission to delete this recipe&quot;);</span>
+        }
+<span class="fc" id="L228">        recipeRepository.deleteById(id);</span>
+<span class="fc" id="L229">        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(&quot;Recipe has been deleted&quot;);</span>
+    }
+
+    public Page&lt;Recipe&gt; searchRecipes(
+        String recipeTitle,
+        List&lt;String&gt; foodCategories,
+        List&lt;String&gt; foodTypes,
+        List&lt;String&gt; ingredientNames,
+        Pageable pageable
+    ) {
+<span class="fc" id="L239">        return recipeRepository.findAll(</span>
+            (root, query, criteriaBuilder) -&gt; {
+<span class="fc" id="L241">                query.distinct(true);</span>
+
+<span class="fc" id="L243">                Specification&lt;Recipe&gt; spec = Specification.where(null);</span>
+
+<span class="pc bpc" id="L245" title="2 of 4 branches missed.">                if (recipeTitle != null &amp;&amp; !recipeTitle.isEmpty()) {</span>
+<span class="fc" id="L246">                    spec = spec.and((root1, query1, criteriaBuilder1) -&gt;</span>
+<span class="fc" id="L247">                        criteriaBuilder1.like(criteriaBuilder1.lower(root1.get(&quot;title&quot;)), &quot;%&quot; + recipeTitle.toLowerCase() + &quot;%&quot;)</span>
+                    );
+                }
+
+                //Food category
+<span class="pc bpc" id="L252" title="2 of 4 branches missed.">                if (foodCategories != null &amp;&amp; !foodCategories.isEmpty()) {</span>
+<span class="fc" id="L253">                    spec = spec.and((root1, query1, criteriaBuilder1) -&gt; root1.get(&quot;foodCategory&quot;).in(foodCategories));</span>
+                }
+
+                //Food types
+<span class="pc bpc" id="L257" title="2 of 4 branches missed.">                if (foodTypes != null &amp;&amp; !foodTypes.isEmpty()) {</span>
+<span class="fc" id="L258">                    spec = spec.and((root1, query1, criteriaBuilder1) -&gt; root1.get(&quot;foodType&quot;).in(foodTypes));</span>
+                }
+
+<span class="pc bpc" id="L261" title="3 of 4 branches missed.">                if (ingredientNames != null &amp;&amp; !ingredientNames.isEmpty()) {</span>
+                    // Create a disjunction for the ingredient names check
+<span class="nc" id="L263">                    Specification&lt;Recipe&gt; ingredientSpec = Specification.where(null);</span>
+<span class="nc bnc" id="L264" title="All 2 branches missed.">                    for (String ingredientName : ingredientNames) {</span>
+<span class="nc bnc" id="L265" title="All 4 branches missed.">                        if (ingredientName != null &amp;&amp; !ingredientName.trim().isEmpty()) {</span>
+<span class="nc" id="L266">                            ingredientSpec = ingredientSpec.or((root1, query1, criteriaBuilder1) -&gt;</span>
+<span class="nc" id="L267">                                criteriaBuilder1.like(</span>
+<span class="nc" id="L268">                                    criteriaBuilder1.lower(root1.get(&quot;ingredientNames&quot;)),</span>
+<span class="nc" id="L269">                                    &quot;%&quot; + ingredientName.toLowerCase() + &quot;%&quot;</span>
+                                )
+                            );
+                        }
+<span class="nc" id="L273">                    }</span>
+                    // Combine the ingredient specification with the main specification
+<span class="nc bnc" id="L275" title="All 2 branches missed.">                    if (ingredientSpec != null) {</span>
+<span class="nc" id="L276">                        spec = spec.or(ingredientSpec);</span>
+                    }
+                }
+
+<span class="fc" id="L280">                return spec.toPredicate(root, query, criteriaBuilder);</span>
+            },
+            pageable
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

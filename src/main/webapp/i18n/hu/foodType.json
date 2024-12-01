@@ -1,0 +1,14 @@
+{
+  "szakdolgozatApp": {
+    "FoodType": {
+      "null": "",
+      "APPETIZER": "Előétel",
+      "DESSERT": "Desszert",
+      "SOUP": "Leves",
+      "STEW": "Ragu",
+      "SAUCE": "Szósz",
+      "SALAD": "Saláta",
+      "NOODLE": "Tészta"
+    }
+  }
+}

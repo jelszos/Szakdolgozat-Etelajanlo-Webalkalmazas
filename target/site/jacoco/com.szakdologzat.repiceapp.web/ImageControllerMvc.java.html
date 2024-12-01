@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ImageControllerMvc.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.web</a> &gt; <span class="el_source">ImageControllerMvc.java</span></div><h1>ImageControllerMvc.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.web;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+/* Class for getting the images from storage */
+
+@Controller
+<span class="nc" id="L20">public class ImageControllerMvc {</span>
+
+    @Value(&quot;${photo.storage.location}&quot;)
+    private String staticLocations;
+
+    @GetMapping(&quot;/images/{date}/{imageName:.+}&quot;)
+    public ResponseEntity&lt;?&gt; getPhoto(@PathVariable String date, @PathVariable String imageName) {
+        try {
+<span class="nc" id="L28">            Path imagePath = Paths.get(staticLocations).resolve(date).resolve(imageName);</span>
+<span class="nc" id="L29">            Resource resource = new InputStreamResource(Files.newInputStream(imagePath));</span>
+
+<span class="nc" id="L31">            return ResponseEntity.ok()</span>
+<span class="nc" id="L32">                .header(HttpHeaders.CONTENT_DISPOSITION, &quot;inline; filename=\&quot;&quot; + imageName + &quot;\&quot;&quot;)</span>
+<span class="nc" id="L33">                .contentType(MediaType.IMAGE_JPEG)</span>
+<span class="nc" id="L34">                .body(resource);</span>
+<span class="nc" id="L35">        } catch (IOException e) {</span>
+<span class="nc" id="L36">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

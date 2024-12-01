@@ -1,0 +1,17 @@
+{
+  "error": {
+    "general": "Valami hiba történt!",
+    "title": "Hibaoldal!",
+    "login": "Bejelentkezés",
+    "goBack": "Vissza",
+    "http": {
+      "400": "Hibás kérés.",
+      "403": "Nincs jogosultságod az oldal eléréséhez.",
+      "404": "Az oldal nem létezik.",
+      "405": "A HTTP metódus nem támogatott ennél az URL-nél.",
+      "500": "Belső szerverhiba."
+    },
+    "concurrencyFailure": "Egy másik felhasználó egyszerre módosította ezeket az adatokat. A módosításaid elutasításra kerültek.",
+    "validation": "Érvényességi hiba a szerveren."
+  }
+}

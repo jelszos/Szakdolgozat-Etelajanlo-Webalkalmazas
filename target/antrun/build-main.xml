@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <condition else="false" property="skip.npm" value="true">
+      <and>
+        <available file="checksums.csv" filepath="/Users/I570971/Documents/GitHub/Szakdoga---jhipster2/target" />
+        <available file="checksums.csv.old" filepath="/Users/I570971/Documents/GitHub/Szakdoga---jhipster2/target" />
+        <filesmatch file2="/Users/I570971/Documents/GitHub/Szakdoga---jhipster2/target/checksums.csv.old" file1="/Users/I570971/Documents/GitHub/Szakdoga---jhipster2/target/checksums.csv" />
+      </and>
+    </condition>
+  </target>
+</project>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FavoriteRelationService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service</a> &gt; <span class="el_source">FavoriteRelationService.java</span></div><h1>FavoriteRelationService.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service;
+
+import com.szakdologzat.repiceapp.domain.FavoriteRelation;
+import com.szakdologzat.repiceapp.repository.FavoriteRelationRepository;
+import com.szakdologzat.repiceapp.service.dto.FavoriteRelationDTO;
+import com.szakdologzat.repiceapp.service.mapper.FavoriteRelationMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link com.szakdologzat.repiceapp.domain.FavoriteRelation}.
+ */
+@Service
+@Transactional
+public class FavoriteRelationService {
+
+<span class="fc" id="L23">    private static final Logger LOG = LoggerFactory.getLogger(FavoriteRelationService.class);</span>
+
+    private final FavoriteRelationRepository favoriteRelationRepository;
+
+    private final FavoriteRelationMapper favoriteRelationMapper;
+
+<span class="nc" id="L29">    public FavoriteRelationService(FavoriteRelationRepository favoriteRelationRepository, FavoriteRelationMapper favoriteRelationMapper) {</span>
+<span class="nc" id="L30">        this.favoriteRelationRepository = favoriteRelationRepository;</span>
+<span class="nc" id="L31">        this.favoriteRelationMapper = favoriteRelationMapper;</span>
+<span class="nc" id="L32">    }</span>
+
+    /**
+     * Save a favoriteRelation.
+     *
+     * @param favoriteRelationDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public FavoriteRelationDTO save(FavoriteRelationDTO favoriteRelationDTO) {
+<span class="nc" id="L41">        LOG.debug(&quot;Request to save FavoriteRelation : {}&quot;, favoriteRelationDTO);</span>
+<span class="nc" id="L42">        FavoriteRelation favoriteRelation = favoriteRelationMapper.toEntity(favoriteRelationDTO);</span>
+<span class="nc" id="L43">        favoriteRelation = favoriteRelationRepository.save(favoriteRelation);</span>
+<span class="nc" id="L44">        return favoriteRelationMapper.toDto(favoriteRelation);</span>
+    }
+
+    /**
+     * Update a favoriteRelation.
+     *
+     * @param favoriteRelationDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public FavoriteRelationDTO update(FavoriteRelationDTO favoriteRelationDTO) {
+<span class="nc" id="L54">        LOG.debug(&quot;Request to update FavoriteRelation : {}&quot;, favoriteRelationDTO);</span>
+<span class="nc" id="L55">        FavoriteRelation favoriteRelation = favoriteRelationMapper.toEntity(favoriteRelationDTO);</span>
+<span class="nc" id="L56">        favoriteRelation = favoriteRelationRepository.save(favoriteRelation);</span>
+<span class="nc" id="L57">        return favoriteRelationMapper.toDto(favoriteRelation);</span>
+    }
+
+    /**
+     * Partially update a favoriteRelation.
+     *
+     * @param favoriteRelationDTO the entity to update partially.
+     * @return the persisted entity.
+     */
+    public Optional&lt;FavoriteRelationDTO&gt; partialUpdate(FavoriteRelationDTO favoriteRelationDTO) {
+<span class="nc" id="L67">        LOG.debug(&quot;Request to partially update FavoriteRelation : {}&quot;, favoriteRelationDTO);</span>
+
+<span class="nc" id="L69">        return favoriteRelationRepository</span>
+<span class="nc" id="L70">            .findById(favoriteRelationDTO.getId())</span>
+<span class="nc" id="L71">            .map(existingFavoriteRelation -&gt; {</span>
+<span class="nc" id="L72">                favoriteRelationMapper.partialUpdate(existingFavoriteRelation, favoriteRelationDTO);</span>
+
+<span class="nc" id="L74">                return existingFavoriteRelation;</span>
+            })
+<span class="nc" id="L76">            .map(favoriteRelationRepository::save)</span>
+<span class="nc" id="L77">            .map(favoriteRelationMapper::toDto);</span>
+    }
+
+    /**
+     * Get all the favoriteRelations.
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List&lt;FavoriteRelationDTO&gt; findAll() {
+<span class="nc" id="L87">        LOG.debug(&quot;Request to get all FavoriteRelations&quot;);</span>
+<span class="nc" id="L88">        return favoriteRelationRepository</span>
+<span class="nc" id="L89">            .findAll()</span>
+<span class="nc" id="L90">            .stream()</span>
+<span class="nc" id="L91">            .map(favoriteRelationMapper::toDto)</span>
+<span class="nc" id="L92">            .collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    /**
+     * Get one favoriteRelation by id.
+     *
+     * @param id the id of the entity.
+     * @return the entity.
+     */
+    @Transactional(readOnly = true)
+    public Optional&lt;FavoriteRelationDTO&gt; findOne(Long id) {
+<span class="nc" id="L103">        LOG.debug(&quot;Request to get FavoriteRelation : {}&quot;, id);</span>
+<span class="nc" id="L104">        return favoriteRelationRepository.findById(id).map(favoriteRelationMapper::toDto);</span>
+    }
+
+    /**
+     * Delete the favoriteRelation by id.
+     *
+     * @param id the id of the entity.
+     */
+    public void delete(Long id) {
+<span class="nc" id="L113">        LOG.debug(&quot;Request to delete FavoriteRelation : {}&quot;, id);</span>
+<span class="nc" id="L114">        favoriteRelationRepository.deleteById(id);</span>
+<span class="nc" id="L115">    }</span>
+
+    public long getFavoriteCount(Long recipeId) {
+        /// LOG.debug(&quot;Request to delete FavoriteRelation : {}&quot;, recipeId);
+<span class="nc" id="L119">        return favoriteRelationRepository.getFavoriteCount(recipeId);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InstructionResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.web.rest</a> &gt; <span class="el_source">InstructionResource.java</span></div><h1>InstructionResource.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.web.rest;
+
+import com.szakdologzat.repiceapp.repository.InstructionRepository;
+import com.szakdologzat.repiceapp.service.InstructionService;
+import com.szakdologzat.repiceapp.service.dto.InstructionDTO;
+import com.szakdologzat.repiceapp.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.szakdologzat.repiceapp.domain.Instruction}.
+ */
+@RestController
+@RequestMapping(&quot;/api/instructions&quot;)
+public class InstructionResource {
+
+<span class="fc" id="L27">    private static final Logger LOG = LoggerFactory.getLogger(InstructionResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;instruction&quot;;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final InstructionService instructionService;
+
+    private final InstructionRepository instructionRepository;
+
+<span class="fc" id="L38">    public InstructionResource(InstructionService instructionService, InstructionRepository instructionRepository) {</span>
+<span class="fc" id="L39">        this.instructionService = instructionService;</span>
+<span class="fc" id="L40">        this.instructionRepository = instructionRepository;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * {@code POST  /instructions} : Create a new instruction.
+     *
+     * @param instructionDTO the instructionDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new instructionDTO, or with status {@code 400 (Bad Request)} if the instruction has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping(&quot;&quot;)
+    public ResponseEntity&lt;InstructionDTO&gt; createInstruction(@RequestBody InstructionDTO instructionDTO) throws URISyntaxException {
+<span class="fc" id="L52">        LOG.debug(&quot;REST request to save Instruction : {}&quot;, instructionDTO);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (instructionDTO.getId() != null) {</span>
+<span class="fc" id="L54">            throw new BadRequestAlertException(&quot;A new instruction cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="fc" id="L56">        instructionDTO = instructionService.save(instructionDTO);</span>
+<span class="fc" id="L57">        return ResponseEntity.created(new URI(&quot;/api/instructions/&quot; + instructionDTO.getId()))</span>
+<span class="fc" id="L58">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, instructionDTO.getId().toString()))</span>
+<span class="fc" id="L59">            .body(instructionDTO);</span>
+    }
+
+    /**
+     * {@code PUT  /instructions/:id} : Updates an existing instruction.
+     *
+     * @param id the id of the instructionDTO to save.
+     * @param instructionDTO the instructionDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated instructionDTO,
+     * or with status {@code 400 (Bad Request)} if the instructionDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the instructionDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;InstructionDTO&gt; updateInstruction(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody InstructionDTO instructionDTO
+    ) throws URISyntaxException {
+<span class="fc" id="L77">        LOG.debug(&quot;REST request to update Instruction : {}, {}&quot;, id, instructionDTO);</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (instructionDTO.getId() == null) {</span>
+<span class="nc" id="L79">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (!Objects.equals(id, instructionDTO.getId())) {</span>
+<span class="fc" id="L82">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (!instructionRepository.existsById(id)) {</span>
+<span class="fc" id="L86">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="fc" id="L89">        instructionDTO = instructionService.update(instructionDTO);</span>
+<span class="fc" id="L90">        return ResponseEntity.ok()</span>
+<span class="fc" id="L91">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, instructionDTO.getId().toString()))</span>
+<span class="fc" id="L92">            .body(instructionDTO);</span>
+    }
+
+    /**
+     * {@code PATCH  /instructions/:id} : Partial updates given fields of an existing instruction, field will ignore if it is null
+     *
+     * @param id the id of the instructionDTO to save.
+     * @param instructionDTO the instructionDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated instructionDTO,
+     * or with status {@code 400 (Bad Request)} if the instructionDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the instructionDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the instructionDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;InstructionDTO&gt; partialUpdateInstruction(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody InstructionDTO instructionDTO
+    ) throws URISyntaxException {
+<span class="fc" id="L111">        LOG.debug(&quot;REST request to partial update Instruction partially : {}, {}&quot;, id, instructionDTO);</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        if (instructionDTO.getId() == null) {</span>
+<span class="nc" id="L113">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (!Objects.equals(id, instructionDTO.getId())) {</span>
+<span class="fc" id="L116">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (!instructionRepository.existsById(id)) {</span>
+<span class="fc" id="L120">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="fc" id="L123">        Optional&lt;InstructionDTO&gt; result = instructionService.partialUpdate(instructionDTO);</span>
+
+<span class="fc" id="L125">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="fc" id="L127">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, instructionDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /instructions} : get all the instructions.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of instructions in body.
+     */
+    @GetMapping(&quot;&quot;)
+    public List&lt;InstructionDTO&gt; getAllInstructions() {
+<span class="fc" id="L138">        LOG.debug(&quot;REST request to get all Instructions&quot;);</span>
+<span class="fc" id="L139">        return instructionService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /instructions/:id} : get the &quot;id&quot; instruction.
+     *
+     * @param id the id of the instructionDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the instructionDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;InstructionDTO&gt; getInstruction(@PathVariable(&quot;id&quot;) Long id) {
+<span class="fc" id="L150">        LOG.debug(&quot;REST request to get Instruction : {}&quot;, id);</span>
+<span class="fc" id="L151">        Optional&lt;InstructionDTO&gt; instructionDTO = instructionService.findOne(id);</span>
+<span class="fc" id="L152">        return ResponseUtil.wrapOrNotFound(instructionDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /instructions/:id} : delete the &quot;id&quot; instruction.
+     *
+     * @param id the id of the instructionDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteInstruction(@PathVariable(&quot;id&quot;) Long id) {
+<span class="fc" id="L163">        LOG.debug(&quot;REST request to delete Instruction : {}&quot;, id);</span>
+<span class="fc" id="L164">        instructionService.delete(id);</span>
+<span class="fc" id="L165">        return ResponseEntity.noContent()</span>
+<span class="fc" id="L166">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))</span>
+<span class="fc" id="L167">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeBookDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service.dto</a> &gt; <span class="el_source">RecipeBookDTO.java</span></div><h1>RecipeBookDTO.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service.dto;
+
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * A DTO for the {@link com.szakdologzat.repiceapp.domain.RecipeBook} entity.
+ */
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+<span class="fc" id="L13">public class RecipeBookDTO implements Serializable {</span>
+
+    private Long id;
+
+    private String title;
+
+    private String theme;
+
+    private String description;
+
+    private String tags;
+
+    private ZonedDateTime createdDate;
+
+    private UserDTO user;
+
+    private boolean isPrivate;
+
+    private boolean isRecipeInList;
+
+    private List&lt;String&gt; recipeImages;
+
+    public List&lt;String&gt; getRecipeImages() {
+<span class="nc" id="L36">        return recipeImages;</span>
+    }
+
+    public void setRecipeImages(List&lt;String&gt; recipeImages) {
+<span class="nc" id="L40">        this.recipeImages = recipeImages;</span>
+<span class="nc" id="L41">    }</span>
+
+    public boolean getIsRecipeInList() {
+<span class="nc" id="L44">        return isRecipeInList;</span>
+    }
+
+    public boolean getIsPrivate() {
+<span class="fc" id="L48">        return isPrivate;</span>
+    }
+
+    public void setIsPrivate(boolean aPrivate) {
+<span class="fc" id="L52">        isPrivate = aPrivate;</span>
+<span class="fc" id="L53">    }</span>
+
+    public void setIsRecipeInList(boolean recipeInList) {
+<span class="nc" id="L56">        isRecipeInList = recipeInList;</span>
+<span class="nc" id="L57">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L60">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L64">        this.id = id;</span>
+<span class="fc" id="L65">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L68">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="fc" id="L72">        this.title = title;</span>
+<span class="fc" id="L73">    }</span>
+
+    public String getTheme() {
+<span class="fc" id="L76">        return theme;</span>
+    }
+
+    public void setTheme(String theme) {
+<span class="fc" id="L80">        this.theme = theme;</span>
+<span class="fc" id="L81">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L84">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L88">        this.description = description;</span>
+<span class="fc" id="L89">    }</span>
+
+    public String getTags() {
+<span class="fc" id="L92">        return tags;</span>
+    }
+
+    public void setTags(String tags) {
+<span class="fc" id="L96">        this.tags = tags;</span>
+<span class="fc" id="L97">    }</span>
+
+    public ZonedDateTime getCreatedDate() {
+<span class="fc" id="L100">        return createdDate;</span>
+    }
+
+    public void setCreatedDate(ZonedDateTime createdDate) {
+<span class="fc" id="L104">        this.createdDate = createdDate;</span>
+<span class="fc" id="L105">    }</span>
+
+    public UserDTO getUser() {
+<span class="fc" id="L108">        return user;</span>
+    }
+
+    public void setUser(UserDTO user) {
+<span class="fc" id="L112">        this.user = user;</span>
+<span class="fc" id="L113">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L118">            return true;</span>
+        }
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if (!(o instanceof RecipeBookDTO recipeBookDTO)) {</span>
+<span class="fc" id="L121">            return false;</span>
+        }
+
+<span class="fc bfc" id="L124" title="All 2 branches covered.">        if (this.id == null) {</span>
+<span class="fc" id="L125">            return false;</span>
+        }
+<span class="fc" id="L127">        return Objects.equals(this.id, recipeBookDTO.id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L132">        return Objects.hash(this.id);</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L138">        return &quot;RecipeBookDTO{&quot; +</span>
+<span class="fc" id="L139">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L140">            &quot;, title='&quot; + getTitle() + &quot;'&quot; +</span>
+<span class="fc" id="L141">            &quot;, theme='&quot; + getTheme() + &quot;'&quot; +</span>
+<span class="fc" id="L142">            &quot;, description='&quot; + getDescription() + &quot;'&quot; +</span>
+<span class="fc" id="L143">            &quot;, tags='&quot; + getTags() + &quot;'&quot; +</span>
+<span class="fc" id="L144">            &quot;, createdDate='&quot; + getCreatedDate() + &quot;'&quot; +</span>
+<span class="fc" id="L145">            &quot;, user=&quot; + getUser() +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

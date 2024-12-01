@@ -1,0 +1,24 @@
+{
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Choose the way you want to find your recipe!",
+    "question": "If you have any question on JHipster:",
+    "recentRecipes": "Most recently added recipes by ",
+    "tabRecipeBooks": "'s recipe books",
+    "noData": "No data found!",
+    "recipes": "Recipes",
+    "recipeBooks": "Recipe books",
+    "deletemodal": {
+      "title": "Are you sure?",
+      "description": "It will be deleted permanently, you can't undo it afterwards!"
+    },
+    "link": {
+      "homepage": "JHipster homepage",
+      "stackoverflow": "JHipster on Stack Overflow",
+      "bugtracker": "JHipster bug tracker",
+      "chat": "JHipster public chat room"
+    },
+    "like": "If you like JHipster, don't forget to give us a star on",
+    "github": "GitHub"
+  }
+}

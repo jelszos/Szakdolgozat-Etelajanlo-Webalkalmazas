@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SecurityConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.config</a> &gt; <span class="el_source">SecurityConfiguration.java</span></div><h1>SecurityConfiguration.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.config;
+
+import static org.springframework.security.config.Customizer.withDefaults;
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
+
+import com.szakdologzat.repiceapp.security.*;
+import com.szakdologzat.repiceapp.web.filter.SpaWebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.util.function.Supplier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.*;
+import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+import tech.jhipster.config.JHipsterConstants;
+import tech.jhipster.config.JHipsterProperties;
+import tech.jhipster.web.filter.CookieCsrfFilter;
+
+@Configuration
+@EnableMethodSecurity(securedEnabled = true)
+public class SecurityConfiguration {
+
+    private final Environment env;
+
+    private final JHipsterProperties jHipsterProperties;
+
+<span class="nc" id="L45">    public SecurityConfiguration(Environment env, JHipsterProperties jHipsterProperties) {</span>
+<span class="nc" id="L46">        this.env = env;</span>
+<span class="nc" id="L47">        this.jHipsterProperties = jHipsterProperties;</span>
+<span class="nc" id="L48">    }</span>
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+<span class="nc" id="L52">        return new BCryptPasswordEncoder();</span>
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
+<span class="nc" id="L57">        http</span>
+<span class="nc" id="L58">            .cors(withDefaults())</span>
+<span class="nc" id="L59">            .csrf(csrf -&gt;</span>
+<span class="nc" id="L60">                csrf</span>
+<span class="nc" id="L61">                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</span>
+<span class="nc" id="L62">                    .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())</span>
+            )
+<span class="nc" id="L64">            .addFilterAfter(new SpaWebFilter(), BasicAuthenticationFilter.class)</span>
+<span class="nc" id="L65">            .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)</span>
+<span class="nc" id="L66">            .headers(headers -&gt;</span>
+<span class="nc" id="L67">                headers</span>
+<span class="nc" id="L68">                    .contentSecurityPolicy(csp -&gt; csp.policyDirectives(jHipsterProperties.getSecurity().getContentSecurityPolicy()))</span>
+<span class="nc" id="L69">                    .frameOptions(FrameOptionsConfig::sameOrigin)</span>
+<span class="nc" id="L70">                    .referrerPolicy(referrer -&gt; referrer.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))</span>
+<span class="nc" id="L71">                    .permissionsPolicy(permissions -&gt;</span>
+<span class="nc" id="L72">                        permissions.policy(</span>
+                            &quot;camera=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()&quot;
+                        )
+                    )
+            )
+<span class="nc" id="L77">            .authorizeHttpRequests(authz -&gt;</span>
+                // prettier-ignore
+                authz
+<span class="nc" id="L80">                    .requestMatchers(mvc.pattern(&quot;/index.html&quot;), mvc.pattern(&quot;/*.js&quot;), mvc.pattern(&quot;/*.txt&quot;), mvc.pattern(&quot;/*.json&quot;), mvc.pattern(&quot;/*.map&quot;), mvc.pattern(&quot;/*.css&quot;)).permitAll()</span>
+<span class="nc" id="L81">                    .requestMatchers(mvc.pattern(&quot;/*.ico&quot;), mvc.pattern(&quot;/*.png&quot;), mvc.pattern(&quot;/*.svg&quot;), mvc.pattern(&quot;/*.webapp&quot;)).permitAll()</span>
+<span class="nc" id="L82">                    .requestMatchers(mvc.pattern(&quot;/assets/**&quot;)).permitAll()</span>
+<span class="nc" id="L83">                    .requestMatchers(mvc.pattern(&quot;/content/**&quot;)).permitAll()</span>
+<span class="nc" id="L84">                    .requestMatchers(mvc.pattern(&quot;/swagger-ui/**&quot;)).permitAll()</span>
+<span class="nc" id="L85">                    .requestMatchers(mvc.pattern(&quot;/api/authenticate&quot;)).permitAll()</span>
+<span class="nc" id="L86">                    .requestMatchers(mvc.pattern(&quot;/api/register&quot;)).permitAll()</span>
+<span class="nc" id="L87">                    .requestMatchers(mvc.pattern(&quot;/api/activate&quot;)).permitAll()</span>
+<span class="nc" id="L88">                    .requestMatchers(mvc.pattern(&quot;/api/account/reset-password/init&quot;)).permitAll()</span>
+<span class="nc" id="L89">                    .requestMatchers(mvc.pattern(&quot;/api/account/reset-password/finish&quot;)).permitAll()</span>
+<span class="nc" id="L90">                    .requestMatchers(mvc.pattern(&quot;/api/admin/**&quot;)).hasAuthority(AuthoritiesConstants.ADMIN)</span>
+<span class="nc" id="L91">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/recipes/**&quot;)).permitAll()</span>
+<span class="nc" id="L92">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/recipe/**&quot;)).permitAll()</span>
+<span class="nc" id="L93">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/ingredients/unique_ingredients&quot;)).permitAll()</span>
+<span class="nc" id="L94">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/recipe-books&quot;)).permitAll()</span>
+<span class="nc" id="L95">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/recipe-book/**&quot;)).permitAll()</span>
+<span class="nc" id="L96">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/recipe-book-relations/**&quot;)).permitAll()</span>
+<span class="nc" id="L97">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/api/user/**&quot;)).permitAll()</span>
+
+<span class="nc" id="L99">                    .requestMatchers(mvc.pattern(&quot;/api/**&quot;)).authenticated()</span>
+<span class="nc" id="L100">                    .requestMatchers(mvc.pattern(&quot;/v3/api-docs/**&quot;)).hasAuthority(AuthoritiesConstants.ADMIN)</span>
+<span class="nc" id="L101">                    .requestMatchers(mvc.pattern(&quot;/management/info&quot;)).permitAll()</span>
+<span class="nc" id="L102">                    .requestMatchers(mvc.pattern(&quot;/management/prometheus&quot;)).permitAll()</span>
+<span class="nc" id="L103">                    .requestMatchers(mvc.pattern(&quot;/management/**&quot;)).hasAuthority(AuthoritiesConstants.ADMIN)</span>
+<span class="nc" id="L104">                    .requestMatchers(mvc.pattern(HttpMethod.GET,&quot;/images/**&quot;)).permitAll()</span>
+            )
+<span class="nc" id="L106">            .exceptionHandling(exceptionHanding -&gt;</span>
+<span class="nc" id="L107">                exceptionHanding.defaultAuthenticationEntryPointFor(</span>
+                    new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
+<span class="nc" id="L109">                    new OrRequestMatcher(antMatcher(&quot;/api/**&quot;))</span>
+                )
+            )
+<span class="nc" id="L112">            .formLogin(formLogin -&gt;</span>
+                formLogin
+<span class="nc" id="L114">                    .loginPage(&quot;/&quot;)</span>
+<span class="nc" id="L115">                    .loginProcessingUrl(&quot;/api/authentication&quot;)</span>
+<span class="nc" id="L116">                    .successHandler((request, response, authentication) -&gt; response.setStatus(HttpStatus.OK.value()))</span>
+<span class="nc" id="L117">                    .failureHandler((request, response, exception) -&gt; response.setStatus(HttpStatus.UNAUTHORIZED.value()))</span>
+<span class="nc" id="L118">                    .permitAll()</span>
+            )
+<span class="nc" id="L120">            .logout(logout -&gt;</span>
+<span class="nc" id="L121">                logout.logoutUrl(&quot;/api/logout&quot;).logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()).permitAll()</span>
+            );
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {</span>
+<span class="nc" id="L124">            http</span>
+<span class="nc" id="L125">                .csrf(csrf -&gt; csrf.ignoringRequestMatchers(antMatcher(&quot;/h2-console/**&quot;)))</span>
+<span class="nc" id="L126">                .authorizeHttpRequests(authz -&gt; authz.requestMatchers(antMatcher(&quot;/h2-console/**&quot;)).permitAll());</span>
+        }
+<span class="nc" id="L128">        return http.build();</span>
+    }
+
+    @Bean
+    MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector) {
+<span class="nc" id="L133">        return new MvcRequestMatcher.Builder(introspector);</span>
+    }
+
+    /**
+     * Custom CSRF handler to provide BREACH protection.
+     *
+     * @see &lt;a href=&quot;https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html#csrf-integration-javascript-spa&quot;&gt;Spring Security Documentation - Integrating with CSRF Protection&lt;/a&gt;
+     * @see &lt;a href=&quot;https://github.com/jhipster/generator-jhipster/pull/25907&quot;&gt;JHipster - use customized SpaCsrfTokenRequestHandler to handle CSRF token&lt;/a&gt;
+     * @see &lt;a href=&quot;https://stackoverflow.com/q/74447118/65681&quot;&gt;CSRF protection not working with Spring Security 6&lt;/a&gt;
+     */
+<span class="nc" id="L143">    static final class SpaCsrfTokenRequestHandler extends CsrfTokenRequestAttributeHandler {</span>
+
+<span class="nc" id="L145">        private final CsrfTokenRequestHandler delegate = new XorCsrfTokenRequestAttributeHandler();</span>
+
+        @Override
+        public void handle(HttpServletRequest request, HttpServletResponse response, Supplier&lt;CsrfToken&gt; csrfToken) {
+            /*
+             * Always use XorCsrfTokenRequestAttributeHandler to provide BREACH protection of
+             * the CsrfToken when it is rendered in the response body.
+             */
+<span class="nc" id="L153">            this.delegate.handle(request, response, csrfToken);</span>
+<span class="nc" id="L154">        }</span>
+
+        @Override
+        public String resolveCsrfTokenValue(HttpServletRequest request, CsrfToken csrfToken) {
+            /*
+             * If the request contains a request header, use CsrfTokenRequestAttributeHandler
+             * to resolve the CsrfToken. This applies when a single-page application includes
+             * the header value automatically, which was obtained via a cookie containing the
+             * raw CsrfToken.
+             */
+<span class="nc bnc" id="L164" title="All 2 branches missed.">            if (StringUtils.hasText(request.getHeader(csrfToken.getHeaderName()))) {</span>
+<span class="nc" id="L165">                return super.resolveCsrfTokenValue(request, csrfToken);</span>
+            }
+            /*
+             * In all other cases (e.g. if the request contains a request parameter), use
+             * XorCsrfTokenRequestAttributeHandler to resolve the CsrfToken. This applies
+             * when a server-side rendered form includes the _csrf request parameter as a
+             * hidden input.
+             */
+<span class="nc" id="L173">            return this.delegate.resolveCsrfTokenValue(request, csrfToken);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

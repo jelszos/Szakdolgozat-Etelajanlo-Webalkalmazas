@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service.dto</a> &gt; <span class="el_source">RecipeDTO.java</span></div><h1>RecipeDTO.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service.dto;
+
+import com.szakdologzat.repiceapp.domain.enumeration.FoodCategory;
+import com.szakdologzat.repiceapp.domain.enumeration.FoodType;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * A DTO for the {@link com.szakdologzat.repiceapp.domain.Recipe} entity.
+ */
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+public class RecipeDTO implements Serializable {
+
+    private Long id;
+
+    private String title;
+
+    private String description;
+
+    private String ingredientNames;
+
+    private FoodCategory foodCategory;
+
+    private FoodType foodType;
+
+    private String imageUrl;
+
+    private ZonedDateTime createdDate;
+
+    private boolean isFavorite;
+
+    private Long favoriteCount;
+
+    private Long requiredTimeSum;
+
+    private Double totalRating;
+
+    public Long getFavoriteCount() {
+<span class="nc" id="L41">        return favoriteCount;</span>
+    }
+
+    public void setFavoriteCount(Long favoriteCount) {
+<span class="fc" id="L45">        this.favoriteCount = favoriteCount;</span>
+<span class="fc" id="L46">    }</span>
+
+    public boolean isFavorite() {
+<span class="nc" id="L49">        return isFavorite;</span>
+    }
+
+    public void setFavorite(boolean favorite) {
+<span class="nc" id="L53">        isFavorite = favorite;</span>
+<span class="nc" id="L54">    }</span>
+
+    public Long getRequiredTimeSum() {
+<span class="nc" id="L57">        return requiredTimeSum;</span>
+    }
+
+    public void setRequiredTimeSum(Long requiredTimeSum) {
+<span class="fc" id="L61">        this.requiredTimeSum = requiredTimeSum;</span>
+<span class="fc" id="L62">    }</span>
+
+    private Set&lt;InstructionDTO&gt; instructions;
+
+    private Set&lt;RatingDTO&gt; ratings;
+
+    private UserDTO user;
+
+    public UserDTO getUser() {
+<span class="fc" id="L71">        return user;</span>
+    }
+
+    public void setUser(UserDTO user) {
+<span class="fc" id="L75">        this.user = user;</span>
+<span class="fc" id="L76">    }</span>
+
+    public Set&lt;InstructionDTO&gt; getInstructions() {
+<span class="fc" id="L79">        return instructions;</span>
+    }
+
+    public void setInstructions(Set&lt;InstructionDTO&gt; instructions) {
+<span class="fc" id="L83">        this.instructions = instructions;</span>
+<span class="fc" id="L84">    }</span>
+
+    public Set&lt;RatingDTO&gt; getRatings() {
+<span class="fc" id="L87">        return ratings;</span>
+    }
+
+    public void setRatings(Set&lt;RatingDTO&gt; ratings) {
+<span class="fc" id="L91">        this.ratings = ratings;</span>
+<span class="fc" id="L92">    }</span>
+
+    public Double getTotalRating() {
+<span class="nc" id="L95">        return totalRating;</span>
+    }
+
+    public void setTotalRating(Double totalRating) {
+<span class="fc" id="L99">        this.totalRating = totalRating;</span>
+<span class="fc" id="L100">    }</span>
+
+    public boolean getIsFavorite() {
+<span class="nc" id="L103">        return isFavorite;</span>
+    }
+
+    public void setIsFavorite(boolean favorite) {
+<span class="fc" id="L107">        isFavorite = favorite;</span>
+<span class="fc" id="L108">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L111">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L115">        this.id = id;</span>
+<span class="fc" id="L116">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L119">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="fc" id="L123">        this.title = title;</span>
+<span class="fc" id="L124">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L127">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L131">        this.description = description;</span>
+<span class="fc" id="L132">    }</span>
+
+    public String getIngredientNames() {
+<span class="fc" id="L135">        return ingredientNames;</span>
+    }
+
+    public void setIngredientNames(String ingredientNames) {
+<span class="fc" id="L139">        this.ingredientNames = ingredientNames;</span>
+<span class="fc" id="L140">    }</span>
+
+    public FoodCategory getFoodCategory() {
+<span class="fc" id="L143">        return foodCategory;</span>
+    }
+
+    public void setFoodCategory(FoodCategory foodCategory) {
+<span class="fc" id="L147">        this.foodCategory = foodCategory;</span>
+<span class="fc" id="L148">    }</span>
+
+    public FoodType getFoodType() {
+<span class="fc" id="L151">        return foodType;</span>
+    }
+
+    public void setFoodType(FoodType foodType) {
+<span class="fc" id="L155">        this.foodType = foodType;</span>
+<span class="fc" id="L156">    }</span>
+
+    public String getImageUrl() {
+<span class="fc" id="L159">        return imageUrl;</span>
+    }
+
+    public void setImageUrl(String imageUrl) {
+<span class="fc" id="L163">        this.imageUrl = imageUrl;</span>
+<span class="fc" id="L164">    }</span>
+
+    public ZonedDateTime getCreatedDate() {
+<span class="fc" id="L167">        return createdDate;</span>
+    }
+
+    public void setCreatedDate(ZonedDateTime createdDate) {
+<span class="fc" id="L171">        this.createdDate = createdDate;</span>
+<span class="fc" id="L172">    }</span>
+
+<span class="fc" id="L174">    public RecipeDTO() {}</span>
+
+<span class="fc" id="L176">    public RecipeDTO(Long id, String title) {</span>
+<span class="fc" id="L177">        this.id = id;</span>
+<span class="fc" id="L178">        this.title = title;</span>
+<span class="fc" id="L179">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L183" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L184">            return true;</span>
+        }
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        if (!(o instanceof RecipeDTO recipeDTO)) {</span>
+<span class="fc" id="L187">            return false;</span>
+        }
+
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        if (this.id == null) {</span>
+<span class="fc" id="L191">            return false;</span>
+        }
+<span class="fc" id="L193">        return Objects.equals(this.id, recipeDTO.id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L198">        return Objects.hash(this.id);</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L204">        return &quot;RecipeDTO{&quot; +</span>
+<span class="fc" id="L205">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L206">            &quot;, title='&quot; + getTitle() + &quot;'&quot; +</span>
+<span class="fc" id="L207">            &quot;, description='&quot; + getDescription() + &quot;'&quot; +</span>
+<span class="fc" id="L208">            &quot;, ingredientNames='&quot; + getIngredientNames() + &quot;'&quot; +</span>
+<span class="fc" id="L209">            &quot;, foodCategory='&quot; + getFoodCategory() + &quot;'&quot; +</span>
+<span class="fc" id="L210">            &quot;, foodType='&quot; + getFoodType() + &quot;'&quot; +</span>
+<span class="fc" id="L211">            &quot;, imageUrl='&quot; + getImageUrl() + &quot;'&quot; +</span>
+<span class="fc" id="L212">            &quot;, createdDate='&quot; + getCreatedDate() + &quot;'&quot; +</span>
+<span class="fc" id="L213">            &quot;, user=&quot; + getUser() +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

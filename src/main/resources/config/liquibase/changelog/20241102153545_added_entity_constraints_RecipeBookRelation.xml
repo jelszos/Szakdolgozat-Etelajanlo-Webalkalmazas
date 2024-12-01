@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity RecipeBookRelation.
+    -->
+    <changeSet id="20241102153545-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="recipe_id"
+                                 baseTableName="recipe_book_relation"
+                                 constraintName="fk_recipe_book_relation__recipe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="recipe"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="recipe_book_id"
+                                 baseTableName="recipe_book_relation"
+                                 constraintName="fk_recipe_book_relation__recipe_book_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="recipe_book"
+                                 />
+    </changeSet>
+</databaseChangeLog>

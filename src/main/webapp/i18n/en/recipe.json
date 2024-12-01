@@ -1,0 +1,71 @@
+{
+  "szakdolgozatApp": {
+    "recipe": {
+      "ingredients": "Ingredients",
+      "instructions": "Instructions:",
+      "browse": "Browse recipes",
+      "home": {
+        "title": "Recipes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Recipe",
+        "createOrEditLabel": "Edit Recipe",
+        "deleteRating": "Delete rating",
+        "notFound": "No Recipes found"
+      },
+      "ratings": {
+        "section": "Ratings",
+        "title": "Ratings of { param }",
+        "navigateBack": "Go back to Recipe",
+        "basedOn": "Based on all reviews",
+        "showMore": "Show more ratings",
+        "showLess": "Show less ratings",
+        "checkAll": "Check all ratings",
+        "imageLabel": "Image",
+        "uploadImage": "Upload image",
+        "commentDescPh": "Enter comment description",
+        "commentDesc": "Description",
+        "commentTitle": "Title",
+        "commentTitlePh": "Enter comment title",
+        "giveRating": "Give rating",
+        "rate": "Rate",
+        "writeRating": "You can write or edit your review!"
+      },
+      "created": "A new Recipe is created with identifier { param }",
+      "updated": "A Recipe is updated with identifier { param }",
+      "deleted": "A Recipe is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Recipe { id }?"
+      },
+      "detail": {
+        "title": "Recipe"
+      },
+      "id": "Id",
+      "title": "Title",
+      "description": "Description",
+      "ingredientNames": "Ingredient Names",
+      "foodCategory": "Food Category",
+      "foodType": "Food Type",
+      "imageUrl": "Image Url",
+      "createdDate": "Created Date",
+      "instruction": "Instruction",
+      "addInstruction": {
+        "title": "Add recipe",
+        "titlePlaceholder": "Enter recipe title",
+        "timeLabel": "Time (minutes)",
+        "timePlaceholder": "Enter required time",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Enter recipe description",
+        "ingredient": "Ingredient",
+        "amount": "Amount",
+        "unit": "Unit",
+        "addAnother": "Add Another Ingredient",
+        "submit": "Submit"
+      },
+      "rating": "Rating",
+      "recipeBookRelation": "Recipe Book Relation",
+      "favoriteRelation": "Favorite Relation",
+      "user": "User",
+      "plural": "recipes"
+    }
+  }
+}

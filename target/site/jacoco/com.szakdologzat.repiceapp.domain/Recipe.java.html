@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Recipe.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.domain</a> &gt; <span class="el_source">Recipe.java</span></div><h1>Recipe.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.szakdologzat.repiceapp.domain.enumeration.FoodCategory;
+import com.szakdologzat.repiceapp.domain.enumeration.FoodType;
+import com.szakdologzat.repiceapp.service.UserService;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * A Recipe.
+ */
+@Entity
+@Table(name = &quot;recipe&quot;)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+public class Recipe implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;sequenceGenerator&quot;)
+    @SequenceGenerator(name = &quot;sequenceGenerator&quot;)
+    @Column(name = &quot;id&quot;)
+    private Long id;
+
+    @Column(name = &quot;title&quot;)
+    private String title;
+
+    @Column(name = &quot;description&quot;)
+    private String description;
+
+    @Column(name = &quot;ingredient_names&quot;)
+    private String ingredientNames;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = &quot;food_category&quot;)
+    private FoodCategory foodCategory;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = &quot;food_type&quot;)
+    private FoodType foodType;
+
+    @Column(name = &quot;image_url&quot;)
+    private String imageUrl;
+
+    @Column(name = &quot;created_date&quot;)
+    @CreationTimestamp
+    private ZonedDateTime createdDate;
+
+<span class="pc" id="L59">    @OneToMany(fetch = FetchType.EAGER, mappedBy = &quot;recipe&quot;, cascade = CascadeType.ALL)</span>
+    @JsonIgnoreProperties(value = { &quot;ingredients&quot;, &quot;recipe&quot; }, allowSetters = true)
+    private Set&lt;Instruction&gt; instructions = new HashSet&lt;&gt;();
+
+<span class="pc" id="L63">    @OneToMany(fetch = FetchType.EAGER, mappedBy = &quot;recipe&quot;, cascade = CascadeType.ALL)</span>
+    @JsonIgnoreProperties(value = { &quot;user&quot;, &quot;recipe&quot; }, allowSetters = true)
+    private Set&lt;Rating&gt; ratings = new HashSet&lt;&gt;();
+
+<span class="pc" id="L67">    @OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;recipe&quot;, cascade = CascadeType.ALL)</span>
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { &quot;recipe&quot;, &quot;recipeBook&quot; }, allowSetters = true)
+    private Set&lt;RecipeBookRelation&gt; recipeBookRelations = new HashSet&lt;&gt;();
+
+<span class="pc" id="L72">    @OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;recipe&quot;, cascade = CascadeType.ALL)</span>
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { &quot;user&quot;, &quot;recipe&quot; }, allowSetters = true)
+    private Set&lt;FavoriteRelation&gt; favoriteRelations = new HashSet&lt;&gt;();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = { &quot;recipes&quot; })
+    private User user;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here
+
+<span class="fc" id="L83">    public Recipe() {}</span>
+
+<span class="nc" id="L85">    public Recipe(Long id, String title) {</span>
+<span class="nc" id="L86">        this.id = id;</span>
+<span class="nc" id="L87">        this.title = title;</span>
+<span class="nc" id="L88">    }</span>
+
+<span class="fc" id="L90">    public Recipe(Long id, String title, FoodCategory foodCategory) {</span>
+<span class="fc" id="L91">        this.id = id;</span>
+<span class="fc" id="L92">        this.title = title;</span>
+<span class="fc" id="L93">        this.foodCategory = foodCategory;</span>
+<span class="fc" id="L94">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L97">        return this.id;</span>
+    }
+
+    public Recipe id(Long id) {
+<span class="fc" id="L101">        this.setId(id);</span>
+<span class="fc" id="L102">        return this;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L106">        this.id = id;</span>
+<span class="fc" id="L107">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L110">        return this.title;</span>
+    }
+
+    public Recipe title(String title) {
+<span class="fc" id="L114">        this.setTitle(title);</span>
+<span class="fc" id="L115">        return this;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="fc" id="L119">        this.title = title;</span>
+<span class="fc" id="L120">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L123">        return this.description;</span>
+    }
+
+    public Recipe description(String description) {
+<span class="fc" id="L127">        this.setDescription(description);</span>
+<span class="fc" id="L128">        return this;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L132">        this.description = description;</span>
+<span class="fc" id="L133">    }</span>
+
+    public String getIngredientNames() {
+<span class="fc" id="L136">        return this.ingredientNames;</span>
+    }
+
+    public Recipe ingredientNames(String ingredientNames) {
+<span class="fc" id="L140">        this.setIngredientNames(ingredientNames);</span>
+<span class="fc" id="L141">        return this;</span>
+    }
+
+    public void setIngredientNames(String ingredientNames) {
+<span class="fc" id="L145">        this.ingredientNames = ingredientNames;</span>
+<span class="fc" id="L146">    }</span>
+
+    public FoodCategory getFoodCategory() {
+<span class="fc" id="L149">        return this.foodCategory;</span>
+    }
+
+    public Recipe foodCategory(FoodCategory foodCategory) {
+<span class="nc" id="L153">        this.setFoodCategory(foodCategory);</span>
+<span class="nc" id="L154">        return this;</span>
+    }
+
+    public void setFoodCategory(FoodCategory foodCategory) {
+<span class="fc" id="L158">        this.foodCategory = foodCategory;</span>
+<span class="fc" id="L159">    }</span>
+
+    public FoodType getFoodType() {
+<span class="fc" id="L162">        return this.foodType;</span>
+    }
+
+    public Recipe foodType(FoodType foodType) {
+<span class="nc" id="L166">        this.setFoodType(foodType);</span>
+<span class="nc" id="L167">        return this;</span>
+    }
+
+    public void setFoodType(FoodType foodType) {
+<span class="fc" id="L171">        this.foodType = foodType;</span>
+<span class="fc" id="L172">    }</span>
+
+    public String getImageUrl() {
+<span class="fc" id="L175">        return this.imageUrl;</span>
+    }
+
+    public Recipe imageUrl(String imageUrl) {
+<span class="fc" id="L179">        this.setImageUrl(imageUrl);</span>
+<span class="fc" id="L180">        return this;</span>
+    }
+
+    public void setImageUrl(String imageUrl) {
+<span class="fc" id="L184">        this.imageUrl = imageUrl;</span>
+<span class="fc" id="L185">    }</span>
+
+    public ZonedDateTime getCreatedDate() {
+<span class="fc" id="L188">        return this.createdDate;</span>
+    }
+
+    public Recipe createdDate(ZonedDateTime createdDate) {
+<span class="nc" id="L192">        this.setCreatedDate(createdDate);</span>
+<span class="nc" id="L193">        return this;</span>
+    }
+
+    public void setCreatedDate(ZonedDateTime createdDate) {
+<span class="fc" id="L197">        this.createdDate = createdDate;</span>
+<span class="fc" id="L198">    }</span>
+
+    public Set&lt;Instruction&gt; getInstructions() {
+<span class="fc" id="L201">        return this.instructions;</span>
+    }
+
+    public void setInstructions(Set&lt;Instruction&gt; instructions) {
+<span class="pc bpc" id="L205" title="1 of 2 branches missed.">        if (this.instructions != null) {</span>
+<span class="fc" id="L206">            this.instructions.forEach(i -&gt; i.setRecipe(null));</span>
+        }
+<span class="pc bpc" id="L208" title="1 of 2 branches missed.">        if (instructions != null) {</span>
+<span class="fc" id="L209">            instructions.forEach(i -&gt; i.setRecipe(this));</span>
+        }
+<span class="fc" id="L211">        this.instructions = instructions;</span>
+<span class="fc" id="L212">    }</span>
+
+    public Recipe instructions(Set&lt;Instruction&gt; instructions) {
+<span class="fc" id="L215">        this.setInstructions(instructions);</span>
+<span class="fc" id="L216">        return this;</span>
+    }
+
+    public Recipe addInstruction(Instruction instruction) {
+<span class="fc" id="L220">        this.instructions.add(instruction);</span>
+<span class="fc" id="L221">        instruction.setRecipe(this);</span>
+<span class="fc" id="L222">        return this;</span>
+    }
+
+    public Recipe removeInstruction(Instruction instruction) {
+<span class="fc" id="L226">        this.instructions.remove(instruction);</span>
+<span class="fc" id="L227">        instruction.setRecipe(null);</span>
+<span class="fc" id="L228">        return this;</span>
+    }
+
+    public Set&lt;Rating&gt; getRatings() {
+<span class="fc" id="L232">        return this.ratings;</span>
+    }
+
+    public void setRatings(Set&lt;Rating&gt; ratings) {
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">        if (this.ratings != null) {</span>
+<span class="fc" id="L237">            this.ratings.forEach(i -&gt; i.setRecipe(null));</span>
+        }
+<span class="pc bpc" id="L239" title="1 of 2 branches missed.">        if (ratings != null) {</span>
+<span class="fc" id="L240">            ratings.forEach(i -&gt; i.setRecipe(this));</span>
+        }
+<span class="fc" id="L242">        this.ratings = ratings;</span>
+<span class="fc" id="L243">    }</span>
+
+    public Recipe ratings(Set&lt;Rating&gt; ratings) {
+<span class="fc" id="L246">        this.setRatings(ratings);</span>
+<span class="fc" id="L247">        return this;</span>
+    }
+
+    public Recipe addRating(Rating rating) {
+<span class="fc" id="L251">        this.ratings.add(rating);</span>
+<span class="fc" id="L252">        rating.setRecipe(this);</span>
+<span class="fc" id="L253">        return this;</span>
+    }
+
+    public Recipe removeRating(Rating rating) {
+<span class="fc" id="L257">        this.ratings.remove(rating);</span>
+<span class="fc" id="L258">        rating.setRecipe(null);</span>
+<span class="fc" id="L259">        return this;</span>
+    }
+
+    public Set&lt;RecipeBookRelation&gt; getRecipeBookRelations() {
+<span class="fc" id="L263">        return this.recipeBookRelations;</span>
+    }
+
+    public void setRecipeBookRelations(Set&lt;RecipeBookRelation&gt; recipeBookRelations) {
+<span class="pc bpc" id="L267" title="1 of 2 branches missed.">        if (this.recipeBookRelations != null) {</span>
+<span class="fc" id="L268">            this.recipeBookRelations.forEach(i -&gt; i.setRecipe(null));</span>
+        }
+<span class="pc bpc" id="L270" title="1 of 2 branches missed.">        if (recipeBookRelations != null) {</span>
+<span class="fc" id="L271">            recipeBookRelations.forEach(i -&gt; i.setRecipe(this));</span>
+        }
+<span class="fc" id="L273">        this.recipeBookRelations = recipeBookRelations;</span>
+<span class="fc" id="L274">    }</span>
+
+    public Recipe recipeBookRelations(Set&lt;RecipeBookRelation&gt; recipeBookRelations) {
+<span class="fc" id="L277">        this.setRecipeBookRelations(recipeBookRelations);</span>
+<span class="fc" id="L278">        return this;</span>
+    }
+
+    public Recipe addRecipeBookRelation(RecipeBookRelation recipeBookRelation) {
+<span class="fc" id="L282">        this.recipeBookRelations.add(recipeBookRelation);</span>
+<span class="fc" id="L283">        recipeBookRelation.setRecipe(this);</span>
+<span class="fc" id="L284">        return this;</span>
+    }
+
+    public Recipe removeRecipeBookRelation(RecipeBookRelation recipeBookRelation) {
+<span class="fc" id="L288">        this.recipeBookRelations.remove(recipeBookRelation);</span>
+<span class="fc" id="L289">        recipeBookRelation.setRecipe(null);</span>
+<span class="fc" id="L290">        return this;</span>
+    }
+
+    public Set&lt;FavoriteRelation&gt; getFavoriteRelations() {
+<span class="fc" id="L294">        return this.favoriteRelations;</span>
+    }
+
+    public void setFavoriteRelations(Set&lt;FavoriteRelation&gt; favoriteRelations) {
+<span class="pc bpc" id="L298" title="1 of 2 branches missed.">        if (this.favoriteRelations != null) {</span>
+<span class="fc" id="L299">            this.favoriteRelations.forEach(i -&gt; i.setRecipe(null));</span>
+        }
+<span class="pc bpc" id="L301" title="1 of 2 branches missed.">        if (favoriteRelations != null) {</span>
+<span class="fc" id="L302">            favoriteRelations.forEach(i -&gt; i.setRecipe(this));</span>
+        }
+<span class="fc" id="L304">        this.favoriteRelations = favoriteRelations;</span>
+<span class="fc" id="L305">    }</span>
+
+    public Recipe favoriteRelations(Set&lt;FavoriteRelation&gt; favoriteRelations) {
+<span class="fc" id="L308">        this.setFavoriteRelations(favoriteRelations);</span>
+<span class="fc" id="L309">        return this;</span>
+    }
+
+    public Recipe addFavoriteRelation(FavoriteRelation favoriteRelation) {
+<span class="fc" id="L313">        this.favoriteRelations.add(favoriteRelation);</span>
+<span class="fc" id="L314">        favoriteRelation.setRecipe(this);</span>
+<span class="fc" id="L315">        return this;</span>
+    }
+
+    public Recipe removeFavoriteRelation(FavoriteRelation favoriteRelation) {
+<span class="fc" id="L319">        this.favoriteRelations.remove(favoriteRelation);</span>
+<span class="fc" id="L320">        favoriteRelation.setRecipe(null);</span>
+<span class="fc" id="L321">        return this;</span>
+    }
+
+    public User getUser() {
+<span class="fc" id="L325">        return this.user;</span>
+    }
+
+    public void setUser(User user) {
+<span class="fc" id="L329">        this.user = user;</span>
+<span class="fc" id="L330">    }</span>
+
+    public Recipe user(User user) {
+<span class="fc" id="L333">        this.setUser(user);</span>
+<span class="fc" id="L334">        return this;</span>
+    }
+
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L341" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L342">            return true;</span>
+        }
+<span class="fc bfc" id="L344" title="All 2 branches covered.">        if (!(o instanceof Recipe)) {</span>
+<span class="fc" id="L345">            return false;</span>
+        }
+<span class="fc bfc" id="L347" title="All 4 branches covered.">        return getId() != null &amp;&amp; getId().equals(((Recipe) o).getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
+<span class="fc" id="L353">        return getClass().hashCode();</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L359">        return &quot;Recipe{&quot; +</span>
+<span class="fc" id="L360">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L361">            &quot;, title='&quot; + getTitle() + &quot;'&quot; +</span>
+<span class="fc" id="L362">            &quot;, description='&quot; + getDescription() + &quot;'&quot; +</span>
+<span class="fc" id="L363">            &quot;, ingredientNames='&quot; + getIngredientNames() + &quot;'&quot; +</span>
+<span class="fc" id="L364">            &quot;, foodCategory='&quot; + getFoodCategory() + &quot;'&quot; +</span>
+<span class="fc" id="L365">            &quot;, foodType='&quot; + getFoodType() + &quot;'&quot; +</span>
+<span class="fc" id="L366">            &quot;, imageUrl='&quot; + getImageUrl() + &quot;'&quot; +</span>
+<span class="fc" id="L367">            &quot;, createdDate='&quot; + getCreatedDate() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

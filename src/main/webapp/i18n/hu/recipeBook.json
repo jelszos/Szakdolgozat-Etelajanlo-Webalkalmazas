@@ -1,0 +1,81 @@
+{
+  "szakdolgozatApp": {
+    "recipeBook": {
+      "home": {
+        "title": "Receptkönyvek",
+        "subtitle": "Ezek a nyilvános receptkönyvek",
+        "refreshListLabel": "Lista frissítése",
+        "createLabel": "Új receptkönyv létrehozása",
+        "createOrEditLabel": "Receptkönyv létrehozása vagy szerkesztése",
+        "searchDescription": "Leírás",
+        "notFound": "Nem található receptkönyv"
+      },
+      "search": {
+        "info": "Receptkönyv keresése megadott kritériumok alapján",
+        "descriptionField": "Leírás...",
+        "descriptionLabel": "Receptkönyv leírása",
+        "titleField": "Cím...",
+        "labelField": "Receptkönyv címe",
+        "themeLabel": "Receptkönyv témája",
+        "themeField": "Téma...",
+        "tagLabel": "Receptkönyv címkéje",
+        "tagField": "Címke..."
+      },
+      "mypage": {
+        "title": "Saját receptkönyveim",
+        "subtitle": "Ezek az én receptkönyveim",
+        "refreshListLabel": "Lista frissítése",
+        "createLabel": "Új receptkönyv létrehozása",
+        "createOrEditLabel": "Receptkönyv létrehozása vagy szerkesztése",
+        "editRecipeBook": "Receptkönyv szerkesztése",
+        "notFound": "Nem található receptkönyv",
+        "private": "Ez a recept könyv privát",
+        "public": "Ez a recept könyv publikus"
+      },
+      "created": "Új receptkönyv jött létre azonosítóval: { param }",
+      "updated": "Egy receptkönyv frissítve lett azonosítóval: { param }",
+      "deleted": "Egy receptkönyv törölve lett azonosítóval: { param }",
+      "delete": {
+        "question": "Biztosan törli a(z) { id } azonosítójú receptkönyvet?"
+      },
+      "detail": {
+        "title": "Receptkönyv"
+      },
+      "id": "Azonosító",
+      "title": "Cím",
+      "theme": "Téma",
+      "description": "Leírás",
+      "tags": "Címkék",
+      "createdDate": "Létrehozás dátuma",
+      "recipeBookRelation": "Receptkönyv kapcsolat",
+      "user": "Felhasználó",
+      "plural": "receptkönyvek",
+      "card": {
+        "edit": "Szerkesztés",
+        "delete": "Törlés",
+        "check": "Megtekintés",
+        "search": "Keresés"
+      },
+      "entityTitle": "Receptkönyv",
+      "modal": {
+        "name": "Név",
+        "namePH": "Receptkönyv neve...",
+        "theme": "Téma",
+        "themePH": "Receptkönyv témája...",
+        "visibility": "Láthatóság",
+        "description": "Leírás",
+        "descriptionPH": "Receptkönyv leírása...",
+        "editTitle": "Receptkönyv szerkesztése",
+        "private": "Privát",
+        "public": "Nyilvános",
+        "update": "Frissítés",
+        "cancel": "Mégse",
+        "modalTitle": "Recept mentése ide...",
+        "addSuccess": "Sikeresen hozzáadva",
+        "removeSuccess": "Sikeresen eltávolítva",
+        "error": "Hiba történt! Próbálja meg újra később.",
+        "newButton": "Új receptkönyv"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "szakdolgozatApp": {
+    "recipe": {
+      "ingredients": "Hozzávalók",
+      "instructions": "Utasítások:",
+      "browse": "Receptek böngészése",
+      "home": {
+        "title": "Receptkönyvek",
+        "refreshListLabel": "Lista frissítése",
+        "createLabel": "Új recept létrehozása",
+        "createOrEditLabel": "Recept szerkesztése",
+        "deleteRating": "Vélemény törlése",
+        "notFound": "Nincs recept található"
+      },
+      "ratings": {
+        "section": "Vélemények",
+        "title": "{ param } véleményei",
+        "navigateBack": "Vissza a recepthez",
+        "basedOn": "Minden vélemény alapján",
+        "showMore": "Több vélemény megjelenítése",
+        "showLess": "Kevesebb vélemény megjelenítése",
+        "checkAll": "Minden vélemény megtekintése",
+        "imageLabel": "Kép",
+        "uploadImage": "Kép feltöltése",
+        "commentDescPh": "Írd be a véleményed leírását",
+        "commentDesc": "Leírás",
+        "commentTitle": "Cím",
+        "commentTitlePh": "Írd be a vélemény címét",
+        "giveRating": "Értékelés",
+        "rate": "Értékel",
+        "writeRating": "Írhatsz vagy szerkesztheted a véleményedet!"
+      },
+      "created": "Új recept jött létre a következő azonosítóval: { param }",
+      "updated": "A recept frissítve lett a következő azonosítóval: { param }",
+      "deleted": "A recept törölve lett a következő azonosítóval: { param }",
+      "delete": {
+        "question": "Biztosan törölni szeretnéd a receptet { id }?"
+      },
+      "detail": {
+        "title": "Recept"
+      },
+      "id": "Id",
+      "title": "Cím",
+      "description": "Leírás",
+      "ingredientNames": "Hozzávalók neve",
+      "foodCategory": "Ételek kategóriája",
+      "foodType": "Étel típusa",
+      "imageUrl": "Kép URL",
+      "createdDate": "Létrehozás dátuma",
+      "instruction": "Lépés",
+      "addInstruction": {
+        "title": "Lépés hozzáadása",
+        "titlePlaceholder": "Adja meg a lépés címét",
+        "timeLabel": "Idő (percekben)",
+        "timePlaceholder": "Adja meg a szükséges időt",
+        "descriptionLabel": "Leírás",
+        "descriptionPlaceholder": "Adja meg a lépés leírását",
+        "ingredient": "Hozzávaló",
+        "amount": "Mennyiség",
+        "unit": "Mértékegység",
+        "addAnother": "További hozzávaló hozzáadása",
+        "submit": "Hozzáadás"
+      },
+      "rating": "Értékelés",
+      "recipeBookRelation": "Receptkönyv kapcsolat",
+      "favoriteRelation": "Kedvenc kapcsolat",
+      "user": "Felhasználó",
+      "plural": "receptjei"
+    }
+  }
+}

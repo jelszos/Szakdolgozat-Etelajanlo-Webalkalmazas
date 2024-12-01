@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeBookRelationMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service.mapper</a> &gt; <span class="el_source">RecipeBookRelationMapperImpl.java</span></div><h1>RecipeBookRelationMapperImpl.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service.mapper;
+
+import com.szakdologzat.repiceapp.domain.Ingredient;
+import com.szakdologzat.repiceapp.domain.Instruction;
+import com.szakdologzat.repiceapp.domain.Rating;
+import com.szakdologzat.repiceapp.domain.Recipe;
+import com.szakdologzat.repiceapp.domain.RecipeBook;
+import com.szakdologzat.repiceapp.domain.RecipeBookRelation;
+import com.szakdologzat.repiceapp.domain.User;
+import com.szakdologzat.repiceapp.service.dto.IngredientDTO;
+import com.szakdologzat.repiceapp.service.dto.InstructionDTO;
+import com.szakdologzat.repiceapp.service.dto.RatingDTO;
+import com.szakdologzat.repiceapp.service.dto.RecipeBookDTO;
+import com.szakdologzat.repiceapp.service.dto.RecipeBookRelationDTO;
+import com.szakdologzat.repiceapp.service.dto.RecipeDTO;
+import com.szakdologzat.repiceapp.service.dto.UserDTO;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2024-12-01T10:18:44+0100&quot;,
+    comments = &quot;version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Homebrew)&quot;
+)
+@Component
+<span class="fc" id="L30">public class RecipeBookRelationMapperImpl implements RecipeBookRelationMapper {</span>
+
+    @Override
+    public RecipeBookRelation toEntity(RecipeBookRelationDTO dto) {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L35">            return null;</span>
+        }
+
+<span class="fc" id="L38">        RecipeBookRelation recipeBookRelation = new RecipeBookRelation();</span>
+
+<span class="fc" id="L40">        recipeBookRelation.setId( dto.getId() );</span>
+<span class="fc" id="L41">        recipeBookRelation.recipe( recipeDTOToRecipe( dto.getRecipe() ) );</span>
+<span class="fc" id="L42">        recipeBookRelation.recipeBook( recipeBookDTOToRecipeBook( dto.getRecipeBook() ) );</span>
+
+<span class="fc" id="L44">        return recipeBookRelation;</span>
+    }
+
+    @Override
+    public List&lt;RecipeBookRelation&gt; toEntity(List&lt;RecipeBookRelationDTO&gt; dtoList) {
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if ( dtoList == null ) {</span>
+<span class="nc" id="L50">            return null;</span>
+        }
+
+<span class="nc" id="L53">        List&lt;RecipeBookRelation&gt; list = new ArrayList&lt;RecipeBookRelation&gt;( dtoList.size() );</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        for ( RecipeBookRelationDTO recipeBookRelationDTO : dtoList ) {</span>
+<span class="nc" id="L55">            list.add( toEntity( recipeBookRelationDTO ) );</span>
+<span class="nc" id="L56">        }</span>
+
+<span class="nc" id="L58">        return list;</span>
+    }
+
+    @Override
+    public List&lt;RecipeBookRelationDTO&gt; toDto(List&lt;RecipeBookRelation&gt; entityList) {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if ( entityList == null ) {</span>
+<span class="nc" id="L64">            return null;</span>
+        }
+
+<span class="nc" id="L67">        List&lt;RecipeBookRelationDTO&gt; list = new ArrayList&lt;RecipeBookRelationDTO&gt;( entityList.size() );</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        for ( RecipeBookRelation recipeBookRelation : entityList ) {</span>
+<span class="nc" id="L69">            list.add( toDto( recipeBookRelation ) );</span>
+<span class="nc" id="L70">        }</span>
+
+<span class="nc" id="L72">        return list;</span>
+    }
+
+    @Override
+    public void partialUpdate(RecipeBookRelation entity, RecipeBookRelationDTO dto) {
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L78">            return;</span>
+        }
+
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if ( dto.getId() != null ) {</span>
+<span class="fc" id="L82">            entity.setId( dto.getId() );</span>
+        }
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if ( dto.getRecipe() != null ) {</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">            if ( entity.getRecipe() == null ) {</span>
+<span class="nc" id="L86">                entity.recipe( new Recipe() );</span>
+            }
+<span class="nc" id="L88">            recipeDTOToRecipe1( dto.getRecipe(), entity.getRecipe() );</span>
+        }
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        if ( dto.getRecipeBook() != null ) {</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            if ( entity.getRecipeBook() == null ) {</span>
+<span class="nc" id="L92">                entity.recipeBook( new RecipeBook() );</span>
+            }
+<span class="nc" id="L94">            recipeBookDTOToRecipeBook1( dto.getRecipeBook(), entity.getRecipeBook() );</span>
+        }
+<span class="fc" id="L96">    }</span>
+
+    @Override
+    public RecipeBookRelationDTO toDto(RecipeBookRelation s) {
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        if ( s == null ) {</span>
+<span class="nc" id="L101">            return null;</span>
+        }
+
+<span class="fc" id="L104">        RecipeBookRelationDTO recipeBookRelationDTO = new RecipeBookRelationDTO();</span>
+
+<span class="fc" id="L106">        recipeBookRelationDTO.setId( s.getId() );</span>
+
+<span class="fc" id="L108">        return recipeBookRelationDTO;</span>
+    }
+
+    @Override
+    public RecipeDTO toDtoRecipeId(Recipe recipe) {
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        if ( recipe == null ) {</span>
+<span class="nc" id="L114">            return null;</span>
+        }
+
+<span class="nc" id="L117">        RecipeDTO recipeDTO = new RecipeDTO();</span>
+
+<span class="nc" id="L119">        recipeDTO.setId( recipe.getId() );</span>
+
+<span class="nc" id="L121">        return recipeDTO;</span>
+    }
+
+    @Override
+    public RecipeBookDTO toDtoRecipeBookId(RecipeBook recipeBook) {
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if ( recipeBook == null ) {</span>
+<span class="nc" id="L127">            return null;</span>
+        }
+
+<span class="nc" id="L130">        RecipeBookDTO recipeBookDTO = new RecipeBookDTO();</span>
+
+<span class="nc" id="L132">        recipeBookDTO.setId( recipeBook.getId() );</span>
+
+<span class="nc" id="L134">        return recipeBookDTO;</span>
+    }
+
+    protected Ingredient ingredientDTOToIngredient(IngredientDTO ingredientDTO) {
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        if ( ingredientDTO == null ) {</span>
+<span class="nc" id="L139">            return null;</span>
+        }
+
+<span class="nc" id="L142">        Ingredient ingredient = new Ingredient();</span>
+
+<span class="nc" id="L144">        ingredient.setId( ingredientDTO.getId() );</span>
+<span class="nc" id="L145">        ingredient.setName( ingredientDTO.getName() );</span>
+<span class="nc" id="L146">        ingredient.setAmount( ingredientDTO.getAmount() );</span>
+<span class="nc" id="L147">        ingredient.setUnit( ingredientDTO.getUnit() );</span>
+<span class="nc" id="L148">        ingredient.instruction( instructionDTOToInstruction( ingredientDTO.getInstruction() ) );</span>
+
+<span class="nc" id="L150">        return ingredient;</span>
+    }
+
+    protected Set&lt;Ingredient&gt; ingredientDTOSetToIngredientSet(Set&lt;IngredientDTO&gt; set) {
+<span class="nc bnc" id="L154" title="All 2 branches missed.">        if ( set == null ) {</span>
+<span class="nc" id="L155">            return null;</span>
+        }
+
+<span class="nc" id="L158">        Set&lt;Ingredient&gt; set1 = new LinkedHashSet&lt;Ingredient&gt;( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">        for ( IngredientDTO ingredientDTO : set ) {</span>
+<span class="nc" id="L160">            set1.add( ingredientDTOToIngredient( ingredientDTO ) );</span>
+<span class="nc" id="L161">        }</span>
+
+<span class="nc" id="L163">        return set1;</span>
+    }
+
+    protected Instruction instructionDTOToInstruction(InstructionDTO instructionDTO) {
+<span class="nc bnc" id="L167" title="All 2 branches missed.">        if ( instructionDTO == null ) {</span>
+<span class="nc" id="L168">            return null;</span>
+        }
+
+<span class="nc" id="L171">        Instruction instruction = new Instruction();</span>
+
+<span class="nc" id="L173">        instruction.setId( instructionDTO.getId() );</span>
+<span class="nc" id="L174">        instruction.setTitle( instructionDTO.getTitle() );</span>
+<span class="nc" id="L175">        instruction.setRequiredTime( instructionDTO.getRequiredTime() );</span>
+<span class="nc" id="L176">        instruction.setDescription( instructionDTO.getDescription() );</span>
+<span class="nc" id="L177">        instruction.ingredients( ingredientDTOSetToIngredientSet( instructionDTO.getIngredients() ) );</span>
+<span class="nc" id="L178">        instruction.recipe( recipeDTOToRecipe( instructionDTO.getRecipe() ) );</span>
+
+<span class="nc" id="L180">        return instruction;</span>
+    }
+
+    protected Set&lt;Instruction&gt; instructionDTOSetToInstructionSet(Set&lt;InstructionDTO&gt; set) {
+<span class="nc bnc" id="L184" title="All 2 branches missed.">        if ( set == null ) {</span>
+<span class="nc" id="L185">            return null;</span>
+        }
+
+<span class="nc" id="L188">        Set&lt;Instruction&gt; set1 = new LinkedHashSet&lt;Instruction&gt;( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        for ( InstructionDTO instructionDTO : set ) {</span>
+<span class="nc" id="L190">            set1.add( instructionDTOToInstruction( instructionDTO ) );</span>
+<span class="nc" id="L191">        }</span>
+
+<span class="nc" id="L193">        return set1;</span>
+    }
+
+    protected User userDTOToUser(UserDTO userDTO) {
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        if ( userDTO == null ) {</span>
+<span class="nc" id="L198">            return null;</span>
+        }
+
+<span class="nc" id="L201">        User user = new User();</span>
+
+<span class="nc" id="L203">        user.setId( userDTO.getId() );</span>
+<span class="nc" id="L204">        user.setLogin( userDTO.getLogin() );</span>
+<span class="nc" id="L205">        user.setFirstName( userDTO.getFirstName() );</span>
+<span class="nc" id="L206">        user.setLastName( userDTO.getLastName() );</span>
+<span class="nc" id="L207">        user.setAvatar( userDTO.getAvatar() );</span>
+
+<span class="nc" id="L209">        return user;</span>
+    }
+
+    protected Rating ratingDTOToRating(RatingDTO ratingDTO) {
+<span class="nc bnc" id="L213" title="All 2 branches missed.">        if ( ratingDTO == null ) {</span>
+<span class="nc" id="L214">            return null;</span>
+        }
+
+<span class="nc" id="L217">        Rating rating = new Rating();</span>
+
+<span class="nc" id="L219">        rating.setId( ratingDTO.getId() );</span>
+<span class="nc" id="L220">        rating.setRate( ratingDTO.getRate() );</span>
+<span class="nc" id="L221">        rating.setTitle( ratingDTO.getTitle() );</span>
+<span class="nc" id="L222">        rating.setDescription( ratingDTO.getDescription() );</span>
+<span class="nc" id="L223">        rating.setImageUrl( ratingDTO.getImageUrl() );</span>
+<span class="nc" id="L224">        rating.setCreatedDate( ratingDTO.getCreatedDate() );</span>
+<span class="nc" id="L225">        rating.user( userDTOToUser( ratingDTO.getUser() ) );</span>
+<span class="nc" id="L226">        rating.recipe( recipeDTOToRecipe( ratingDTO.getRecipe() ) );</span>
+
+<span class="nc" id="L228">        return rating;</span>
+    }
+
+    protected Set&lt;Rating&gt; ratingDTOSetToRatingSet(Set&lt;RatingDTO&gt; set) {
+<span class="nc bnc" id="L232" title="All 2 branches missed.">        if ( set == null ) {</span>
+<span class="nc" id="L233">            return null;</span>
+        }
+
+<span class="nc" id="L236">        Set&lt;Rating&gt; set1 = new LinkedHashSet&lt;Rating&gt;( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">        for ( RatingDTO ratingDTO : set ) {</span>
+<span class="nc" id="L238">            set1.add( ratingDTOToRating( ratingDTO ) );</span>
+<span class="nc" id="L239">        }</span>
+
+<span class="nc" id="L241">        return set1;</span>
+    }
+
+    protected Recipe recipeDTOToRecipe(RecipeDTO recipeDTO) {
+<span class="pc bpc" id="L245" title="1 of 2 branches missed.">        if ( recipeDTO == null ) {</span>
+<span class="fc" id="L246">            return null;</span>
+        }
+
+<span class="nc" id="L249">        Recipe recipe = new Recipe();</span>
+
+<span class="nc" id="L251">        recipe.setId( recipeDTO.getId() );</span>
+<span class="nc" id="L252">        recipe.setTitle( recipeDTO.getTitle() );</span>
+<span class="nc" id="L253">        recipe.setDescription( recipeDTO.getDescription() );</span>
+<span class="nc" id="L254">        recipe.setIngredientNames( recipeDTO.getIngredientNames() );</span>
+<span class="nc" id="L255">        recipe.setFoodCategory( recipeDTO.getFoodCategory() );</span>
+<span class="nc" id="L256">        recipe.setFoodType( recipeDTO.getFoodType() );</span>
+<span class="nc" id="L257">        recipe.setImageUrl( recipeDTO.getImageUrl() );</span>
+<span class="nc" id="L258">        recipe.setCreatedDate( recipeDTO.getCreatedDate() );</span>
+<span class="nc" id="L259">        recipe.instructions( instructionDTOSetToInstructionSet( recipeDTO.getInstructions() ) );</span>
+<span class="nc" id="L260">        recipe.ratings( ratingDTOSetToRatingSet( recipeDTO.getRatings() ) );</span>
+<span class="nc" id="L261">        recipe.user( userDTOToUser( recipeDTO.getUser() ) );</span>
+
+<span class="nc" id="L263">        return recipe;</span>
+    }
+
+    protected RecipeBook recipeBookDTOToRecipeBook(RecipeBookDTO recipeBookDTO) {
+<span class="pc bpc" id="L267" title="1 of 2 branches missed.">        if ( recipeBookDTO == null ) {</span>
+<span class="fc" id="L268">            return null;</span>
+        }
+
+<span class="nc" id="L271">        RecipeBook recipeBook = new RecipeBook();</span>
+
+<span class="nc" id="L273">        recipeBook.setIsPrivate( recipeBookDTO.getIsPrivate() );</span>
+<span class="nc" id="L274">        recipeBook.setId( recipeBookDTO.getId() );</span>
+<span class="nc" id="L275">        recipeBook.setTitle( recipeBookDTO.getTitle() );</span>
+<span class="nc" id="L276">        recipeBook.setTheme( recipeBookDTO.getTheme() );</span>
+<span class="nc" id="L277">        recipeBook.setDescription( recipeBookDTO.getDescription() );</span>
+<span class="nc" id="L278">        recipeBook.setTags( recipeBookDTO.getTags() );</span>
+<span class="nc" id="L279">        recipeBook.setCreatedDate( recipeBookDTO.getCreatedDate() );</span>
+<span class="nc" id="L280">        recipeBook.user( userDTOToUser( recipeBookDTO.getUser() ) );</span>
+
+<span class="nc" id="L282">        return recipeBook;</span>
+    }
+
+    protected void userDTOToUser1(UserDTO userDTO, User mappingTarget) {
+<span class="nc bnc" id="L286" title="All 2 branches missed.">        if ( userDTO == null ) {</span>
+<span class="nc" id="L287">            return;</span>
+        }
+
+<span class="nc bnc" id="L290" title="All 2 branches missed.">        if ( userDTO.getId() != null ) {</span>
+<span class="nc" id="L291">            mappingTarget.setId( userDTO.getId() );</span>
+        }
+<span class="nc bnc" id="L293" title="All 2 branches missed.">        if ( userDTO.getLogin() != null ) {</span>
+<span class="nc" id="L294">            mappingTarget.setLogin( userDTO.getLogin() );</span>
+        }
+<span class="nc bnc" id="L296" title="All 2 branches missed.">        if ( userDTO.getFirstName() != null ) {</span>
+<span class="nc" id="L297">            mappingTarget.setFirstName( userDTO.getFirstName() );</span>
+        }
+<span class="nc bnc" id="L299" title="All 2 branches missed.">        if ( userDTO.getLastName() != null ) {</span>
+<span class="nc" id="L300">            mappingTarget.setLastName( userDTO.getLastName() );</span>
+        }
+<span class="nc bnc" id="L302" title="All 2 branches missed.">        if ( userDTO.getAvatar() != null ) {</span>
+<span class="nc" id="L303">            mappingTarget.setAvatar( userDTO.getAvatar() );</span>
+        }
+<span class="nc" id="L305">    }</span>
+
+    protected void recipeDTOToRecipe1(RecipeDTO recipeDTO, Recipe mappingTarget) {
+<span class="nc bnc" id="L308" title="All 2 branches missed.">        if ( recipeDTO == null ) {</span>
+<span class="nc" id="L309">            return;</span>
+        }
+
+<span class="nc bnc" id="L312" title="All 2 branches missed.">        if ( recipeDTO.getId() != null ) {</span>
+<span class="nc" id="L313">            mappingTarget.setId( recipeDTO.getId() );</span>
+        }
+<span class="nc bnc" id="L315" title="All 2 branches missed.">        if ( recipeDTO.getTitle() != null ) {</span>
+<span class="nc" id="L316">            mappingTarget.setTitle( recipeDTO.getTitle() );</span>
+        }
+<span class="nc bnc" id="L318" title="All 2 branches missed.">        if ( recipeDTO.getDescription() != null ) {</span>
+<span class="nc" id="L319">            mappingTarget.setDescription( recipeDTO.getDescription() );</span>
+        }
+<span class="nc bnc" id="L321" title="All 2 branches missed.">        if ( recipeDTO.getIngredientNames() != null ) {</span>
+<span class="nc" id="L322">            mappingTarget.setIngredientNames( recipeDTO.getIngredientNames() );</span>
+        }
+<span class="nc bnc" id="L324" title="All 2 branches missed.">        if ( recipeDTO.getFoodCategory() != null ) {</span>
+<span class="nc" id="L325">            mappingTarget.setFoodCategory( recipeDTO.getFoodCategory() );</span>
+        }
+<span class="nc bnc" id="L327" title="All 2 branches missed.">        if ( recipeDTO.getFoodType() != null ) {</span>
+<span class="nc" id="L328">            mappingTarget.setFoodType( recipeDTO.getFoodType() );</span>
+        }
+<span class="nc bnc" id="L330" title="All 2 branches missed.">        if ( recipeDTO.getImageUrl() != null ) {</span>
+<span class="nc" id="L331">            mappingTarget.setImageUrl( recipeDTO.getImageUrl() );</span>
+        }
+<span class="nc bnc" id="L333" title="All 2 branches missed.">        if ( recipeDTO.getCreatedDate() != null ) {</span>
+<span class="nc" id="L334">            mappingTarget.setCreatedDate( recipeDTO.getCreatedDate() );</span>
+        }
+<span class="nc bnc" id="L336" title="All 2 branches missed.">        if ( mappingTarget.getInstructions() != null ) {</span>
+<span class="nc" id="L337">            Set&lt;Instruction&gt; set = instructionDTOSetToInstructionSet( recipeDTO.getInstructions() );</span>
+<span class="nc bnc" id="L338" title="All 2 branches missed.">            if ( set != null ) {</span>
+<span class="nc" id="L339">                mappingTarget.getInstructions().clear();</span>
+<span class="nc" id="L340">                mappingTarget.getInstructions().addAll( set );</span>
+            }
+<span class="nc" id="L342">        }</span>
+        else {
+<span class="nc" id="L344">            Set&lt;Instruction&gt; set = instructionDTOSetToInstructionSet( recipeDTO.getInstructions() );</span>
+<span class="nc bnc" id="L345" title="All 2 branches missed.">            if ( set != null ) {</span>
+<span class="nc" id="L346">                mappingTarget.instructions( set );</span>
+            }
+        }
+<span class="nc bnc" id="L349" title="All 2 branches missed.">        if ( mappingTarget.getRatings() != null ) {</span>
+<span class="nc" id="L350">            Set&lt;Rating&gt; set1 = ratingDTOSetToRatingSet( recipeDTO.getRatings() );</span>
+<span class="nc bnc" id="L351" title="All 2 branches missed.">            if ( set1 != null ) {</span>
+<span class="nc" id="L352">                mappingTarget.getRatings().clear();</span>
+<span class="nc" id="L353">                mappingTarget.getRatings().addAll( set1 );</span>
+            }
+<span class="nc" id="L355">        }</span>
+        else {
+<span class="nc" id="L357">            Set&lt;Rating&gt; set1 = ratingDTOSetToRatingSet( recipeDTO.getRatings() );</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">            if ( set1 != null ) {</span>
+<span class="nc" id="L359">                mappingTarget.ratings( set1 );</span>
+            }
+        }
+<span class="nc bnc" id="L362" title="All 2 branches missed.">        if ( recipeDTO.getUser() != null ) {</span>
+<span class="nc bnc" id="L363" title="All 2 branches missed.">            if ( mappingTarget.getUser() == null ) {</span>
+<span class="nc" id="L364">                mappingTarget.user( new User() );</span>
+            }
+<span class="nc" id="L366">            userDTOToUser1( recipeDTO.getUser(), mappingTarget.getUser() );</span>
+        }
+<span class="nc" id="L368">    }</span>
+
+    protected void recipeBookDTOToRecipeBook1(RecipeBookDTO recipeBookDTO, RecipeBook mappingTarget) {
+<span class="nc bnc" id="L371" title="All 2 branches missed.">        if ( recipeBookDTO == null ) {</span>
+<span class="nc" id="L372">            return;</span>
+        }
+
+<span class="nc" id="L375">        mappingTarget.setIsPrivate( recipeBookDTO.getIsPrivate() );</span>
+<span class="nc bnc" id="L376" title="All 2 branches missed.">        if ( recipeBookDTO.getId() != null ) {</span>
+<span class="nc" id="L377">            mappingTarget.setId( recipeBookDTO.getId() );</span>
+        }
+<span class="nc bnc" id="L379" title="All 2 branches missed.">        if ( recipeBookDTO.getTitle() != null ) {</span>
+<span class="nc" id="L380">            mappingTarget.setTitle( recipeBookDTO.getTitle() );</span>
+        }
+<span class="nc bnc" id="L382" title="All 2 branches missed.">        if ( recipeBookDTO.getTheme() != null ) {</span>
+<span class="nc" id="L383">            mappingTarget.setTheme( recipeBookDTO.getTheme() );</span>
+        }
+<span class="nc bnc" id="L385" title="All 2 branches missed.">        if ( recipeBookDTO.getDescription() != null ) {</span>
+<span class="nc" id="L386">            mappingTarget.setDescription( recipeBookDTO.getDescription() );</span>
+        }
+<span class="nc bnc" id="L388" title="All 2 branches missed.">        if ( recipeBookDTO.getTags() != null ) {</span>
+<span class="nc" id="L389">            mappingTarget.setTags( recipeBookDTO.getTags() );</span>
+        }
+<span class="nc bnc" id="L391" title="All 2 branches missed.">        if ( recipeBookDTO.getCreatedDate() != null ) {</span>
+<span class="nc" id="L392">            mappingTarget.setCreatedDate( recipeBookDTO.getCreatedDate() );</span>
+        }
+<span class="nc bnc" id="L394" title="All 2 branches missed.">        if ( recipeBookDTO.getUser() != null ) {</span>
+<span class="nc bnc" id="L395" title="All 2 branches missed.">            if ( mappingTarget.getUser() == null ) {</span>
+<span class="nc" id="L396">                mappingTarget.user( new User() );</span>
+            }
+<span class="nc" id="L398">            userDTOToUser1( recipeBookDTO.getUser(), mappingTarget.getUser() );</span>
+        }
+<span class="nc" id="L400">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

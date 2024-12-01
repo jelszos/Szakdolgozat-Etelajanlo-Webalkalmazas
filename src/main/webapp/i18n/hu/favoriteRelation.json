@@ -1,0 +1,25 @@
+{
+  "szakdolgozatApp": {
+    "favoriteRelation": {
+      "home": {
+        "title": "FavoriteRelations",
+        "refreshListLabel": "Lista frissítése",
+        "createLabel": "Egy új Favorite Relation létrehozása",
+        "createOrEditLabel": "Hozzon létre, vagy módosítson Favorite Relationt",
+        "notFound": "No Favorite Relations found"
+      },
+      "created": "Egy új Favorite Relation lett létrehozva { param } azonosítóval",
+      "updated": "A Favorite Relation módosítva lett { param } azonosítóval",
+      "deleted": "A Favorite Relation törölve lett { param } azonosítóval",
+      "delete": {
+        "question": "Biztos benne, hogy törölni szeretné az Favorite Relationt { id } azonosítóval?"
+      },
+      "detail": {
+        "title": "Favorite Relation"
+      },
+      "id": "Id",
+      "user": "User",
+      "recipe": "Recipe"
+    }
+  }
+}

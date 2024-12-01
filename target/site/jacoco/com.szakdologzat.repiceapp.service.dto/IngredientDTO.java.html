@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IngredientDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service.dto</a> &gt; <span class="el_source">IngredientDTO.java</span></div><h1>IngredientDTO.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service.dto;
+
+import com.szakdologzat.repiceapp.domain.enumeration.Unit;
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * A DTO for the {@link com.szakdologzat.repiceapp.domain.Ingredient} entity.
+ */
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+<span class="fc" id="L11">public class IngredientDTO implements Serializable {</span>
+
+    private Long id;
+
+    private String name;
+
+    private Integer amount;
+
+    private Unit unit;
+
+    private InstructionDTO instruction;
+
+    public Long getId() {
+<span class="fc" id="L24">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L28">        this.id = id;</span>
+<span class="fc" id="L29">    }</span>
+
+    public String getName() {
+<span class="fc" id="L32">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L36">        this.name = name;</span>
+<span class="fc" id="L37">    }</span>
+
+    public Integer getAmount() {
+<span class="fc" id="L40">        return amount;</span>
+    }
+
+    public void setAmount(Integer amount) {
+<span class="fc" id="L44">        this.amount = amount;</span>
+<span class="fc" id="L45">    }</span>
+
+    public Unit getUnit() {
+<span class="fc" id="L48">        return unit;</span>
+    }
+
+    public void setUnit(Unit unit) {
+<span class="fc" id="L52">        this.unit = unit;</span>
+<span class="fc" id="L53">    }</span>
+
+    public InstructionDTO getInstruction() {
+<span class="fc" id="L56">        return instruction;</span>
+    }
+
+    public void setInstruction(InstructionDTO instruction) {
+<span class="fc" id="L60">        this.instruction = instruction;</span>
+<span class="fc" id="L61">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L66">            return true;</span>
+        }
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (!(o instanceof IngredientDTO ingredientDTO)) {</span>
+<span class="fc" id="L69">            return false;</span>
+        }
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (this.id == null) {</span>
+<span class="fc" id="L73">            return false;</span>
+        }
+<span class="fc" id="L75">        return Objects.equals(this.id, ingredientDTO.id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L80">        return Objects.hash(this.id);</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L86">        return &quot;IngredientDTO{&quot; +</span>
+<span class="fc" id="L87">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L88">            &quot;, name='&quot; + getName() + &quot;'&quot; +</span>
+<span class="fc" id="L89">            &quot;, amount=&quot; + getAmount() +</span>
+<span class="fc" id="L90">            &quot;, unit='&quot; + getUnit() + &quot;'&quot; +</span>
+<span class="fc" id="L91">            &quot;, instruction=&quot; + getInstruction() +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

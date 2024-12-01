@@ -1,0 +1,354 @@
+id;title;required_time;description;recipe_id
+1;Cut and Coat Chicken;10;Prepare the chicken by cutting it into bite-sized pieces and coating with cornstarch.;1
+2;Fry Chicken;5;Heat vegetable oil in a pan and fry the coated chicken until crispy.;1
+3;Stir-Fry Vegetables;10;In another pan, stir-fry bell peppers and pineapple chunks.;1
+4;Prepare Sweet and Sour Sauce;5;Add soy sauce, vinegar, sugar, and cook until the sauce thickens.;1
+5;Combine Chicken with Sauce;15;Mix the fried chicken with the sauce and serve hot.;1
+
+6;Cook Spaghetti;10;Boil spaghetti in salted water until al dente.;2
+7;Fry Pancetta;5;Fry pancetta in a pan until crispy.;2
+8;Prepare Carbonara Sauce;5;Whisk egg yolks with grated Parmesan cheese and black pepper.;2
+9;Combine Spaghetti and Sauce;5;Mix the spaghetti with the pancetta and egg mixture. Serve immediately.;2
+
+10;Brown Beef;10;Brown the beef in a large pot.;3
+11;Cook Vegetables;10;Add onions, garlic, and carrots. Cook until soft.;3
+12;Add Potatoes and Paprika;10;Add potatoes, paprika, and vegetable broth. Simmer until the beef is tender.;3
+13;Simmer Goulash;60;Let the goulash simmer for an hour until all ingredients are well combined.;3
+
+14;Cook Chicken with Spices;10;Cook chicken with cumin and chili powder.;4
+15;Warm Tortillas;5;Warm tortillas in a pan or oven.;4
+16;Assemble Tacos;5;Assemble the tacos with cooked chicken, salsa, lettuce, cheese, and sour cream.;4
+
+17;Marinate Chicken;10;Marinate the chicken with garam masala, cumin, and chili powder.;5
+18;Cook Garlic and Ginger in Butter;10;Cook garlic and ginger in butter until fragrant.;5
+19;Prepare Butter Chicken Sauce;20;Add tomato puree and simmer. Stir in cream and cooked chicken.;5
+20;Simmer Butter Chicken;20;Let the butter chicken simmer until the sauce thickens and flavors are well combined.;5
+
+21;Prepare Sushi Rice;15;Cook sushi rice according to package instructions.;6
+22;Slice Fish and Vegetables;10;Slice fish and vegetables into thin strips for filling.;6
+23;Roll Sushi;15;Place nori on a bamboo mat, add rice and fillings, and roll tightly.;6
+24;Cut Sushi Rolls;5;Slice the rolled sushi into bite-sized pieces.;6
+
+25;Prepare Noodles;10;Soak rice noodles in warm water until soft.;7
+26;Fry Shrimp and Tofu;5;Stir-fry shrimp and tofu in a hot pan.;7
+27;Make Pad Thai Sauce;5;Mix tamarind paste with water, sugar, and fish sauce.;7
+28;Combine Noodles and Ingredients;5;Add noodles, shrimp, tofu, and peanuts to the pan. Stir-fry and serve.;7
+
+29;Prepare Wonton Filling;10;Mix minced pork and shrimp with seasonings.;8
+30;Fill Wontons;5;Place filling in wonton wrappers and seal.;8
+31;Cook Wontons;10;Boil wontons in a savory broth until cooked.;8
+32;Serve Wonton Soup;5;Serve wontons in broth garnished with green onions.;8
+
+33;Prepare Tiramisu;10;Soak ladyfingers in coffee.;9
+34;Layer Tiramisu;20;Layer soaked ladyfingers with mascarpone cream.;9
+35;Chill Tiramisu;30;Refrigerate for a few hours and dust with cocoa before serving.;9
+
+36;Prepare Mushroom Soup;10;Sauté mushrooms in butter until soft.;10
+37;Add Broth and Seasonings;10;Add broth and paprika to the mushrooms and simmer.;10
+38;Finish with Sour Cream;5;Stir in sour cream before serving.;10
+
+39;Fill Enchiladas;10;Fill tortillas with chicken and cheese.;11
+40;Prepare Green Sauce;10;Blend tomatillos with garlic and cilantro.;11
+41;Bake Enchiladas;15;Pour sauce over filled tortillas and bake.;11
+
+42;Cook Spinach;5;Sauté spinach until wilted.;12
+43;Prepare Paneer;5;Cube paneer and add to spinach.;12
+44;Make Sauce;10;Blend spinach and paneer with cream.;12
+45;Serve Palak Paneer;5;Serve hot with naan.;12
+
+46;Prepare Miso Soup;10;Dissolve miso paste in warm water.;13
+47;Add Tofu and Seaweed;5;Add cubed tofu and seaweed to the soup.;13
+48;Serve Miso Soup;5;Garnish with green onions and serve.;13
+
+49;Prepare Green Curry;10;Cook green chilies in coconut milk.;14
+50;Add Vegetables or Meat;15;Add your choice of vegetables or meat and simmer.;14
+51;Serve Green Curry;5;Serve hot with rice.;14
+
+52;Prepare Kung Pao Sauce;5;Mix soy sauce with peanuts and spices.;15
+53;Cook Chicken;10;Stir-fry chicken in a hot pan.;15
+54;Add Peanuts;5;Add peanuts and sauce to the chicken and stir-fry.;15
+55;Serve Kung Pao Chicken;5;Serve hot over rice.;15
+
+56;Prepare Risotto;5;Sauté rice in butter.;16
+57;Add Broth Gradually;20;Slowly add broth to rice, stirring continuously.;16
+58;Finish with Parmesan;5;Stir in Parmesan and serve.;16
+
+59;Cook Chicken for Paprikash;10;Sauté chicken until browned.;17
+60;Add Paprika and Cream;15;Add paprika and cream to the pot and simmer.;17
+61;Serve Chicken Paprikash;10;Serve with dumplings or rice.;17
+
+62;Prepare Churros Dough;15;Mix flour, water, and sugar to form dough.;18
+63;Fry Churros;5;Fry churros until golden brown.;18
+64;Serve with Chocolate Sauce;10;Serve churros with melted chocolate.;18
+
+65;Prepare Naan Bread Dough;15;Mix flour, water, and yeast to form dough.;19
+66;Cook Naan;10;Cook naan on a hot skillet until puffed.;19
+67;Serve Naan;5;Serve warm with curry.;19
+
+68;Prepare Tom Yum Broth;10;Boil water with lemongrass and lime.;20
+69;Add Shrimp;5;Add shrimp and cook until pink.;20
+70;Serve Tom Yum Soup;5;Serve hot garnished with cilantro.;20
+
+71;Prep Vegetables;15;Chop pak choi, onion, and garlic. Prepare French beans, bell pepper, snow peas, and bean sprouts.;21
+72;Sauté Aromatics;10;Heat oil in a deep pan on high. Stir-fry onion until soft, then add bell pepper, garlic, and ginger paste for a quick stir-fry.;21
+73;Stir-fry Vegetables;10;Add green beans, snow peas, and pak choi, stir-fry all vegetables for 1-2 minutes until slightly tender.;21
+74;Cook Noodles and Broth;15;Pour in vegetable stock, salt, five-spice powder, soy sauce, vinegar, and chili sauce. Heat mixture without boiling, then add noodles and cook until al dente.;21
+75;Finish and Serve;10;Stir in bean sprouts and sesame oil, mixing well. Add tofu, and serve soup topped with sesame seeds.;21
+
+76;Preheat oven and season vegetables;5;Preheat oven to 200°C. Drizzle olive oil in baking dishes, add pumpkin to one and beetroot to the other. Season with salt.;22
+77;Roast vegetables;50;Roast pumpkin and beetroot for 50 minutes, until tender and golden. Set aside to cool.;22
+78;Toast seeds;15;Toast pepitas and sunflower seeds on a tray in the oven for 15 minutes. Allow to cool.;22
+79;Prepare dressing;5;In a bowl, whisk together apple cider vinegar, olive oil, mustard, honey, salt, and pepper to make the dressing.;22
+80;Assemble salad;5;Add baby spinach, roasted vegetables, and crumbled goat cheese to a bowl. Sprinkle with seeds and drizzle with dressing.;22
+
+81;Prepare Chicken and Penne Pasta;10;Season the chicken breast and cook the penne pasta according to the package instructions. Cut chicken into cubes and set aside;23
+82;Cook Penne Pasta;10;Boil penne pasta until al dente;23
+83;Prepare Spinach and Garlic;5;Sauté spinach and garlic in a pan until spinach wilts and garlic becomes fragrant;23
+84;Prepare Pesto Sauce;5;Heat pesto sauce in a pan and set aside;23
+85;Assemble Pasta;5;Toss cooked penne pasta, sautéed spinach and garlic, and chicken cubes in pesto sauce. Top with mozzarella cheese;23
+86;Prepare Penne Pasta;10;Boil penne pasta until al dente;24
+87;Cook Chicken;10;Season and cook the chicken breast in a pan until golden brown and fully cooked;24
+88;Prepare Pesto Sauce;5;Heat pesto sauce and set aside;24
+89;Assemble Pasta;5;Mix cooked penne pasta with cooked chicken and pesto sauce. Top with mozzarella cheese;24
+90;Prepare Beetroot and Stock;10;Roast beetroot in the oven, and prepare the vegetable stock;25
+91;Cook Beetroot Soup;15;Cook the beetroot in the stock until soft. Add cream, salt, and pepper;25
+92;Blend Soup and Season;5;Blend the cooked beetroot mixture into a smooth cream and adjust seasoning;25
+93;Serve Soup with Feta;5;Pour soup into bowls and top with crumbled feta cheese;25
+94;Prepare Spaghetti and Garlic;10;Boil spaghetti and sauté garlic in olive oil until fragrant;26
+95;Sauté Garlic;5;Sauté garlic in olive oil in a pan until fragrant;26
+96;Cook Salmon;10;Pan-sear salmon fillets until crispy on the outside and cooked through;26
+97;Prepare Cream Sauce;5;Mix heavy cream and Parmesan cheese to create a creamy sauce;26
+98;Assemble Dish;5;Combine the cooked spaghetti with the salmon and cream sauce. Top with extra Parmesan;26
+
+99;Prepare Shrimp;10;Peel and devein the shrimp, season with salt and pepper.;27
+100;Cook Pasta;10;Boil the pasta in salted water until al dente.;27
+101;Make Sauce;5;Melt butter in a pan, sauté garlic, and add cream to create the sauce.;27
+102;Combine Shrimp and Pasta;5;Add cooked shrimp to the pasta and pour the garlic butter sauce over.;27
+103;Serve;2;Top with Parmesan cheese and parsley, then serve immediately.;27
+104;Chop Vegetables;5;Chop bell peppers, carrots, and onions into thin slices.;28
+105;Stir-fry Vegetables;5;In a hot pan, stir-fry vegetables with garlic and ginger.;28
+106;Add Soy Sauce;3;Add soy sauce and cook for another minute.;28
+107;Serve Stir Fry;2;Serve the stir-fry on a bed of steamed rice.;28
+108;Bread Eggplant;10;Slice eggplant, dip in bread crumbs, and fry until golden.;29
+109;Make Marinara Sauce;10;Heat olive oil, add garlic, tomatoes, and spices to make marinara sauce.;29
+110;Assemble;5;Layer fried eggplant with marinara sauce and mozzarella, then bake.;29
+111;Serve Eggplant Parmesan;5;Serve with fresh basil and a side salad.;29
+112;Cook Ground Beef;5;Brown ground beef in a skillet and add taco seasoning.;30
+113;Warm Tortillas;2;Warm tortillas in a pan or microwave.;30
+114;Assemble Tacos;5;Fill tortillas with beef, lettuce, tomato, cheese, and salsa.;30
+115;Serve Tacos;2;Serve immediately with a squeeze of lime.;30
+116;Marinate Chicken;10;Marinate chicken with yogurt and spices.;31
+117;Make Sauce;5;Sauté onions, garlic, ginger, and tomatoes, then add cream to create the sauce.;31
+118;Cook Chicken;10;Cook marinated chicken in the sauce until tender.;31
+119;Serve Butter Chicken;2;Serve with basmati rice and naan bread.;31
+120;Season Pork Belly;5;Season pork belly with salt, pepper, and herbs.;32
+121;Cook Pork Belly;60;Roast pork belly at a low temperature for a crispy skin.;32
+122;Serve Crispy Pork Belly;5;Slice the pork belly and serve with roasted vegetables.;32
+123;Prepare Broth;10;Boil water, soy sauce, garlic, ginger, and seasonings for the broth.;33
+124;Cook Noodles;10;Cook ramen noodles in boiling water.;33
+125;Assemble Ramen;5;Add noodles to broth and top with boiled eggs and pork.;33
+126;Serve Ramen;2;Serve immediately with spring onions and nori.;33
+127;Cook Chicken;10;Cook chicken breast until golden brown and cooked through.;34
+128;Make Alfredo Sauce;5;Melt butter, add garlic, then mix in cream and Parmesan.;34
+129;Combine Chicken and Sauce;5;Toss the cooked chicken and pasta in the Alfredo sauce.;34
+130;Serve Chicken Alfredo;2;Serve with a sprinkle of Parmesan cheese and parsley.;34
+131;Prepare Soup Base;10;Heat coconut milk and broth with lemongrass and galangal.;35
+132;Cook Chicken;10;Cook chicken in the soup base until tender.;35
+133;Add Vegetables;5;Add mushrooms, chili, and lime to the soup.;35
+134;Serve Soup;2;Serve the soup with fresh cilantro and a squeeze of lime.;35
+135;Cook Chickpeas;5;Cook chickpeas with garlic, ginger, and onions.;36
+136;Make Curry Sauce;10;Add tomatoes and spices to create the curry sauce.;36
+137;Combine Chickpeas and Sauce;5;Mix cooked chickpeas with the curry sauce and simmer.;36
+138;Serve Chickpea Curry;2;Serve with rice and a side of naan bread.;36
+
+139;Prepare Chicken Marsala;15;Season chicken breasts with salt and pepper, then sauté them in olive oil and butter until golden brown.;37
+140;Make Marsala Sauce;10;In the same pan, add garlic, mushrooms, and Marsala wine, cooking until the mushrooms soften and the sauce reduces.;37
+141;Add Cream and Simmer;5;Stir in heavy cream and let it simmer for a few minutes until the sauce thickens.;37
+142;Garnish and Serve;2;Garnish with parsley and serve with your favorite side dish.;37
+143;Prepare Lamb Rogan Josh;15;Brown lamb pieces in a hot pan, then set aside.;38
+144;Cook Onion, Garlic, and Ginger;10;In the same pan, sauté onion, garlic, and ginger until softened.;38
+145;Add Spices and Tomatoes;10;Add garam masala, cumin, coriander, and chopped tomatoes, cook until the tomatoes break down.;38
+146;Add Yogurt and Simmer;15;Stir in yogurt and simmer until the lamb is tender and the sauce thickens.;38
+147;Prepare Duck Pancakes;10;Crisp the duck skin and cook it until golden brown.;39
+148;Assemble Duck with Hoisin Sauce;5;Serve duck with hoisin sauce, pancakes, cucumber, and spring onion.;39
+149;Grill Fish for Tacos;10;Grill fish fillets until fully cooked, then flake the fish.;40
+150;Make Fresh Slaw;5;Shred cabbage and carrots, then toss with lime juice, cilantro, and sour cream.;40
+151;Assemble Fish Tacos;5;Place grilled fish in tortillas and top with slaw and avocado slices.;40
+152;Bread Chicken for Parmesan;15;Coat chicken breasts in bread crumbs, then fry until golden.;41
+153;Prepare Marinara Sauce;10;Heat marinara sauce in a pan, then spoon over the fried chicken breasts.;41
+154;Melt Cheese on Chicken;5;Top the chicken with mozzarella and Parmesan cheese, then bake until melted and bubbly.;41
+155;Garnish and Serve;2;Garnish with fresh basil and serve with your favorite pasta or side.;41
+156;Prepare Samosa Filling;15;Boil potatoes and mash them, then mix with peas, onions, and spices.;42
+157;Stuff Samosa Pastry;10;Stuff the pastry pockets with the potato mixture, then seal and fry until crispy.;42
+158;Fry Samosas;10;Fry the samosas in hot oil until golden and crispy.;42
+159;Prepare Pho Broth;30;Simmer beef, onion, ginger, and spices in water to create the flavorful broth.;43
+160;Cook Rice Noodles;5;Cook rice noodles according to package instructions, then drain and set aside.;43
+161;Assemble Pho;5;Pour the broth over the cooked noodles and garnish with cilantro, lime, and bean sprouts.;43
+162;Prepare Beef Wellington;20;Sear beef and coat it with mustard, then let it cool.;44
+163;Make Mushroom Duxelles;10;Cook mushrooms, onion, and thyme into a finely chopped paste.;44
+164;Assemble Beef Wellington;15;Wrap the beef with the mushroom mixture and puff pastry, then bake until golden.;44
+
+165;Rest and Serve;10;Let the beef rest before slicing and serving with your favorite sides.;44
+166;Cook Pad See Ew;15;Stir-fry rice noodles, chicken, garlic, and vegetables with soy sauce.;45
+167;Make Sauce;5;Prepare the sauce with soy sauce, sugar, and lime, then toss with the noodles.;45
+168;Assemble Pad See Ew;5;Add scrambled eggs to the stir-fry and toss everything together before serving.;45
+169;Cook Chicken Fajitas;15;Sauté chicken with fajita seasoning until fully cooked.;46
+170;Sauté Vegetables;5;Sauté bell peppers and onions in a separate pan until tender.;46
+171;Assemble Fajitas;5;Serve chicken and vegetables on warm tortillas, and add sour cream and guacamole.;46
+172;Prepare Beef Stroganoff;15;Brown beef in a pan, then set aside.;47
+173;Cook Onions and Mushrooms;10;In the same pan, sauté onions and mushrooms until soft.;47
+174;Make Sauce;10;Add beef broth, paprika, and sour cream, then simmer until the sauce thickens.;47
+175;Serve Beef Stroganoff;5;Serve the beef stroganoff over egg noodles and garnish with parsley.;47
+176;Prepare Risotto Primavera;15;Sauté garlic in butter, then add Arborio rice and cook for a couple of minutes.;48
+177;Cook Vegetables;10;Add broccoli, bell pepper, and peas to the pan and cook until tender.;48
+178;Add Stock and Simmer;15;Gradually add chicken stock to the rice, stirring constantly until absorbed and rice is creamy.;48
+179;Finish Risotto;5;Stir in Parmesan and adjust seasoning before serving.;48
+180;Cook Shrimp Scampi;5;Sauté shrimp in butter and olive oil with garlic until cooked through.;49
+181;Prepare Pasta;10;Cook spaghetti according to package instructions, then drain.;49
+182;Make Sauce;5;Toss the shrimp with the cooked spaghetti, adding lemon juice and parsley.;49
+183;Prepare Cabbage Rolls;15;Blanch cabbage leaves and set aside. Mix ground beef, rice, onion, and garlic to make the filling.;50
+184;Stuff Cabbage Leaves;10;Stuff the cabbage leaves with the meat mixture, then roll them up tightly.;50
+185;Cook Cabbage Rolls;30;Simmer the cabbage rolls in a pot with tomato paste and water until fully cooked.;50
+186;Prepare Chicken Shawarma Marinade;10;Mix yogurt, garlic, lemon juice, olive oil, and spices to create a marinade.;51
+187;Marinate Chicken;30;Marinate the chicken for at least 30 minutes before cooking.;51
+188;Cook Chicken Shawarma;15;Grill or pan-cook the chicken until fully cooked, then slice thinly.;51
+189;Assemble Shawarma;5;Serve the chicken in pita with cucumber, tomato, and garlic sauce.;51
+190;Prepare Moussaka;20;Layer eggplant, ground beef, onions, and garlic in a baking dish.;52
+191;Make Béchamel Sauce;10;Prepare a béchamel sauce with butter, flour, and milk, then pour over the moussaka layers.;52
+192;Bake Moussaka;45;Bake the moussaka until the top is golden brown and bubbling.;52
+193;Prepare Tomato Basil Soup;10;Sauté onions and garlic in olive oil, then add tomatoes and vegetable broth.;53
+194;Simmer Soup;20;Simmer the soup until the flavors blend, then blend until smooth.;53
+195;Finish Soup;5;Stir in fresh basil and cream, then serve hot.;53
+196;Cook Vegetable Paella;10;Sauté garlic, onion, and bell pepper in olive oil before adding rice and saffron.;54
+197;Add Broth and Vegetables;20;Add vegetable broth and peas, simmer until the rice is cooked through and tender.;54
+198;Finish Paella;5;Stir in chopped tomato and lemon juice, then garnish with parsley and serve.;54
+199;Cook Chili Con Carne;10;Brown the ground beef in a pot, then add onions, garlic, and bell pepper.;55
+200;Simmer Chili;30;Add tomatoes, kidney beans, and chili spices, then simmer until the flavors meld together.;55
+
+201;Serve Chili;5;Serve hot, topped with your favorite garnishes such as sour cream or cheese.;55
+202;Prepare Croissant Sandwiches;5;Slice croissants in half and layer with ham, cheese, lettuce, and tomato.;56
+203;Assemble Sandwiches;5;Spread Dijon mustard on the croissant halves and assemble the sandwich.;56
+204;Serve Croissant Sandwiches;2;Serve the sandwiches fresh and warm.;56
+205;Prepare Shakshuka Sauce;15;Sauté onions, bell pepper, and garlic, then add tomatoes and spices to make the sauce.;57
+206;Poach Eggs;10;Create wells in the sauce and crack the eggs into them, cooking until the eggs are poached.;57
+207;Serve Shakshuka;2;Garnish with parsley and serve with pita or crusty bread.;57
+208;Cook Baked Ziti;15;Cook ziti pasta and prepare marinara sauce.;58
+209;Assemble Baked Ziti;10;Combine the cooked ziti with marinara sauce and mozzarella, then bake until bubbly.;58
+210;Serve Baked Ziti;5;Serve the baked ziti hot with a sprinkle of Parmesan and fresh basil.;58
+211;Prepare Pasta Primavera;10;Cook the pasta and sauté garlic in olive oil, then add bell pepper, zucchini, and tomato to cook until tender.;59
+212;Combine Ingredients;5;Toss the cooked pasta with the sautéed vegetables and Parmesan.;59
+213;Fry Chicken Wings;10;Coat the chicken wings in flour and seasonings, then fry until crispy.;60
+214;Prepare Sauce;5;Mix soy sauce, honey, garlic powder, paprika, and olive oil to make the sauce.;60
+215;Toss Wings in Sauce;5;Toss the crispy chicken wings in the prepared sauce until evenly coated.;60
+216;Cook Pasta Puttanesca;10;Cook the pasta and sauté garlic, tomatoes, olives, and capers in olive oil.;61
+217;Prepare Sauce;5;Add anchovies to the sautéed ingredients and cook until the flavors meld.;61
+218;Combine Pasta and Sauce;5;Toss the cooked pasta with the puttanesca sauce and garnish with parsley.;61
+219;Prepare Calamari Fritti;10;Coat the squid rings in flour and seasonings.;62
+220;Fry Calamari;5;Fry the coated squid in olive oil until golden and crispy.;62
+221;Serve Calamari;2;Serve the fried calamari with marinara sauce and garnish with parsley.;62
+222;Cook Sweet and Sour Pork;10;Cook the pork, bell pepper, and onion in soy sauce and vinegar.;63
+223;Make Sweet and Sour Sauce;5;Add pineapple, sugar, and cornstarch to make the sauce thick and glossy.;63
+224;Combine Pork and Sauce;5;Toss the cooked pork and vegetables in the sweet and sour sauce.;63
+225;Prepare Duck a l'Orange;10;Season the duck and roast it in the oven until golden and crispy.;64
+226;Make Orange Sauce;10;Prepare the sauce by combining orange juice, butter, sugar, vinegar, and chicken broth.;64
+227;Serve Duck;5;Pour the orange sauce over the roasted duck and serve.;64
+228;Prepare Fettuccine Alfredo;10;Cook the fettuccine pasta and prepare the sauce with butter, cream, and Parmesan.;65
+229;Combine Pasta and Sauce;5;Toss the cooked pasta in the creamy Alfredo sauce and garnish with parsley.;65
+230;Prepare Lamb Kofta;10;Mix ground lamb, onion, garlic, and spices to form the kofta mixture.;66
+231;Shape Kofta;5;Shape the mixture into small skewers and grill or fry them until cooked through.;66
+232;Serve Lamb Kofta;5;Serve the kofta with pita and yogurt.;66
+233;Cook Pasta Carbonara;10;Cook the pasta and fry the bacon until crispy.;67
+234;Make Carbonara Sauce;5;Combine eggs, cream, and Parmesan to make the sauce.;67
+235;Combine Pasta and Sauce;5;Toss the cooked pasta and crispy bacon in the carbonara sauce.;67
+
+236;Prepare Bangers and Mash;10;Boil the potatoes and mash them with butter and milk.;68
+237;Cook Sausages;10;Cook the sausages in a pan until browned and cooked through.;68
+238;Make Onion Gravy;5;Sauté onions in butter and flour, then add beef broth to make the gravy.;68
+239;Serve Bangers and Mash;5;Serve the sausages with mashed potatoes and onion gravy.;68
+240;Cook Vegetarian Chili;10;Cook the vegetables, beans, and tomatoes with chili spices in a pot.;69
+241;Simmer Chili;20;Simmer the chili until the flavors meld and the vegetables are tender.;69
+242;Serve Vegetarian Chili;5;Serve the chili hot, garnished with sour cream or cheese.;69
+243;Prepare Grilled Cheese;5;Butter the bread and place cheese between slices.;70
+244;Grill Sandwich;5;Grill the sandwich in a pan until golden and the cheese is melted.;70
+245;Serve Grilled Cheese;2;Serve the sandwich hot and crispy.;70
+246;Prepare Beef Empanadas;10;Cook the ground beef with onions, garlic, and spices, then set aside.;71
+247;Prepare Pastry;10;Roll out the pastry and cut it into circles.;71
+248;Assemble Empanadas;10;Place the beef mixture in the center of each pastry circle and fold them into pockets.;71
+249;Fry Empanadas;10;Fry the empanadas in oil until golden and crispy.;71
+250;Serve Empanadas;5;Serve the empanadas hot with a dipping sauce.;71
+251;Prepare Crab Cakes;10;Mix crab meat, breadcrumbs, egg, mayonnaise, and mustard.;72
+252;Shape Crab Cakes;5;Shape the mixture into patties.;72
+253;Fry Crab Cakes;5;Fry the crab cakes in olive oil until golden and crispy.;72
+254;Serve Crab Cakes;2;Serve the crab cakes with tartar sauce and garnish with parsley.;72
+255;Prepare Minestrone Soup;10;Cook the vegetables and garlic in olive oil, then add tomatoes and broth.;73
+256;Add Pasta and Beans;10;Add pasta and beans to the soup and cook until the pasta is tender.;73
+257;Finish Minestrone Soup;5;Season the soup with basil and serve hot.;73
+258;Cook Chana Masala;10;Sauté onions, garlic, and spices in oil, then add tomatoes and chickpeas.;74
+259;Simmer Chana Masala;15;Simmer the curry until thickened and the flavors meld.;74
+260;Serve Chana Masala;5;Serve the curry hot, garnished with spinach.;74
+261;Prepare Fish for Ceviche;5;Cut the fresh fish into small cubes and place them in a bowl.;75
+262;Marinate Fish;15;Add lime juice to the fish and let it marinate for 15.;75
+263;Prepare Vegetables for Ceviche;5;Chop the onion, cilantro, and chili, and add them to the marinated fish.;75
+264;Serve Ceviche;5;Season with salt and pepper, and serve chilled.;75
+265;Prepare Falafel Mixture;10;Blend the chickpeas, garlic, onion, parsley, and spices together until smooth.;76
+266;Shape Falafel;10;Shape the mixture into small balls or patties.;76
+267;Fry Falafel;10;Fry the falafel in hot oil until golden and crispy.;76
+268;Prepare Tahini Sauce;5;Mix tahini, lemon juice, and water to make a smooth sauce.;76
+269;Serve Falafel;5;Serve with tahini sauce and pita bread.;76
+270;Prepare Bulgur Salad;10;Cook the bulgur according to package instructions, then cool it.;77
+271;Prepare Vegetables for Salad;5;Chop the tomato, cucumber, and parsley.;77
+272;Mix Salad;5;Toss the bulgur with the vegetables, lemon juice, olive oil, salt, and pepper.;77
+273;Serve Bulgur Salad;2;Serve chilled as a refreshing salad.;77
+274;Prepare Clam Chowder Base;10;Cook the onions, celery, and garlic in butter until softened.;78
+275;Add Potatoes and Clams;10;Add the potatoes, clams, and broth to the pot, and cook until tender.;78
+276;Make Chowder;5;Add cream and season with salt and pepper to taste.;78
+277;Serve Clam Chowder;5;Serve the chowder hot with bacon bits and crackers.;78
+278;Cook Ground Beef for Tacos;10;Brown the ground beef with taco seasoning in a skillet.;79
+279;Prepare Tacos;5;Warm the taco shells and chop the toppings (lettuce, tomato, cheese).;79
+280;Assemble Tacos;5;Fill the taco shells with beef and top with lettuce, tomato, cheese, and sour cream.;79
+
+281;Serve Beef Tacos;2;Serve the tacos immediately while warm.;79
+282;Prepare Gumbo Base;10;Sauté the onions, celery, and bell pepper with garlic in a large pot.;80
+283;Add Shrimp and Sausage;10;Add the shrimp, sausage, and tomatoes to the pot and cook for another 10.;80
+284;Simmer Gumbo;20;Add broth and spices, then let the gumbo simmer to meld the flavors.;80
+285;Cook Rice for Gumbo;20;Cook rice separately and serve it with the gumbo.;80
+286;Serve Gumbo;5;Serve the gumbo hot over the rice, garnished with parsley.;80
+287;Prepare Pavlova Meringue;15;Whisk egg whites with sugar, cornstarch, and vinegar until stiff peaks form.;81
+288;Bake Pavlova;60;Bake the meringue in a low oven until crisp on the outside and soft inside.;81
+289;Prepare Whipped Cream;5;Whip the cream with sugar until stiff peaks form.;81
+290;Assemble Pavlova;5;Top the meringue with whipped cream and fresh fruit like kiwi, strawberries, and passion fruit.;81
+291;Serve Pavlova;2;Serve the Pavlova immediately for the best texture.;81
+292;Prepare Eggplant;10;Slice the eggplant and coat the slices in breadcrumbs and beaten eggs.;82
+293;Fry Eggplant;10;Fry the eggplant slices in hot oil until crispy and golden.;82
+294;Assemble Eggplant Parmesan;5;Layer the fried eggplant with marinara sauce and mozzarella, then bake.;82
+295;Bake Eggplant Parmesan;15;Bake the assembled dish until the cheese is melted and bubbly.;82
+296;Serve Eggplant Parmesan;5;Serve the baked eggplant with basil and Parmesan.;82
+297;Prepare Mole Poblano;10;Blend chili, chocolate, onions, garlic, and tomatoes into a smooth sauce.;83
+298;Simmer Mole;20;Cook the sauce with sesame seeds, almonds, and chicken until the flavors meld.;83
+299;Serve Mole Poblano;5;Serve the mole over chicken or other meats.;83
+300;Prepare Fish for Fish and Chips;10;Coat the fish fillets in flour and beer batter.;84
+301;Fry Fish;10;Fry the battered fish in hot oil until golden and crispy.;84
+302;Prepare Fries;10;Cut the potatoes into fries and fry them until golden.;84
+303;Serve Fish and Chips;5;Serve the fish and fries with lemon wedges and tartar sauce.;84
+304;Prepare Biryani Rice;10;Cook the rice with biryani masala, ginger, and garlic.;85
+305;Cook Chicken for Biryani;10;Cook the chicken with yogurt, tomatoes, and spices.;85
+306;Assemble Biryani;10;Layer the cooked chicken and rice together and cook until fragrant.;85
+307;Serve Biryani;5;Serve the biryani hot with fresh mint and yogurt.;85
+308;Marinate Chicken for Tandoori;15;Marinate the chicken in yogurt, garam masala, cumin, paprika, and lemon juice.;86
+309;Grill Tandoori Chicken;20;Grill the marinated chicken until fully cooked and slightly charred.;86
+310;Serve Tandoori Chicken;5;Serve the chicken with naan or rice and a side of yogurt.;86
+311;Prepare Ratatouille;10;Chop the vegetables (eggplant, zucchini, bell pepper) and garlic.;87
+312;Cook Ratatouille;20;Sauté the vegetables in olive oil and season with herbs until tender.;87
+313;Serve Ratatouille;5;Serve the ratatouille hot as a side dish or with bread.;87
+314;Prepare Chicken Kiev;10;Mix butter, garlic, and parsley to make the filling for the chicken.;88
+315;Stuff Chicken Kiev;5;Stuff the chicken breasts with the garlic butter mixture and coat with breadcrumbs.;88
+316;Fry Chicken Kiev;15;Fry the stuffed chicken breasts in hot oil until golden and cooked through.;88
+317;Serve Chicken Kiev;5;Serve the Chicken Kiev with mashed potatoes or vegetables.;88
+318;Prepare Sauerbraten;10;Marinate the beef in vinegar, sugar, and spices for 24 hours.;89
+319;Slow Cook Sauerbraten;3 hours;Slow cook the marinated beef in the oven until tender.;89
+320;Make Gravy;10;Prepare the vinegar-based gravy with broth and spices from the cooking liquid.;89
+321;Serve Sauerbraten;5;Serve the sauerbraten with potatoes or bread and gravy.;89
+322;Prepare Lobster for Lobster Roll;10;Cook the lobster and remove the meat from the shell.;90
+323;Mix Lobster Salad;5;Toss the lobster meat with mayo, lemon, celery, and salt.;90
+324;Prepare Rolls for Lobster Roll;5;Toast the rolls in butter until golden.;90
+325;Assemble Lobster Roll;5;Fill the toasted rolls with lobster salad and serve.;90

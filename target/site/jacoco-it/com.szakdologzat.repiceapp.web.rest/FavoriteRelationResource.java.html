@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FavoriteRelationResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.web.rest</a> &gt; <span class="el_source">FavoriteRelationResource.java</span></div><h1>FavoriteRelationResource.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.web.rest;
+
+import com.szakdologzat.repiceapp.domain.FavoriteRelation;
+import com.szakdologzat.repiceapp.domain.User;
+import com.szakdologzat.repiceapp.repository.FavoriteRelationRepository;
+import com.szakdologzat.repiceapp.service.FavoriteRelationService;
+import com.szakdologzat.repiceapp.service.UserService;
+import com.szakdologzat.repiceapp.service.dto.FavoriteRelationDTO;
+import com.szakdologzat.repiceapp.service.dto.UserDTO;
+import com.szakdologzat.repiceapp.service.mapper.FavoriteRelationMapper;
+import com.szakdologzat.repiceapp.service.mapper.UserMapper;
+import com.szakdologzat.repiceapp.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.szakdologzat.repiceapp.domain.FavoriteRelation}.
+ */
+@RestController
+@RequestMapping(&quot;/api/favorite-relations&quot;)
+public class FavoriteRelationResource {
+
+<span class="fc" id="L34">    private static final Logger LOG = LoggerFactory.getLogger(FavoriteRelationResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;favoriteRelation&quot;;
+    private final UserService userService;
+    private final FavoriteRelationMapper favoriteRelationMapper;
+    private final UserMapper userMapper;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final FavoriteRelationService favoriteRelationService;
+
+    private final FavoriteRelationRepository favoriteRelationRepository;
+
+    public FavoriteRelationResource(
+        FavoriteRelationService favoriteRelationService,
+        FavoriteRelationRepository favoriteRelationRepository,
+        UserService userService,
+        FavoriteRelationMapper favoriteRelationMapper,
+        UserMapper userMapper
+<span class="fc" id="L54">    ) {</span>
+<span class="fc" id="L55">        this.favoriteRelationService = favoriteRelationService;</span>
+<span class="fc" id="L56">        this.favoriteRelationRepository = favoriteRelationRepository;</span>
+<span class="fc" id="L57">        this.userService = userService;</span>
+<span class="fc" id="L58">        this.favoriteRelationMapper = favoriteRelationMapper;</span>
+<span class="fc" id="L59">        this.userMapper = userMapper;</span>
+<span class="fc" id="L60">    }</span>
+
+    /**
+     * {@code POST  /favorite-relations} : Create a new favoriteRelation.
+     *
+     * @param favoriteRelationDTO the favoriteRelationDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new favoriteRelationDTO, or with status {@code 400 (Bad Request)} if the favoriteRelation has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping(&quot;&quot;)
+    public ResponseEntity&lt;?&gt; createFavoriteRelation(@RequestBody FavoriteRelationDTO favoriteRelationDTO) throws URISyntaxException {
+<span class="nc" id="L71">        LOG.debug(&quot;REST request to save FavoriteRelation : {}&quot;, favoriteRelationDTO);</span>
+        // Lekérjük a bejelentkezett felhasználót
+<span class="nc" id="L73">        User loggedInUser = userService.getUserWithAuthorities().orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</span>
+
+        // Megkeressük, hogy már létezik-e a kapcsolat az adott userId és recipeId alapján
+<span class="nc" id="L76">        return favoriteRelationRepository</span>
+<span class="nc" id="L77">            .findByUserIdAndRecipeId(loggedInUser.getId(), favoriteRelationDTO.getRecipe().getId())</span>
+<span class="nc" id="L78">            .map(existingRelation -&gt; {</span>
+                // Ha létezik, töröljük, majd visszaadjuk a törölt objektumot DTO formájában
+<span class="nc" id="L80">                favoriteRelationRepository.deleteById(existingRelation.getId());</span>
+<span class="nc" id="L81">                FavoriteRelationDTO deletedDto = favoriteRelationMapper.toDto(existingRelation); // Törölt objektum DTO</span>
+<span class="nc" id="L82">                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(deletedDto); // Visszaadjuk DTO-val a választ</span>
+            })
+<span class="nc" id="L84">            .orElseGet(() -&gt; {</span>
+                // Ha nem létezik, létrehozzuk
+<span class="nc" id="L86">                favoriteRelationDTO.setUser(userMapper.userToUserDTO(loggedInUser));</span>
+<span class="nc" id="L87">                FavoriteRelationDTO result = favoriteRelationService.save(favoriteRelationDTO);</span>
+
+                // URI létrehozása és válasz
+<span class="nc" id="L90">                return ResponseEntity.status(HttpStatus.CREATED).body(result);</span>
+            });
+    }
+
+    /**
+     * {@code PUT  /favorite-relations/:id} : Updates an existing favoriteRelation.
+     *
+     * @param id the id of the favoriteRelationDTO to save.
+     * @param favoriteRelationDTO the favoriteRelationDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated favoriteRelationDTO,
+     * or with status {@code 400 (Bad Request)} if the favoriteRelationDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the favoriteRelationDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;FavoriteRelationDTO&gt; updateFavoriteRelation(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody FavoriteRelationDTO favoriteRelationDTO
+    ) throws URISyntaxException {
+<span class="fc" id="L109">        LOG.debug(&quot;REST request to update FavoriteRelation : {}, {}&quot;, id, favoriteRelationDTO);</span>
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">        if (favoriteRelationDTO.getId() == null) {</span>
+<span class="nc" id="L111">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="fc bfc" id="L113" title="All 2 branches covered.">        if (!Objects.equals(id, favoriteRelationDTO.getId())) {</span>
+<span class="fc" id="L114">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (!favoriteRelationRepository.existsById(id)) {</span>
+<span class="fc" id="L118">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="fc" id="L121">        favoriteRelationDTO = favoriteRelationService.update(favoriteRelationDTO);</span>
+<span class="fc" id="L122">        return ResponseEntity.ok()</span>
+<span class="fc" id="L123">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, favoriteRelationDTO.getId().toString()))</span>
+<span class="fc" id="L124">            .body(favoriteRelationDTO);</span>
+    }
+
+    /**
+     * {@code PATCH  /favorite-relations/:id} : Partial updates given fields of an existing favoriteRelation, field will ignore if it is null
+     *
+     * @param id the id of the favoriteRelationDTO to save.
+     * @param favoriteRelationDTO the favoriteRelationDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated favoriteRelationDTO,
+     * or with status {@code 400 (Bad Request)} if the favoriteRelationDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the favoriteRelationDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the favoriteRelationDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;FavoriteRelationDTO&gt; partialUpdateFavoriteRelation(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody FavoriteRelationDTO favoriteRelationDTO
+    ) throws URISyntaxException {
+<span class="fc" id="L143">        LOG.debug(&quot;REST request to partial update FavoriteRelation partially : {}, {}&quot;, id, favoriteRelationDTO);</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if (favoriteRelationDTO.getId() == null) {</span>
+<span class="nc" id="L145">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (!Objects.equals(id, favoriteRelationDTO.getId())) {</span>
+<span class="fc" id="L148">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        if (!favoriteRelationRepository.existsById(id)) {</span>
+<span class="fc" id="L152">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="fc" id="L155">        Optional&lt;FavoriteRelationDTO&gt; result = favoriteRelationService.partialUpdate(favoriteRelationDTO);</span>
+
+<span class="fc" id="L157">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="fc" id="L159">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, favoriteRelationDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /favorite-relations} : get all the favoriteRelations.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of favoriteRelations in body.
+     */
+    @GetMapping(&quot;&quot;)
+    public List&lt;FavoriteRelationDTO&gt; getAllFavoriteRelations() {
+<span class="fc" id="L170">        LOG.debug(&quot;REST request to get all FavoriteRelations&quot;);</span>
+<span class="fc" id="L171">        return favoriteRelationService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /favorite-relations/:id} : get the &quot;id&quot; favoriteRelation.
+     *
+     * @param id the id of the favoriteRelationDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the favoriteRelationDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;FavoriteRelationDTO&gt; getFavoriteRelation(@PathVariable(&quot;id&quot;) Long id) {
+<span class="fc" id="L182">        LOG.debug(&quot;REST request to get FavoriteRelation : {}&quot;, id);</span>
+<span class="fc" id="L183">        Optional&lt;FavoriteRelationDTO&gt; favoriteRelationDTO = favoriteRelationService.findOne(id);</span>
+<span class="fc" id="L184">        return ResponseUtil.wrapOrNotFound(favoriteRelationDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /favorite-relations/:id} : delete the &quot;id&quot; favoriteRelation.
+     *
+     * @param id the id of the favoriteRelationDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteFavoriteRelation(@PathVariable(&quot;id&quot;) Long id) {
+<span class="fc" id="L195">        LOG.debug(&quot;REST request to delete FavoriteRelation : {}&quot;, id);</span>
+<span class="fc" id="L196">        favoriteRelationService.delete(id);</span>
+<span class="fc" id="L197">        return ResponseEntity.noContent()</span>
+<span class="fc" id="L198">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))</span>
+<span class="fc" id="L199">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

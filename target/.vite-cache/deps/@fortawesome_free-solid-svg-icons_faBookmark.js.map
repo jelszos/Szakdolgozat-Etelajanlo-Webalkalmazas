@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../node_modules/@fortawesome/free-solid-svg-icons/faBookmark.js"],
+  "sourcesContent": ["'use strict';\nObject.defineProperty(exports, '__esModule', { value: true });\nvar prefix = 'fas';\nvar iconName = 'bookmark';\nvar width = 384;\nvar height = 512;\nvar aliases = [128278,61591];\nvar unicode = 'f02e';\nvar svgPathData = 'M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z';\n\nexports.definition = {\n  prefix: prefix,\n  iconName: iconName,\n  icon: [\n    width,\n    height,\n    aliases,\n    unicode,\n    svgPathData\n  ]};\n\nexports.faBookmark = exports.definition;\nexports.prefix = prefix;\nexports.iconName = iconName;\nexports.width = width;\nexports.height = height;\nexports.ligatures = aliases;\nexports.unicode = unicode;\nexports.svgPathData = svgPathData;\nexports.aliases = aliases;"],
+  "mappings": ";;;;;AAAA;AAAA;AACA,WAAO,eAAe,SAAS,cAAc,EAAE,OAAO,KAAK,CAAC;AAC5D,QAAI,SAAS;AACb,QAAI,WAAW;AACf,QAAI,QAAQ;AACZ,QAAI,SAAS;AACb,QAAI,UAAU,CAAC,QAAO,KAAK;AAC3B,QAAI,UAAU;AACd,QAAI,cAAc;AAElB,YAAQ,aAAa;AAAA,MACnB;AAAA,MACA;AAAA,MACA,MAAM;AAAA,QACJ;AAAA,QACA;AAAA,QACA;AAAA,QACA;AAAA,QACA;AAAA,MACF;AAAA,IAAC;AAEH,YAAQ,aAAa,QAAQ;AAC7B,YAAQ,SAAS;AACjB,YAAQ,WAAW;AACnB,YAAQ,QAAQ;AAChB,YAAQ,SAAS;AACjB,YAAQ,YAAY;AACpB,YAAQ,UAAU;AAClB,YAAQ,cAAc;AACtB,YAAQ,UAAU;AAAA;AAAA;",
+  "names": []
+}

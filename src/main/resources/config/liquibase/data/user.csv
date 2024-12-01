@@ -1,0 +1,13 @@
+id;login;password_hash;first_name;last_name;email;avatar;activated;lang_key;created_by;last_modified_by;created_date
+1;admin;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;Administrator;Administrator;admin@localhost;1;true;en;system;system;2024-10-18T00:00:00
+2;user;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Lucas;Thomas;lucas.thomas@localhost;2;true;en;system;system;2024-10-19T00:00:00
+3;user2;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Mason;Clark;mason.clark@localhost;3;true;en;system;system;2024-10-20T00:00:00
+4;user3;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Amelia;Harris;amelia.harris@localhost;6;true;en;system;system;2024-10-21T00:00:00
+5;user4;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Liam;Wilson;liam.wilson@localhost;1;true;en;system;system;2024-10-22T00:00:00
+6;user5;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Emma;Johnson;emma.johnson@localhost;5;true;en;system;system;2024-10-23T00:00:00
+7;user6;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Noah;Brown;noah.brown@localhost;2;true;en;system;system;2024-10-24T00:00:00
+8;user7;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Olivia;Taylor;olivia.taylor@localhost;4;true;en;system;system;2024-10-25T00:00:00
+9;user8;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Ava;Martinez;ava.martinez@localhost;6;true;en;system;system;2024-10-26T00:00:00
+10;user9;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Elijah;Garcia;elijah.garcia@localhost;3;true;en;system;system;2024-10-27T00:00:00
+11;user10;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Sophia;Anderson;sophia.anderson@localhost;5;true;en;system;system;2024-10-28T00:00:00
+12;user11;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Magyar;Peter;magyar.peter@localhost;1;true;en;system;system;2024-10-29T00:00:00

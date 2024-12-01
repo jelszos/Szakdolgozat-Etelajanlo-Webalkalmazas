@@ -1,0 +1,34 @@
+{
+  "home": {
+    "title": "Welcome to Master Recipe!",
+    "subtitle": "Homepage",
+    "recipe-groups": {
+      "latest-recipes": "Most lately added recipes",
+      "food-category-recipes": "food category recipes",
+      "quick-link-food-types": "Quick links to food types",
+      "highest-favorite-count-recipes": "Most favored recipes"
+    },
+    "tryThisOut": "Try this out",
+    "bannerDescription": "Best place to find recipes and recipe books, with instructions and ingredients.",
+    "marketing": {
+      "letSee": "Let's see",
+      "title1": "Thousands of Recipes, Infinite Ideas",
+      "description1": "From comforting classics to exotic global flavors, our recipe library is constantly growing. Find inspiration for every occasion—quick breakfasts, elegant dinners, festive treats, and everything in between.",
+      "title2": "Simple, Step-by-Step Guidance",
+      "description2": "We believe cooking should be stress-free. That’s why every recipe includes detailed instructions, helpful tips, and clear visuals to guide you from start to finish."
+    },
+    "logged": {
+      "message": "You are logged in as user \"{ username }\"."
+    },
+    "question": "If you have any question on JHipster:",
+    "link": {
+      "homepage": "JHipster homepage",
+      "stackoverflow": "JHipster on Stack Overflow",
+      "bugtracker": "JHipster bug tracker",
+      "chat": "JHipster public chat room",
+      "follow": "follow {'@'}jhipster on Twitter"
+    },
+    "like": "If you like JHipster, don't forget to give us a star on",
+    "github": "GitHub"
+  }
+}

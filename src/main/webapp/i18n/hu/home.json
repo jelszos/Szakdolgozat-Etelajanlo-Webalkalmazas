@@ -1,0 +1,34 @@
+{
+  "home": {
+    "title": "Üdvözlünk a Master Recipe oldalán!",
+    "subtitle": "Kezdőlap",
+    "recipe-groups": {
+      "latest-recipes": "Legutóbb hozzáadott receptek",
+      "food-category-recipes": "Ételkategóriák receptjei",
+      "quick-link-food-types": "Gyors linkek ételtípusokhoz",
+      "highest-favorite-count-recipes": "Legkedveltebb receptek"
+    },
+    "tryThisOut": "Próbáld ki!",
+    "bannerDescription": "A legjobb hely receptek és receptkönyvek kereséséhez, utasításokkal és hozzávalókkal.",
+    "marketing": {
+      "letSee": "Nézzük meg!",
+      "title1": "Több ezer recept, végtelen ötlet",
+      "description1": "A meghitt klasszikusoktól az egzotikus világízekig folyamatosan bővülő receptkönyvtárunk inspirációt nyújt minden alkalomra — gyors reggelik, elegáns vacsorák, ünnepi finomságok és minden más.",
+      "title2": "Egyszerű, lépésről lépésre útmutatók",
+      "description2": "Hisszük, hogy a főzésnek stresszmentesnek kell lennie. Ezért minden recept részletes utasításokat, hasznos tippeket és egyértelmű vizuális elemeket tartalmaz, hogy könnyedén eljuss a célig."
+    },
+    "logged": {
+      "message": "Be vagy jelentkezve mint \"{ username }\"."
+    },
+    "question": "Ha kérdésed van a JHipsterről:",
+    "link": {
+      "homepage": "JHipster honlapja",
+      "stackoverflow": "JHipster a Stack Overflow-n",
+      "bugtracker": "JHipster hibakövető",
+      "chat": "JHipster nyilvános chat szoba",
+      "follow": "kövesd {'@'}jhipstert a Twitteren"
+    },
+    "like": "Ha tetszik a JHipster, ne felejts el csillagot adni rá a",
+    "github": "GitHub-on"
+  }
+}

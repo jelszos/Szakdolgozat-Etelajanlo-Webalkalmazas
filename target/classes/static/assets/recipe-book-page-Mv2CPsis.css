@@ -1,0 +1,1 @@
+.recipe-books{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;grid-row-gap:28px}.icon-text{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.custom-gap{gap:12px}.divider{outline:1px solid rgba(126,126,126,.3)}

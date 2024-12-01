@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeBook.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.domain</a> &gt; <span class="el_source">RecipeBook.java</span></div><h1>RecipeBook.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.CreationTimestamp;
+
+/**
+ * A RecipeBook.
+ */
+@Entity
+@Table(name = &quot;recipe_book&quot;)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+<span class="fc" id="L20">public class RecipeBook implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;sequenceGenerator&quot;)
+    @SequenceGenerator(name = &quot;sequenceGenerator&quot;)
+    @Column(name = &quot;id&quot;)
+    private Long id;
+
+    @Column(name = &quot;title&quot;)
+    private String title;
+
+    @Column(name = &quot;theme&quot;)
+    private String theme;
+
+    @Column(name = &quot;description&quot;)
+    private String description;
+
+    @Column(name = &quot;tags&quot;)
+    private String tags;
+
+    @Column(name = &quot;created_date&quot;)
+    @CreationTimestamp
+    private ZonedDateTime createdDate;
+
+<span class="fc" id="L46">    @OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;recipeBook&quot;, cascade = CascadeType.ALL)</span>
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { &quot;recipe&quot;, &quot;recipeBook&quot; }, allowSetters = true)
+    private Set&lt;RecipeBookRelation&gt; recipeBookRelations = new HashSet&lt;&gt;();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    private boolean isPrivate;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    public boolean getIsPrivate() {
+<span class="fc" id="L59">        return isPrivate;</span>
+    }
+
+    public void setIsPrivate(boolean aPrivate) {
+<span class="fc" id="L63">        isPrivate = aPrivate;</span>
+<span class="fc" id="L64">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L67">        return this.id;</span>
+    }
+
+    public RecipeBook id(Long id) {
+<span class="fc" id="L71">        this.setId(id);</span>
+<span class="fc" id="L72">        return this;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L76">        this.id = id;</span>
+<span class="fc" id="L77">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L80">        return this.title;</span>
+    }
+
+    public RecipeBook title(String title) {
+<span class="fc" id="L84">        this.setTitle(title);</span>
+<span class="fc" id="L85">        return this;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="fc" id="L89">        this.title = title;</span>
+<span class="fc" id="L90">    }</span>
+
+    public String getTheme() {
+<span class="fc" id="L93">        return this.theme;</span>
+    }
+
+    public RecipeBook theme(String theme) {
+<span class="fc" id="L97">        this.setTheme(theme);</span>
+<span class="fc" id="L98">        return this;</span>
+    }
+
+    public void setTheme(String theme) {
+<span class="fc" id="L102">        this.theme = theme;</span>
+<span class="fc" id="L103">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L106">        return this.description;</span>
+    }
+
+    public RecipeBook description(String description) {
+<span class="fc" id="L110">        this.setDescription(description);</span>
+<span class="fc" id="L111">        return this;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L115">        this.description = description;</span>
+<span class="fc" id="L116">    }</span>
+
+    public String getTags() {
+<span class="fc" id="L119">        return this.tags;</span>
+    }
+
+    public RecipeBook tags(String tags) {
+<span class="fc" id="L123">        this.setTags(tags);</span>
+<span class="fc" id="L124">        return this;</span>
+    }
+
+    public void setTags(String tags) {
+<span class="fc" id="L128">        this.tags = tags;</span>
+<span class="fc" id="L129">    }</span>
+
+    public ZonedDateTime getCreatedDate() {
+<span class="fc" id="L132">        return this.createdDate;</span>
+    }
+
+    public RecipeBook createdDate(ZonedDateTime createdDate) {
+<span class="nc" id="L136">        this.setCreatedDate(createdDate);</span>
+<span class="nc" id="L137">        return this;</span>
+    }
+
+    public void setCreatedDate(ZonedDateTime createdDate) {
+<span class="fc" id="L141">        this.createdDate = createdDate;</span>
+<span class="fc" id="L142">    }</span>
+
+    public Set&lt;RecipeBookRelation&gt; getRecipeBookRelations() {
+<span class="fc" id="L145">        return this.recipeBookRelations;</span>
+    }
+
+    public void setRecipeBookRelations(Set&lt;RecipeBookRelation&gt; recipeBookRelations) {
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">        if (this.recipeBookRelations != null) {</span>
+<span class="fc" id="L150">            this.recipeBookRelations.forEach(i -&gt; i.setRecipeBook(null));</span>
+        }
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        if (recipeBookRelations != null) {</span>
+<span class="fc" id="L153">            recipeBookRelations.forEach(i -&gt; i.setRecipeBook(this));</span>
+        }
+<span class="fc" id="L155">        this.recipeBookRelations = recipeBookRelations;</span>
+<span class="fc" id="L156">    }</span>
+
+    public RecipeBook recipeBookRelations(Set&lt;RecipeBookRelation&gt; recipeBookRelations) {
+<span class="fc" id="L159">        this.setRecipeBookRelations(recipeBookRelations);</span>
+<span class="fc" id="L160">        return this;</span>
+    }
+
+    public RecipeBook addRecipeBookRelation(RecipeBookRelation recipeBookRelation) {
+<span class="fc" id="L164">        this.recipeBookRelations.add(recipeBookRelation);</span>
+<span class="fc" id="L165">        recipeBookRelation.setRecipeBook(this);</span>
+<span class="fc" id="L166">        return this;</span>
+    }
+
+    public RecipeBook removeRecipeBookRelation(RecipeBookRelation recipeBookRelation) {
+<span class="fc" id="L170">        this.recipeBookRelations.remove(recipeBookRelation);</span>
+<span class="fc" id="L171">        recipeBookRelation.setRecipeBook(null);</span>
+<span class="fc" id="L172">        return this;</span>
+    }
+
+    public User getUser() {
+<span class="fc" id="L176">        return this.user;</span>
+    }
+
+    public void setUser(User user) {
+<span class="fc" id="L180">        this.user = user;</span>
+<span class="fc" id="L181">    }</span>
+
+    public RecipeBook user(User user) {
+<span class="fc" id="L184">        this.setUser(user);</span>
+<span class="fc" id="L185">        return this;</span>
+    }
+
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L192" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L193">            return true;</span>
+        }
+<span class="fc bfc" id="L195" title="All 2 branches covered.">        if (!(o instanceof RecipeBook)) {</span>
+<span class="fc" id="L196">            return false;</span>
+        }
+<span class="fc bfc" id="L198" title="All 4 branches covered.">        return getId() != null &amp;&amp; getId().equals(((RecipeBook) o).getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
+<span class="fc" id="L204">        return getClass().hashCode();</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L210">        return &quot;RecipeBook{&quot; +</span>
+<span class="fc" id="L211">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L212">            &quot;, title='&quot; + getTitle() + &quot;'&quot; +</span>
+<span class="fc" id="L213">            &quot;, theme='&quot; + getTheme() + &quot;'&quot; +</span>
+<span class="fc" id="L214">            &quot;, description='&quot; + getDescription() + &quot;'&quot; +</span>
+<span class="fc" id="L215">            &quot;, tags='&quot; + getTags() + &quot;'&quot; +</span>
+<span class="fc" id="L216">            &quot;, createdDate='&quot; + getCreatedDate() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

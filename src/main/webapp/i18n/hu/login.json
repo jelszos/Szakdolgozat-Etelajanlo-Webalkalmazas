@@ -1,0 +1,19 @@
+{
+  "login": {
+    "title": "Bejelentkezés",
+    "form": {
+      "password": "Jelszó",
+      "password.placeholder": "A jelszavad",
+      "rememberme": "Emlékezz rám",
+      "button": "Bejelentkezés"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Nem sikerült bejelentkezni!</strong> Kérlek ellenőrizd a bejelentkezési adatokat, és próbáld újra."
+      }
+    },
+    "password": {
+      "forgot": "Elfelejtetted a jelszavad?"
+    }
+  }
+}

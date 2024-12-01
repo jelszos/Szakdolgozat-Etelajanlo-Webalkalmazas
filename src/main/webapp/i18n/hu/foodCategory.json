@@ -1,0 +1,26 @@
+{
+  "szakdolgozatApp": {
+    "FoodCategory": {
+      "CHINESE": "Kínai",
+      "ITALIAN": "Olasz",
+      "HUNGARIAN": "Magyar",
+      "MEXICAN": "Mexikói",
+      "INDIAN": "Indiai",
+      "JAPANESE": "Japán",
+      "THAI": "Thai",
+      "AMERICAN": "Amerikai",
+      "EASTERN_EUROPEAN": "Kelet-európai",
+      "VIETNAMESE": "Vietnámi",
+      "RUSSIAN": "Orosz",
+      "SPANISH": "Spanyol",
+      "FRENCH": "Francia",
+      "GREEK": "Görög",
+      "MIDDLE_EASTERN": "Közel-keleti",
+      "LATIN_AMERICAN": "Latin-amerikai",
+      "BRITISH": "Brit",
+      "AUSTRALIAN": "Ausztrál",
+      "UKRAINIAN": "Ukrán",
+      "GERMAN": "Német"
+    }
+  }
+}

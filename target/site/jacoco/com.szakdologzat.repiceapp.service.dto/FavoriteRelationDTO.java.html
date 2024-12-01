@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FavoriteRelationDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service.dto</a> &gt; <span class="el_source">FavoriteRelationDTO.java</span></div><h1>FavoriteRelationDTO.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service.dto;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * A DTO for the {@link com.szakdologzat.repiceapp.domain.FavoriteRelation} entity.
+ */
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+<span class="fc" id="L10">public class FavoriteRelationDTO implements Serializable {</span>
+
+    private Long id;
+
+    private UserDTO user;
+
+    private RecipeDTO recipe;
+
+    public Long getId() {
+<span class="fc" id="L19">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L23">        this.id = id;</span>
+<span class="fc" id="L24">    }</span>
+
+    public UserDTO getUser() {
+<span class="fc" id="L27">        return user;</span>
+    }
+
+    public void setUser(UserDTO user) {
+<span class="nc" id="L31">        this.user = user;</span>
+<span class="nc" id="L32">    }</span>
+
+    public RecipeDTO getRecipe() {
+<span class="fc" id="L35">        return recipe;</span>
+    }
+
+    public void setRecipe(RecipeDTO recipe) {
+<span class="nc" id="L39">        this.recipe = recipe;</span>
+<span class="nc" id="L40">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L45">            return true;</span>
+        }
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (!(o instanceof FavoriteRelationDTO favoriteRelationDTO)) {</span>
+<span class="fc" id="L48">            return false;</span>
+        }
+
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (this.id == null) {</span>
+<span class="fc" id="L52">            return false;</span>
+        }
+<span class="fc" id="L54">        return Objects.equals(this.id, favoriteRelationDTO.id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L59">        return Objects.hash(this.id);</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L65">        return &quot;FavoriteRelationDTO{&quot; +</span>
+<span class="fc" id="L66">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L67">            &quot;, user=&quot; + getUser() +</span>
+<span class="fc" id="L68">            &quot;, recipe=&quot; + getRecipe() +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

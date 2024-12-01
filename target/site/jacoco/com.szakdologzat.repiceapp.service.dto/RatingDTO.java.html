@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RatingDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service.dto</a> &gt; <span class="el_source">RatingDTO.java</span></div><h1>RatingDTO.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service.dto;
+
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Objects;
+
+/**
+ * A DTO for the {@link com.szakdologzat.repiceapp.domain.Rating} entity.
+ */
+@SuppressWarnings(&quot;common-java:DuplicatedBlocks&quot;)
+public class RatingDTO implements Serializable {
+
+    private Long id;
+
+    private Integer rate;
+
+    private String title;
+
+    private String description;
+
+    private String imageUrl;
+
+    private ZonedDateTime createdDate;
+
+    private UserDTO user;
+
+    private RecipeDTO recipe;
+
+    public Long getId() {
+<span class="fc" id="L30">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L34">        this.id = id;</span>
+<span class="fc" id="L35">    }</span>
+
+    public Integer getRate() {
+<span class="fc" id="L38">        return rate;</span>
+    }
+
+    public void setRate(Integer rate) {
+<span class="fc" id="L42">        this.rate = rate;</span>
+<span class="fc" id="L43">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L46">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="fc" id="L50">        this.title = title;</span>
+<span class="fc" id="L51">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L54">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L58">        this.description = description;</span>
+<span class="fc" id="L59">    }</span>
+
+    public String getImageUrl() {
+<span class="fc" id="L62">        return imageUrl;</span>
+    }
+
+    public void setImageUrl(String imageUrl) {
+<span class="fc" id="L66">        this.imageUrl = imageUrl;</span>
+<span class="fc" id="L67">    }</span>
+
+    public ZonedDateTime getCreatedDate() {
+<span class="fc" id="L70">        return createdDate;</span>
+    }
+
+    public void setCreatedDate(ZonedDateTime createdDate) {
+<span class="fc" id="L74">        this.createdDate = createdDate;</span>
+<span class="fc" id="L75">    }</span>
+
+    public UserDTO getUser() {
+<span class="fc" id="L78">        return user;</span>
+    }
+
+    public void setUser(UserDTO user) {
+<span class="fc" id="L82">        this.user = user;</span>
+<span class="fc" id="L83">    }</span>
+
+    public RecipeDTO getRecipe() {
+<span class="fc" id="L86">        return recipe;</span>
+    }
+
+    public void setRecipe(RecipeDTO recipe) {
+<span class="nc" id="L90">        this.recipe = recipe;</span>
+<span class="nc" id="L91">    }</span>
+
+<span class="fc" id="L93">    public RatingDTO() {}</span>
+
+<span class="fc" id="L95">    public RatingDTO(Long id, int rate, String title) {</span>
+<span class="fc" id="L96">        this.id = id;</span>
+<span class="fc" id="L97">        this.rate = rate;</span>
+<span class="fc" id="L98">        this.title = title;</span>
+<span class="fc" id="L99">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L104">            return true;</span>
+        }
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        if (!(o instanceof RatingDTO ratingDTO)) {</span>
+<span class="fc" id="L107">            return false;</span>
+        }
+
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        if (this.id == null) {</span>
+<span class="fc" id="L111">            return false;</span>
+        }
+<span class="fc" id="L113">        return Objects.equals(this.id, ratingDTO.id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L118">        return Objects.hash(this.id);</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L124">        return &quot;RatingDTO{&quot; +</span>
+<span class="fc" id="L125">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L126">            &quot;, rate=&quot; + getRate() +</span>
+<span class="fc" id="L127">            &quot;, title='&quot; + getTitle() + &quot;'&quot; +</span>
+<span class="fc" id="L128">            &quot;, description='&quot; + getDescription() + &quot;'&quot; +</span>
+<span class="fc" id="L129">            &quot;, imageUrl='&quot; + getImageUrl() + &quot;'&quot; +</span>
+<span class="fc" id="L130">            &quot;, createdDate='&quot; + getCreatedDate() + &quot;'&quot; +</span>
+<span class="fc" id="L131">            &quot;, user=&quot; + getUser() +</span>
+<span class="fc" id="L132">            &quot;, recipe=&quot; + getRecipe() +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

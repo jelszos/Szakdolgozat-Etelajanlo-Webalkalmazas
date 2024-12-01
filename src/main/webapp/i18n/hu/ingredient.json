@@ -1,0 +1,27 @@
+{
+  "szakdolgozatApp": {
+    "ingredient": {
+      "home": {
+        "title": "Ingredients",
+        "refreshListLabel": "Lista frissítése",
+        "createLabel": "Egy új Ingredient létrehozása",
+        "createOrEditLabel": "Hozzon létre, vagy módosítson Ingredientt",
+        "notFound": "No Ingredients found"
+      },
+      "created": "Egy új Ingredient lett létrehozva { param } azonosítóval",
+      "updated": "A Ingredient módosítva lett { param } azonosítóval",
+      "deleted": "A Ingredient törölve lett { param } azonosítóval",
+      "delete": {
+        "question": "Biztos benne, hogy törölni szeretné az Ingredientt { id } azonosítóval?"
+      },
+      "detail": {
+        "title": "Ingredient"
+      },
+      "id": "Id",
+      "name": "Name",
+      "amount": "Amount",
+      "unit": "Unit",
+      "instruction": "Instruction"
+    }
+  }
+}

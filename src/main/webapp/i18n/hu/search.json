@@ -1,0 +1,27 @@
+{
+  "search": {
+    "title": "Keresés",
+    "searchButton": "Keresés",
+    "subtitle": "Válaszd ki, hogyan szeretnéd megtalálni a receptedet!",
+    "question": "Ha bármilyen kérdésed van a JHipster-rel kapcsolatban:",
+    "result": "találat(ok)",
+    "page": "oldal",
+    "input": {
+      "recipeTitle": "Recept címe",
+      "recipeTitlePH": "Írd be a recept címét...",
+      "foodTypes": "Étel típusok",
+      "foodCategories": "Étel kategóriák",
+      "ingredients": "Hozzávalók",
+      "title": "Cím",
+      "creationDate": "Létrehozás dátuma"
+    },
+    "link": {
+      "homepage": "JHipster honlapja",
+      "stackoverflow": "JHipster a Stack Overflow-n",
+      "bugtracker": "JHipster hibakövető",
+      "chat": "JHipster nyilvános chat szoba"
+    },
+    "like": "Ha tetszik a JHipster, ne felejts el csillagot adni neki a",
+    "github": "GitHubon"
+  }
+}

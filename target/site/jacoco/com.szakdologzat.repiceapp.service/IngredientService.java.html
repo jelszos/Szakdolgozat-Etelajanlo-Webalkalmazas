@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IngredientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.service</a> &gt; <span class="el_source">IngredientService.java</span></div><h1>IngredientService.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.service;
+
+import com.szakdologzat.repiceapp.domain.Ingredient;
+import com.szakdologzat.repiceapp.repository.IngredientRepository;
+import com.szakdologzat.repiceapp.service.dto.IngredientDTO;
+import com.szakdologzat.repiceapp.service.mapper.IngredientMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link com.szakdologzat.repiceapp.domain.Ingredient}.
+ */
+@Service
+@Transactional
+public class IngredientService {
+
+<span class="nc" id="L24">    private static final Logger LOG = LoggerFactory.getLogger(IngredientService.class);</span>
+
+    private final IngredientRepository ingredientRepository;
+
+    private final IngredientMapper ingredientMapper;
+
+<span class="nc" id="L30">    public IngredientService(IngredientRepository ingredientRepository, IngredientMapper ingredientMapper) {</span>
+<span class="nc" id="L31">        this.ingredientRepository = ingredientRepository;</span>
+<span class="nc" id="L32">        this.ingredientMapper = ingredientMapper;</span>
+<span class="nc" id="L33">    }</span>
+
+    /**
+     * Save a ingredient.
+     *
+     * @param ingredientDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public IngredientDTO save(IngredientDTO ingredientDTO) {
+<span class="nc" id="L42">        LOG.debug(&quot;Request to save Ingredient : {}&quot;, ingredientDTO);</span>
+<span class="nc" id="L43">        Ingredient ingredient = ingredientMapper.toEntity(ingredientDTO);</span>
+<span class="nc" id="L44">        ingredient = ingredientRepository.save(ingredient);</span>
+<span class="nc" id="L45">        return ingredientMapper.toDto(ingredient);</span>
+    }
+
+    /**
+     * Update a ingredient.
+     *
+     * @param ingredientDTO the entity to save.
+     * @return the persisted entity.
+     */
+    public IngredientDTO update(IngredientDTO ingredientDTO) {
+<span class="nc" id="L55">        LOG.debug(&quot;Request to update Ingredient : {}&quot;, ingredientDTO);</span>
+<span class="nc" id="L56">        Ingredient ingredient = ingredientMapper.toEntity(ingredientDTO);</span>
+<span class="nc" id="L57">        ingredient = ingredientRepository.save(ingredient);</span>
+<span class="nc" id="L58">        return ingredientMapper.toDto(ingredient);</span>
+    }
+
+    /**
+     * Partially update a ingredient.
+     *
+     * @param ingredientDTO the entity to update partially.
+     * @return the persisted entity.
+     */
+    public Optional&lt;IngredientDTO&gt; partialUpdate(IngredientDTO ingredientDTO) {
+<span class="nc" id="L68">        LOG.debug(&quot;Request to partially update Ingredient : {}&quot;, ingredientDTO);</span>
+
+<span class="nc" id="L70">        return ingredientRepository</span>
+<span class="nc" id="L71">            .findById(ingredientDTO.getId())</span>
+<span class="nc" id="L72">            .map(existingIngredient -&gt; {</span>
+<span class="nc" id="L73">                ingredientMapper.partialUpdate(existingIngredient, ingredientDTO);</span>
+
+<span class="nc" id="L75">                return existingIngredient;</span>
+            })
+<span class="nc" id="L77">            .map(ingredientRepository::save)</span>
+<span class="nc" id="L78">            .map(ingredientMapper::toDto);</span>
+    }
+
+    /**
+     * Get all the ingredients.
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List&lt;IngredientDTO&gt; findAll() {
+<span class="nc" id="L88">        LOG.debug(&quot;Request to get all Ingredients&quot;);</span>
+<span class="nc" id="L89">        return ingredientRepository.findAll().stream().map(ingredientMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    /**
+     * Get one ingredient by id.
+     *
+     * @param id the id of the entity.
+     * @return the entity.
+     */
+    @Transactional(readOnly = true)
+    public Optional&lt;IngredientDTO&gt; findOne(Long id) {
+<span class="nc" id="L100">        LOG.debug(&quot;Request to get Ingredient : {}&quot;, id);</span>
+<span class="nc" id="L101">        return ingredientRepository.findById(id).map(ingredientMapper::toDto);</span>
+    }
+
+    /**
+     * Delete the ingredient by id.
+     *
+     * @param id the id of the entity.
+     */
+    public void delete(Long id) {
+<span class="nc" id="L110">        LOG.debug(&quot;Request to delete Ingredient : {}&quot;, id);</span>
+<span class="nc" id="L111">        ingredientRepository.deleteById(id);</span>
+<span class="nc" id="L112">    }</span>
+
+    public Set&lt;String&gt; findUniqueIngredients() {
+<span class="nc" id="L115">        return ingredientRepository.findAllUniqueIngredients().stream().map(Ingredient::getName).collect(Collectors.toSet());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

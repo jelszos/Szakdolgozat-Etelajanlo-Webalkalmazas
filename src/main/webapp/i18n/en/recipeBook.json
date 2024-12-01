@@ -1,0 +1,81 @@
+{
+  "szakdolgozatApp": {
+    "recipeBook": {
+      "home": {
+        "title": "Recipe Books",
+        "subtitle": "These are the public Recipe Books",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Recipe Book",
+        "createOrEditLabel": "Create or edit a Recipe Book",
+        "searchDescription": "Description",
+        "notFound": "No Recipe Books found"
+      },
+      "search": {
+        "info": "Look for a recipe book based on criteria",
+        "descriptionField": "Description...",
+        "descriptionLabel": "Recipe book description",
+        "titleField": "Title...",
+        "labelField": "Recipe book title",
+        "themeLabel": "Recipe book theme",
+        "themeField": "Theme...",
+        "tagLabel": "Recipe book tag",
+        "tagField": "Tag..."
+      },
+      "mypage": {
+        "title": "My Recipe Books",
+        "subtitle": "These are the my Recipe Books",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Recipe Book",
+        "createOrEditLabel": "Create or edit a Recipe Book",
+        "editRecipeBook": "Edit recipe book",
+        "notFound": "No Recipe Books found",
+        "private": "Recipe book is private",
+        "public": "Recipe book is public"
+      },
+      "created": "A new Recipe Book is created with identifier { param }",
+      "updated": "A Recipe Book is updated with identifier { param }",
+      "deleted": "A Recipe Book is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Recipe Book { id }?"
+      },
+      "detail": {
+        "title": "Recipe Book"
+      },
+      "id": "Id",
+      "title": "Title",
+      "theme": "Theme",
+      "description": "Description",
+      "tags": "Tags",
+      "createdDate": "Created Date",
+      "recipeBookRelation": "Recipe Book Relation",
+      "user": "User",
+      "plural": "recipe books",
+      "entityTitle": "Recipe book",
+      "card": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "check": "Check",
+        "search": "Search"
+      },
+      "modal": {
+        "name": "Name",
+        "namePH": "Recipe book name...",
+        "theme": "Theme",
+        "themePH": "Recipe book theme...",
+        "visibility": "Visibility",
+        "description": "Description",
+        "descriptionPH": "Recipe book description...",
+        "editTitle": "Edit recipe book",
+        "private": "Private",
+        "public": "Public",
+        "update": "Update",
+        "cancel": "Cancel",
+        "modalTitle": "Save recipe to...",
+        "addSuccess": "Added successfully",
+        "removeSuccess": "Removed successfully",
+        "error": "Something went wrong! Try it again later.",
+        "newButton": "New recipe book"
+      }
+    }
+  }
+}

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.web.rest</a> &gt; <span class="el_source">RecipeResource.java</span></div><h1>RecipeResource.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.web.rest;
+
+import com.szakdologzat.repiceapp.domain.Instruction;
+import com.szakdologzat.repiceapp.domain.Recipe;
+import com.szakdologzat.repiceapp.domain.User;
+import com.szakdologzat.repiceapp.domain.enumeration.FoodCategory;
+import com.szakdologzat.repiceapp.repository.IngredientRepository;
+import com.szakdologzat.repiceapp.repository.InstructionRepository;
+import com.szakdologzat.repiceapp.repository.RecipeRepository;
+import com.szakdologzat.repiceapp.repository.UserRepository;
+import com.szakdologzat.repiceapp.service.RecipeService;
+import com.szakdologzat.repiceapp.service.UserService;
+import com.szakdologzat.repiceapp.service.dto.IngredientDTO;
+import com.szakdologzat.repiceapp.service.dto.InstructionDTO;
+import com.szakdologzat.repiceapp.service.dto.RatingDTO;
+import com.szakdologzat.repiceapp.service.dto.RecipeDTO;
+import com.szakdologzat.repiceapp.service.mapper.RecipeMapper;
+import com.szakdologzat.repiceapp.web.rest.errors.BadRequestAlertException;
+import io.micrometer.common.lang.Nullable;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.szakdologzat.repiceapp.domain.Recipe}.
+ */
+@RestController
+@RequestMapping(&quot;/api/recipes&quot;)
+public class RecipeResource {
+
+<span class="nc" id="L43">    private static final Logger LOG = LoggerFactory.getLogger(RecipeResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;recipe&quot;;
+    private final RecipeService recipeService;
+    private final RecipeMapper recipeMapper;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final RecipeRepository recipeRepository;
+
+<span class="nc" id="L54">    public RecipeResource(RecipeRepository recipeRepository, RecipeService recipeService, RecipeMapper recipeMapper) {</span>
+<span class="nc" id="L55">        this.recipeRepository = recipeRepository;</span>
+<span class="nc" id="L56">        this.recipeService = recipeService;</span>
+<span class="nc" id="L57">        this.recipeMapper = recipeMapper;</span>
+<span class="nc" id="L58">    }</span>
+
+    /**
+     * {@code POST  /recipes} : Create a new recipe.
+     *
+     * @param recipeDTO the recipeDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new recipeDTO, or with status {@code 400 (Bad Request)} if the recipe has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping(&quot;&quot;)
+    public ResponseEntity&lt;RecipeDTO&gt; createRecipe(@RequestBody RecipeDTO recipeDTO) throws URISyntaxException {
+<span class="nc" id="L69">        LOG.debug(&quot;REST request to save Recipe : {}&quot;, recipeDTO);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (recipeDTO.getId() != null) {</span>
+<span class="nc" id="L71">            throw new BadRequestAlertException(&quot;A new recipe cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="nc" id="L73">        String ingredientNames = recipeDTO</span>
+<span class="nc" id="L74">            .getInstructions()</span>
+<span class="nc" id="L75">            .stream()</span>
+<span class="nc" id="L76">            .flatMap(instruction -&gt; instruction.getIngredients().stream())</span>
+<span class="nc" id="L77">            .map(IngredientDTO::getName)</span>
+<span class="nc" id="L78">            .collect(Collectors.joining(&quot;,&quot;));</span>
+<span class="nc" id="L79">        recipeDTO.setIngredientNames(ingredientNames);</span>
+
+<span class="nc" id="L81">        recipeDTO.setIngredientNames(ingredientNames);</span>
+<span class="nc" id="L82">        RecipeDTO result = recipeService.save(recipeDTO);</span>
+
+<span class="nc" id="L84">        return ResponseEntity.created(new URI(&quot;/api/recipes/&quot; + result.getId()))</span>
+<span class="nc" id="L85">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))</span>
+<span class="nc" id="L86">            .body(result);</span>
+    }
+
+    /**
+     * {@code PUT  /recipes/:id} : Updates an existing recipe.
+     *
+     * @param id the id of the recipeDTO to save.
+     * @param recipeDTO the recipeDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated recipeDTO,
+     * or with status {@code 400 (Bad Request)} if the recipeDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the recipeDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;RecipeDTO&gt; updateRecipe(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody RecipeDTO recipeDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L104">        LOG.debug(&quot;REST request to update Recipe : {}, {}&quot;, id, recipeDTO);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        if (recipeDTO.getId() == null) {</span>
+<span class="nc" id="L106">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        if (!Objects.equals(id, recipeDTO.getId())) {</span>
+<span class="nc" id="L109">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        if (!recipeRepository.existsById(id)) {</span>
+<span class="nc" id="L113">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L116">        recipeDTO = recipeService.update(recipeDTO);</span>
+<span class="nc" id="L117">        return ResponseEntity.ok()</span>
+<span class="nc" id="L118">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, recipeDTO.getId().toString()))</span>
+<span class="nc" id="L119">            .body(recipeDTO);</span>
+    }
+
+    /**
+     * {@code PATCH  /recipes/:id} : Partial updates given fields of an existing recipe, field will ignore if it is null
+     *
+     * @param id the id of the recipeDTO to save.
+     * @param recipeDTO the recipeDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated recipeDTO,
+     * or with status {@code 400 (Bad Request)} if the recipeDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the recipeDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the recipeDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;RecipeDTO&gt; partialUpdateRecipe(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody RecipeDTO recipeDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L138">        LOG.debug(&quot;REST request to partial update Recipe partially : {}, {}&quot;, id, recipeDTO);</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if (recipeDTO.getId() == null) {</span>
+<span class="nc" id="L140">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (!Objects.equals(id, recipeDTO.getId())) {</span>
+<span class="nc" id="L143">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L146" title="All 2 branches missed.">        if (!recipeRepository.existsById(id)) {</span>
+<span class="nc" id="L147">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L150">        Optional&lt;RecipeDTO&gt; result = recipeService.partialUpdate(recipeDTO);</span>
+
+<span class="nc" id="L152">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="nc" id="L154">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, recipeDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /recipes} : get all the recipes.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of recipes in body.
+     */
+    @GetMapping(&quot;&quot;)
+    public List&lt;RecipeDTO&gt; getAllRecipes() {
+<span class="nc" id="L165">        LOG.debug(&quot;REST request to get all Recipes&quot;);</span>
+<span class="nc" id="L166">        return recipeService.findAll();</span>
+    }
+
+    @GetMapping(&quot;queries/highest_favorite_count&quot;)
+    public List&lt;RecipeDTO&gt; getHighestFavoriteCountRecipes() {
+<span class="nc" id="L171">        LOG.debug(&quot;REST request to get recipes with the highest favorite counts&quot;);</span>
+
+        // Fetch all recipes
+<span class="nc" id="L174">        List&lt;RecipeDTO&gt; list = recipeService.findHighestFavoriteCounts();</span>
+<span class="nc" id="L175">        return recipeService.findHighestFavoriteCounts();</span>
+    }
+
+    @GetMapping(&quot;queries/latest&quot;)
+    public List&lt;RecipeDTO&gt; getLatestRecipes() {
+<span class="nc" id="L180">        LOG.debug(&quot;REST request to get recipes with the latest date&quot;);</span>
+
+        // Fetch all recipes
+<span class="nc" id="L183">        return recipeService.findLatestRecipes();</span>
+    }
+
+    @GetMapping(&quot;queries/same_food_category/{food_category}&quot;)
+    public List&lt;RecipeDTO&gt; getSameFoodCategoryRecipes(@PathVariable(value = &quot;food_category&quot;) final FoodCategory foodCategory) {
+<span class="nc" id="L188">        LOG.debug(&quot;REST request to get recipes with the same food category&quot;);</span>
+
+        // Fetch all recipes from same food category
+<span class="nc" id="L191">        return recipeService.findSameFoodCategoryRecipes(foodCategory);</span>
+    }
+
+    /**
+     * {@code GET  /recipes/:id} : get the &quot;id&quot; recipe.
+     *
+     * @param id the id of the recipeDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the recipeDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;RecipeDTO&gt; getRecipe(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L202">        LOG.debug(&quot;REST request to get Recipe : {}&quot;, id);</span>
+<span class="nc" id="L203">        Optional&lt;RecipeDTO&gt; recipeDTO = recipeService.findOne(id);</span>
+<span class="nc" id="L204">        return ResponseUtil.wrapOrNotFound(recipeDTO);</span>
+    }
+
+    @GetMapping(&quot;/{id}/ratings&quot;)
+    public ResponseEntity&lt;List&lt;RatingDTO&gt;&gt; getRecipeRatings(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L209">        LOG.debug(&quot;REST request to get Recipe : {}&quot;, id);</span>
+<span class="nc" id="L210">        Optional&lt;List&lt;RatingDTO&gt;&gt; ratingDTO = recipeService.findRecipeRatings(id);</span>
+<span class="nc" id="L211">        return ResponseUtil.wrapOrNotFound(ratingDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /recipes/:id} : delete the &quot;id&quot; recipe.
+     *
+     * @param id the id of the recipeDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;?&gt; deleteRecipe(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L222">        LOG.debug(&quot;REST request to delete Recipe : {}&quot;, id);</span>
+<span class="nc" id="L223">        return recipeService.delete(id);</span>
+    }
+
+    @GetMapping(&quot;/search&quot;)
+    public Page&lt;RecipeDTO&gt; search(
+        @RequestParam(required = false) String recipeTitle,
+        @RequestParam(required = false) List&lt;String&gt; foodCategories,
+        @RequestParam(required = false) List&lt;String&gt; foodTypes,
+        @RequestParam(required = false) List&lt;String&gt; ingredientNames,
+        @Nullable Pageable pageable
+    ) {
+<span class="nc" id="L234">        Page&lt;Recipe&gt; resultList = recipeService.searchRecipes(recipeTitle, foodCategories, foodTypes, ingredientNames, pageable);</span>
+<span class="nc" id="L235">        List&lt;RecipeDTO&gt; dtoList = resultList.stream().map(recipeMapper::toDto).collect(Collectors.toList());</span>
+
+<span class="nc" id="L237">        return new PageImpl&lt;&gt;(dtoList, pageable, resultList.getTotalElements());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

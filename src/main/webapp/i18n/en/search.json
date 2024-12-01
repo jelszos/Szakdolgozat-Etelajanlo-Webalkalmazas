@@ -1,0 +1,27 @@
+{
+  "search": {
+    "title": "Search",
+    "searchButton": "Search",
+    "subtitle": "Choose the way you want to find your recipe!",
+    "question": "If you have any question on JHipster:",
+    "result": "result(s)",
+    "page": "page",
+    "input": {
+      "recipeTitle": "Recipe title",
+      "recipeTitlePH": "Enter recipe title...",
+      "foodTypes": "Food types",
+      "foodCategories": "Food categories",
+      "ingredients": "Ingredients",
+      "title": "Title",
+      "creationDate": "Creation Date"
+    },
+    "link": {
+      "homepage": "JHipster homepage",
+      "stackoverflow": "JHipster on Stack Overflow",
+      "bugtracker": "JHipster bug tracker",
+      "chat": "JHipster public chat room"
+    },
+    "like": "If you like JHipster, don't forget to give us a star on",
+    "github": "GitHub"
+  }
+}

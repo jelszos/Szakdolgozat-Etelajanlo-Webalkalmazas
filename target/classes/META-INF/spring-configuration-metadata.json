@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "com.szakdologzat.repiceapp.config.ApplicationProperties",
+      "sourceType": "com.szakdologzat.repiceapp.config.ApplicationProperties"
+    },
+    {
+      "name": "application.liquibase",
+      "type": "com.szakdologzat.repiceapp.config.ApplicationProperties$Liquibase",
+      "sourceType": "com.szakdologzat.repiceapp.config.ApplicationProperties",
+      "sourceMethod": "getLiquibase()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "application.liquibase.async-start",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.szakdologzat.repiceapp.config.ApplicationProperties$Liquibase"
+    }
+  ],
+  "hints": []
+}

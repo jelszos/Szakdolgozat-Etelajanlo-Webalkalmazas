@@ -1,0 +1,30 @@
+{
+  "szakdolgozatApp": {
+    "rating": {
+      "home": {
+        "title": "Ratings",
+        "refreshListLabel": "Lista frissítése",
+        "createLabel": "Egy új Rating létrehozása",
+        "createOrEditLabel": "Hozzon létre, vagy módosítson Ratingt",
+        "notFound": "No Ratings found"
+      },
+      "created": "Egy új Rating lett létrehozva { param } azonosítóval",
+      "updated": "A Rating módosítva lett { param } azonosítóval",
+      "deleted": "A Rating törölve lett { param } azonosítóval",
+      "delete": {
+        "question": "Biztos benne, hogy törölni szeretné az Ratingt { id } azonosítóval?"
+      },
+      "detail": {
+        "title": "Rating"
+      },
+      "id": "Id",
+      "rate": "Rate",
+      "title": "Title",
+      "description": "Description",
+      "imageUrl": "Image Url",
+      "createdDate": "Created Date",
+      "user": "User",
+      "recipe": "Recipe"
+    }
+  }
+}

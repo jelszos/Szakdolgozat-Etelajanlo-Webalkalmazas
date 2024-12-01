@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Recipe_.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Szakdolgozat</a> &gt; <a href="index.source.html" class="el_package">com.szakdologzat.repiceapp.domain</a> &gt; <span class="el_source">Recipe_.java</span></div><h1>Recipe_.java</h1><pre class="source lang-java linenums">package com.szakdologzat.repiceapp.domain;
+
+import com.szakdologzat.repiceapp.domain.enumeration.FoodCategory;
+import com.szakdologzat.repiceapp.domain.enumeration.FoodType;
+import jakarta.annotation.Generated;
+import jakarta.persistence.metamodel.EntityType;
+import jakarta.persistence.metamodel.SetAttribute;
+import jakarta.persistence.metamodel.SingularAttribute;
+import jakarta.persistence.metamodel.StaticMetamodel;
+import java.time.ZonedDateTime;
+
+@StaticMetamodel(Recipe.class)
+@Generated(&quot;org.hibernate.processor.HibernateProcessor&quot;)
+<span class="nc" id="L14">public abstract class Recipe_ {</span>
+
+	public static final String INSTRUCTIONS = &quot;instructions&quot;;
+	public static final String FOOD_TYPE = &quot;foodType&quot;;
+	public static final String DESCRIPTION = &quot;description&quot;;
+	public static final String TITLE = &quot;title&quot;;
+	public static final String CREATED_DATE = &quot;createdDate&quot;;
+	public static final String FAVORITE_RELATIONS = &quot;favoriteRelations&quot;;
+	public static final String RATINGS = &quot;ratings&quot;;
+	public static final String IMAGE_URL = &quot;imageUrl&quot;;
+	public static final String RECIPE_BOOK_RELATIONS = &quot;recipeBookRelations&quot;;
+	public static final String ID = &quot;id&quot;;
+	public static final String FOOD_CATEGORY = &quot;foodCategory&quot;;
+	public static final String USER = &quot;user&quot;;
+	public static final String INGREDIENT_NAMES = &quot;ingredientNames&quot;;
+
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#instructions
+	 **/
+	public static volatile SetAttribute&lt;Recipe, Instruction&gt; instructions;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#foodType
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, FoodType&gt; foodType;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#description
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, String&gt; description;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#title
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, String&gt; title;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#createdDate
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, ZonedDateTime&gt; createdDate;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#favoriteRelations
+	 **/
+	public static volatile SetAttribute&lt;Recipe, FavoriteRelation&gt; favoriteRelations;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#ratings
+	 **/
+	public static volatile SetAttribute&lt;Recipe, Rating&gt; ratings;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#imageUrl
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, String&gt; imageUrl;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#recipeBookRelations
+	 **/
+	public static volatile SetAttribute&lt;Recipe, RecipeBookRelation&gt; recipeBookRelations;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#id
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, Long&gt; id;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe
+	 **/
+	public static volatile EntityType&lt;Recipe&gt; class_;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#foodCategory
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, FoodCategory&gt; foodCategory;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#user
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, User&gt; user;
+	
+	/**
+	 * @see com.szakdologzat.repiceapp.domain.Recipe#ingredientNames
+	 **/
+	public static volatile SingularAttribute&lt;Recipe, String&gt; ingredientNames;
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

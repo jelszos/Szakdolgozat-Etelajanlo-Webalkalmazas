@@ -1,0 +1,33 @@
+{
+  "settings": {
+    "title": "Felhasználói beállítások [<strong>{ username }</strong>]",
+    "form": {
+      "firstname": "Keresztnév",
+      "firstname.placeholder": "Add meg a keresztneved",
+      "lastname": "Vezetéknév",
+      "lastname.placeholder": "Add meg a vezetékneved",
+      "language": "Nyelv",
+      "button": "Mentés",
+      "selectavatar": "Válaszd ki az avatárodat!"
+    },
+    "messages": {
+      "error": {
+        "fail": "<strong>Hiba történt!</strong> A beállításokat nem sikerült menteni.",
+        "emailexists": "<strong>Az email cím már használatban van!</strong> Kérlek, válassz másikat."
+      },
+      "success": "<strong>A beállítások mentve!</strong>",
+      "validate": {
+        "firstname": {
+          "required": "A keresztneved megadása kötelező.",
+          "minlength": "A keresztnévnek legalább 1 karakter hosszúnak kell lennie.",
+          "maxlength": "A keresztnév nem lehet hosszabb 50 karakternél."
+        },
+        "lastname": {
+          "required": "A vezetékneved megadása kötelező.",
+          "minlength": "A vezetéknévnek legalább 1 karakter hosszúnak kell lennie.",
+          "maxlength": "A vezetéknév nem lehet hosszabb 50 karakternél."
+        }
+      }
+    }
+  }
+}
