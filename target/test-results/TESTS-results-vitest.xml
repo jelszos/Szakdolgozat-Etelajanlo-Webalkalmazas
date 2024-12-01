@@ -1,0 +1,313 @@
+<testExecutions version="1">
+  <file path="src/main/webapp/app/account/account.service.spec.ts">
+    <testCase name="Account Service test suite - should init service and do not retrieve account" duration="4" />
+    <testCase name="Account Service test suite - should init service and retrieve profiles if already logged in before but no account found" duration="0" />
+    <testCase name="Account Service test suite - should init service and retrieve profiles if already logged in before but exception occurred and should be logged out" duration="1" />
+    <testCase name="Account Service test suite - should init service and check for authority after retrieving account but getAccount failed" duration="1" />
+    <testCase name="Account Service test suite - should init service and check for authority after retrieving account" duration="2" />
+    <testCase name="Account Service test suite - should init service as not authentified and not return any authorities admin and not retrieve account" duration="1" />
+    <testCase name="Account Service test suite - should init service as not authentified and return authority user" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/account/change-password/change-password.component.spec.ts">
+    <testCase name="ChangePassword Component - should show error if passwords do not match" duration="27" />
+    <testCase name="ChangePassword Component - should call Auth.changePassword when passwords match and  set success to OK upon success" duration="7" />
+    <testCase name="ChangePassword Component - should notify of error if change password fails" duration="4" />
+  </file>
+  <file path="src/main/webapp/app/account/login-form/login-form.component.spec.ts">
+    <testCase name="LoginForm Component - should authentication be KO" duration="13" />
+    <testCase name="LoginForm Component - should authentication be OK" duration="1" />
+  </file>
+  <file path="src/main/webapp/app/account/login.service.spec.ts">
+    <testCase name="Login Service test suite - should call global logout when asked to" duration="2" />
+  </file>
+  <file path="src/main/webapp/app/account/register/register.component.spec.ts">
+    <testCase name="Register Component - should set all default values correctly" duration="67" />
+    <testCase name="Register Component - should open login modal when asked to" duration="9" />
+    <testCase name="Register Component - should register when password match" duration="17" />
+    <testCase name="Register Component - should register when password match but throw error when login already exist" duration="25" />
+    <testCase name="Register Component - should register when password match but throw error when email already used" duration="17" />
+    <testCase name="Register Component - should register when password match but throw error" duration="10" />
+  </file>
+  <file path="src/main/webapp/app/account/settings/settings.component.spec.ts">
+    <testCase name="Settings Component - should send the current identity upon save" duration="54" />
+    <testCase name="Settings Component - should notify of success upon successful save" duration="25" />
+    <testCase name="Settings Component - should notify of error upon failed save" duration="8" />
+    <testCase name="Settings Component - should notify of error upon error 400" duration="8" />
+    <testCase name="Settings Component - should notify of error upon email already used" duration="5" />
+  </file>
+  <file path="src/main/webapp/app/admin/user-management/user-management-edit.component.spec.ts">
+    <testCase name="UserManagementEdit Component - init - Should load user" duration="34" />
+    <testCase name="UserManagementEdit Component - init - Should open create user" duration="7" />
+    <testCase name="UserManagementEdit Component - save - Should call update service on save for existing user" duration="6" />
+    <testCase name="UserManagementEdit Component - save - Should call create service on save for new user" duration="6" />
+  </file>
+  <file path="src/main/webapp/app/admin/user-management/user-management-view.component.spec.ts">
+    <testCase name="UserManagementView Component - OnInit - Should call load all on init" duration="24" />
+  </file>
+  <file path="src/main/webapp/app/admin/user-management/user-management.component.spec.ts">
+    <testCase name="UserManagement Component - OnInit - Should call load all on init" duration="40" />
+    <testCase name="UserManagement Component - setActive - Should update user and call load all" duration="28" />
+    <testCase name="UserManagement Component - confirmDelete - Should call delete service on confirmDelete" duration="6" />
+    <testCase name="UserManagement Component - change order - should change order and invert reverse" duration="13" />
+  </file>
+  <file path="src/main/webapp/app/core/home/home.component.spec.ts">
+    <testCase name="Home.vue - should not have user data set initially" duration="28" />
+    <testCase name="Home.vue - should display user data after authentication" duration="5" />
+    <testCase name="Home.vue - should call openLogin from loginService" duration="7" />
+    <testCase name="Home.vue - should handle fetching state when retrieving recipes" duration="7" />
+    <testCase name="Home.vue - should return a label for food category" duration="32" />
+    <testCase name="Home.vue - should return avatar image correctly" duration="13" />
+    <testCase name="Home.vue - should retrieve correct food type" duration="9" />
+  </file>
+  <file path="src/main/webapp/app/core/jhi-navbar/jhi-navbar.component.spec.ts">
+    <testCase name="JhiNavbar - should not have user data set" duration="16" />
+    <testCase name="JhiNavbar - should have user data set after authentication" duration="11" />
+    <testCase name="JhiNavbar - should have profile info set after info retrieved" duration="3" />
+    <testCase name="JhiNavbar - should use login service" duration="16" />
+    <testCase name="JhiNavbar - should use account service" duration="10" />
+    <testCase name="JhiNavbar - logout should clear credentials" duration="1" />
+    <testCase name="JhiNavbar - should determine active route" duration="3" />
+  </file>
+  <file path="src/main/webapp/app/core/profile/profile.service.spec.ts">
+    <testCase name="Service Tests - Profile Service - Service methods - should get a User Profile" duration="3" />
+    <testCase name="Service Tests - Profile Service - Service methods - should not get a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should create a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should not create a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should update a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should not update a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should delete a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should not delete a User Profile" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should retrieve a list of users" duration="1" />
+    <testCase name="Service Tests - Profile Service - Service methods - should not retrieve a list of users" duration="1" />
+    <testCase name="Service Tests - Profile Service - Service methods - should retrieve authorities" duration="0" />
+    <testCase name="Service Tests - Profile Service - Service methods - should not retrieve authorities" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/favorite-relation/favorite-relation-details.component.spec.ts">
+    <testCase name="Component Tests - FavoriteRelation Management Detail Component - Navigate to details - Should call load all on init" duration="16" />
+    <testCase name="Component Tests - FavoriteRelation Management Detail Component - Previous state - Should go previous state" duration="2" />
+  </file>
+  <file path="src/main/webapp/app/entities/favorite-relation/favorite-relation-update.component.spec.ts">
+    <testCase name="Component Tests - FavoriteRelation Management Update Component - save - Should call update service on save for existing entity" duration="50" />
+    <testCase name="Component Tests - FavoriteRelation Management Update Component - save - Should call create service on save for new entity" duration="6" />
+    <testCase name="Component Tests - FavoriteRelation Management Update Component - Before route enter - Should retrieve data" duration="6" />
+    <testCase name="Component Tests - FavoriteRelation Management Update Component - Previous state - Should go previous state" duration="12" />
+  </file>
+  <file path="src/main/webapp/app/entities/favorite-relation/favorite-relation.component.spec.ts">
+    <testCase name="Component Tests - FavoriteRelation Management Component - Mount - Should call load all on init" duration="38" />
+    <testCase name="Component Tests - FavoriteRelation Management Component - Handles - Should call delete service on confirmDelete" duration="4" />
+  </file>
+  <file path="src/main/webapp/app/entities/favorite-relation/favorite-relation.service.spec.ts">
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should find an element" duration="2" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should create a FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should not create a FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should update a FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should not update a FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should partial update a FavoriteRelation" duration="1" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should not partial update a FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should return a list of FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should not return a list of FavoriteRelation" duration="0" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should delete a FavoriteRelation" duration="1" />
+    <testCase name="Service Tests - FavoriteRelation Service - Service methods - should not delete a FavoriteRelation" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/ingredient/ingredient-details.component.spec.ts">
+    <testCase name="Component Tests - Ingredient Management Detail Component - Navigate to details - Should call load all on init" duration="15" />
+    <testCase name="Component Tests - Ingredient Management Detail Component - Previous state - Should go previous state" duration="3" />
+  </file>
+  <file path="src/main/webapp/app/entities/ingredient/ingredient-update.component.spec.ts">
+    <testCase name="Component Tests - Ingredient Management Update Component - save - Should call update service on save for existing entity" duration="38" />
+    <testCase name="Component Tests - Ingredient Management Update Component - save - Should call create service on save for new entity" duration="7" />
+    <testCase name="Component Tests - Ingredient Management Update Component - Before route enter - Should retrieve data" duration="7" />
+    <testCase name="Component Tests - Ingredient Management Update Component - Previous state - Should go previous state" duration="10" />
+  </file>
+  <file path="src/main/webapp/app/entities/ingredient/ingredient.component.spec.ts">
+    <testCase name="Component Tests - Ingredient Management Component - Mount - Should call load all on init" duration="31" />
+    <testCase name="Component Tests - Ingredient Management Component - Handles - Should call delete service on confirmDelete" duration="3" />
+  </file>
+  <file path="src/main/webapp/app/entities/ingredient/ingredient.service.spec.ts">
+    <testCase name="Service Tests - Ingredient Service - Service methods - should find an element" duration="3" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should create a Ingredient" duration="0" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should not create a Ingredient" duration="0" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should update a Ingredient" duration="1" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should not update a Ingredient" duration="1" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should partial update a Ingredient" duration="1" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should not partial update a Ingredient" duration="1" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should return a list of Ingredient" duration="1" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should not return a list of Ingredient" duration="0" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should delete a Ingredient" duration="0" />
+    <testCase name="Service Tests - Ingredient Service - Service methods - should not delete a Ingredient" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/instruction/instruction-details.component.spec.ts">
+    <testCase name="Component Tests - Instruction Management Detail Component - Navigate to details - Should call load all on init" duration="19" />
+    <testCase name="Component Tests - Instruction Management Detail Component - Previous state - Should go previous state" duration="8" />
+  </file>
+  <file path="src/main/webapp/app/entities/instruction/instruction-update.component.spec.ts">
+    <testCase name="Component Tests - Instruction Management Update Component - save - Should call update service on save for existing entity" duration="39" />
+    <testCase name="Component Tests - Instruction Management Update Component - save - Should call create service on save for new entity" duration="6" />
+    <testCase name="Component Tests - Instruction Management Update Component - Before route enter - Should retrieve data" duration="5" />
+    <testCase name="Component Tests - Instruction Management Update Component - Previous state - Should go previous state" duration="10" />
+  </file>
+  <file path="src/main/webapp/app/entities/instruction/instruction.component.spec.ts">
+    <testCase name="Component Tests - Instruction Management Component - Mount - Should call load all on init" duration="30" />
+    <testCase name="Component Tests - Instruction Management Component - Handles - Should call delete service on confirmDelete" duration="3" />
+  </file>
+  <file path="src/main/webapp/app/entities/instruction/instruction.service.spec.ts">
+    <testCase name="Service Tests - Instruction Service - Service methods - should find an element" duration="2" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should create a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should not create a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should update a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should not update a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should partial update a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should not partial update a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should return a list of Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should not return a list of Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should delete a Instruction" duration="0" />
+    <testCase name="Service Tests - Instruction Service - Service methods - should not delete a Instruction" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/rating/rating-details.component.spec.ts">
+    <testCase name="Component Tests - Rating Management Detail Component - Navigate to details - Should call load all on init" duration="23" />
+    <testCase name="Component Tests - Rating Management Detail Component - Previous state - Should go previous state" duration="4" />
+  </file>
+  <file path="src/main/webapp/app/entities/rating/rating-update.component.spec.ts">
+    <testCase name="Component Tests - Rating Management Update Component - load - Should convert date from string" duration="49" />
+    <testCase name="Component Tests - Rating Management Update Component - load - Should not convert date if date is not present" duration="13" />
+    <testCase name="Component Tests - Rating Management Update Component - save - Should call update service on save for existing entity" duration="10" />
+    <testCase name="Component Tests - Rating Management Update Component - save - Should call create service on save for new entity" duration="9" />
+    <testCase name="Component Tests - Rating Management Update Component - Before route enter - Should retrieve data" duration="12" />
+    <testCase name="Component Tests - Rating Management Update Component - Previous state - Should go previous state" duration="20" />
+  </file>
+  <file path="src/main/webapp/app/entities/rating/rating.component.spec.ts">
+    <testCase name="Component Tests - Rating Management Component - Mount - Should call load all on init" duration="37" />
+    <testCase name="Component Tests - Rating Management Component - Handles - Should call delete service on confirmDelete" duration="9" />
+  </file>
+  <file path="src/main/webapp/app/entities/rating/rating.service.spec.ts">
+    <testCase name="Service Tests - Rating Service - Service methods - should find an element" duration="3" />
+    <testCase name="Service Tests - Rating Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should create a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should not create a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should update a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should not update a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should partial update a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should not partial update a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should return a list of Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should not return a list of Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should delete a Rating" duration="0" />
+    <testCase name="Service Tests - Rating Service - Service methods - should not delete a Rating" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book-relation/recipe-book-relation-details.component.spec.ts">
+    <testCase name="Component Tests - RecipeBookRelation Management Detail Component - Navigate to details - Should call load all on init" duration="15" />
+    <testCase name="Component Tests - RecipeBookRelation Management Detail Component - Previous state - Should go previous state" duration="2" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book-relation/recipe-book-relation-update.component.spec.ts">
+    <testCase name="Component Tests - RecipeBookRelation Management Update Component - save - Should call update service on save for existing entity" duration="82" />
+    <testCase name="Component Tests - RecipeBookRelation Management Update Component - save - Should call create service on save for new entity" duration="5" />
+    <testCase name="Component Tests - RecipeBookRelation Management Update Component - Before route enter - Should retrieve data" duration="6" />
+    <testCase name="Component Tests - RecipeBookRelation Management Update Component - Previous state - Should go previous state" duration="13" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book-relation/recipe-book-relation.component.spec.ts">
+    <testCase name="Component Tests - RecipeBookRelation Management Component - Mount - Should call load all on init" duration="26" />
+    <testCase name="Component Tests - RecipeBookRelation Management Component - Handles - Should call delete service on confirmDelete" duration="7" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book-relation/recipe-book-relation.service.spec.ts">
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should find an element" duration="2" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should create a RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should not create a RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should update a RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should not update a RecipeBookRelation" duration="1" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should partial update a RecipeBookRelation" duration="1" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should not partial update a RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should return a list of RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should not return a list of RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should delete a RecipeBookRelation" duration="0" />
+    <testCase name="Service Tests - RecipeBookRelation Service - Service methods - should not delete a RecipeBookRelation" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book/recipe-book-update.component.spec.ts">
+    <testCase name="Component Tests - RecipeBook Management Update Component - load - Should convert date from string" duration="50" />
+    <testCase name="Component Tests - RecipeBook Management Update Component - load - Should not convert date if date is not present" duration="7" />
+    <testCase name="Component Tests - RecipeBook Management Update Component - save - Should call update service on save for existing entity" duration="13" />
+    <testCase name="Component Tests - RecipeBook Management Update Component - save - Should call create service on save for new entity" duration="14" />
+    <testCase name="Component Tests - RecipeBook Management Update Component - Before route enter - Should retrieve data" duration="10" />
+    <testCase name="Component Tests - RecipeBook Management Update Component - Previous state - Should go previous state" duration="16" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book/recipe-book.component.spec.ts">
+    <testCase name="Component Tests - RecipeBook Management Component - Mount - Should call load all on init" duration="25" />
+    <testCase name="Component Tests - RecipeBook Management Component - Handles - Should call delete service on confirmDelete" duration="10" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe-book/recipe-book.service.spec.ts">
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should find an element" duration="2" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should create a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should not create a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should update a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should not update a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should partial update a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should not partial update a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should return a list of RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should not return a list of RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should delete a RecipeBook" duration="0" />
+    <testCase name="Service Tests - RecipeBook Service - Service methods - should not delete a RecipeBook" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe/recipe-update.component.spec.ts">
+    <testCase name="Component Tests - Recipe Management Update Component - load - Should convert date from string" duration="40" />
+    <testCase name="Component Tests - Recipe Management Update Component - load - Should not convert date if date is not present" duration="18" />
+    <testCase name="Component Tests - Recipe Management Update Component - save - Should call update service on save for existing entity" duration="21" />
+    <testCase name="Component Tests - Recipe Management Update Component - save - Should call create service on save for new entity" duration="50" />
+    <testCase name="Component Tests - Recipe Management Update Component - Before route enter - Should retrieve data" duration="39" />
+    <testCase name="Component Tests - Recipe Management Update Component - Previous state - Should go previous state" duration="16" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe/recipe.component.spec.ts">
+    <testCase name="Component Tests - Recipe Management Component - Mount - Should call load all on init" duration="27" />
+    <testCase name="Component Tests - Recipe Management Component - Handles - Should call delete service on confirmDelete" duration="12" />
+  </file>
+  <file path="src/main/webapp/app/entities/recipe/recipe.service.spec.ts">
+    <testCase name="Service Tests - Recipe Service - Service methods - should find an element" duration="4" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should not find an element" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should create a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should not create a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should update a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should not update a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should partial update a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should not partial update a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should return a list of Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should not return a list of Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should delete a Recipe" duration="0" />
+    <testCase name="Service Tests - Recipe Service - Service methods - should not delete a Recipe" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/shared/alert/alert.service.spec.ts">
+    <testCase name="Alert Service test suite - should show error toast with translation/message" duration="7" />
+    <testCase name="Alert Service test suite - should show not reachable toast when http status = 0" duration="1" />
+    <testCase name="Alert Service test suite - should show parameterized error toast when http status = 400 and entity headers" duration="0" />
+    <testCase name="Alert Service test suite - should show error toast with data.message when http status = 400 and entity headers" duration="0" />
+    <testCase name="Alert Service test suite - should show error toast when http status = 404" duration="0" />
+    <testCase name="Alert Service test suite - should show error toast when http status != 400,404" duration="1" />
+  </file>
+  <file path="src/main/webapp/app/shared/config/axios-interceptor.spec.ts">
+    <testCase name="Axios interceptor - should use localStorage to provide bearer" duration="1" />
+    <testCase name="Axios interceptor - should use sessionStorage to provide bearer" duration="0" />
+    <testCase name="Axios errors interceptor - should use callback on 401, 403 errors" duration="5" />
+    <testCase name="Axios errors interceptor - should use callback 50x errors" duration="0" />
+    <testCase name="Axios errors interceptor - should not use callback for errors different 50x, 401, 403" duration="29" />
+  </file>
+  <file path="src/main/webapp/app/shared/data/data-utils.service.spec.ts">
+    <testCase name="Formatter i18n - should not abbreviate text shorter than 30 characters" duration="1" />
+    <testCase name="Formatter i18n - should abbreviate text longer than 30 characters" duration="0" />
+    <testCase name="Formatter i18n - should retrieve byteSize" duration="0" />
+    <testCase name="Formatter i18n - should clear input entity" duration="0" />
+    <testCase name="Formatter i18n - should open file" duration="2" />
+    <testCase name="Formatter i18n - should check text ends with suffix" duration="0" />
+    <testCase name="Formatter i18n - should paddingSize to 0" duration="0" />
+    <testCase name="Formatter i18n - should paddingSize to 1" duration="0" />
+    <testCase name="Formatter i18n - should paddingSize to 2" duration="0" />
+    <testCase name="Formatter i18n - should parse links" duration="0" />
+    <testCase name="Formatter i18n - should return empty JSON object for empty string" duration="0" />
+    <testCase name="Formatter i18n - should return empty JSON object for text with no link header" duration="0" />
+    <testCase name="Formatter i18n - should return empty JSON object for text without &gt;;" duration="0" />
+    <testCase name="Formatter i18n - should return empty JSON object for text with no comma separated link header" duration="0" />
+  </file>
+  <file path="src/main/webapp/app/shared/sort/sorts.spec.ts">
+    <testCase name="Sort - should return an empty string if there is no pagination" duration="1" />
+  </file>
+</testExecutions>

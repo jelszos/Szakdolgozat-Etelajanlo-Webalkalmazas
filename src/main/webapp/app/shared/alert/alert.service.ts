@@ -4,12 +4,9 @@ import { type Composer, useI18n } from 'vue-i18n';
 
 export const useAlertService = () => {
   const bvToast = getCurrentInstance().root.proxy._bv__toast;
-
-  // Check if bvToast exists
-  if (!bvToast) {
+  /*if (!bvToast) {
     throw new Error('BootstrapVue toast component was not found');
-  }
-
+  }*/
   const i18n = useI18n();
   return new AlertService({
     bvToast,
@@ -26,10 +23,10 @@ export default class AlertService {
     this.i18n = i18n;
   }
 
-  public showInfo(toastMessage: string, toastOptions?: Record<string, unknown>) {
+  public showInfo(toastMessage: string, toastOptions?: any) {
     this.bvToast.toast(toastMessage, {
       toaster: 'b-toaster-top-center',
-      title: this.i18n.t('alert.info').toString(),
+      title: 'Info',
       variant: 'info',
       solid: true,
       autoHideDelay: 5000,
@@ -40,7 +37,7 @@ export default class AlertService {
   public showSuccess(toastMessage: string) {
     this.bvToast.toast(toastMessage, {
       toaster: 'b-toaster-top-center',
-      title: this.i18n.t('alert.success').toString(),
+      title: 'Success',
       variant: 'success',
       solid: true,
       autoHideDelay: 5000,
@@ -50,7 +47,7 @@ export default class AlertService {
   public showError(toastMessage: string) {
     this.bvToast.toast(toastMessage, {
       toaster: 'b-toaster-top-center',
-      title: this.i18n.t('alert.error').toString(), // Changed to use this.i18n.t for correct translation
+      title: 'Error',
       variant: 'danger',
       solid: true,
       autoHideDelay: 5000,
@@ -59,8 +56,6 @@ export default class AlertService {
 
   public showHttpError(httpErrorResponse: any) {
     let errorMessage: string | null = null;
-
-    // Handle error statuses with a switch case
     switch (httpErrorResponse.status) {
       case 0:
         errorMessage = this.i18n.t('error.server.not.reachable').toString();
@@ -69,7 +64,6 @@ export default class AlertService {
       case 400: {
         const arr = Object.keys(httpErrorResponse.headers);
         let entityKey: string | null = null;
-
         for (const entry of arr) {
           if (entry.toLowerCase().endsWith('app-error')) {
             errorMessage = httpErrorResponse.headers[entry];
@@ -77,13 +71,8 @@ export default class AlertService {
             entityKey = httpErrorResponse.headers[entry];
           }
         }
-
         if (errorMessage && entityKey) {
-          errorMessage = this.i18n
-            .t(errorMessage, {
-              entityName: this.i18n.t(`global.menu.entities.${entityKey}`),
-            })
-            .toString();
+          errorMessage = this.i18n.t(errorMessage, { entityName: this.i18n.t(`global.menu.entities.${entityKey}`) }).toString();
         } else if (!errorMessage) {
           errorMessage = this.i18n.t(httpErrorResponse.data.message).toString();
         }
@@ -97,7 +86,6 @@ export default class AlertService {
       default:
         errorMessage = this.i18n.t(httpErrorResponse.data.message).toString();
     }
-
     this.showError(errorMessage);
   }
 }

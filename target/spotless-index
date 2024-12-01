@@ -179,7 +179,7 @@ src/test/java/com/szakdologzat/repiceapp/web/filter/SpaWebFilterIT.java 2024-11-
 src/test/java/com/szakdologzat/repiceapp/web/rest/AccountResourceIT.java 2024-11-30T17:01:12Z
 src/test/java/com/szakdologzat/repiceapp/web/rest/AuthorityResourceIT.java 2024-11-30T17:01:12Z
 src/test/java/com/szakdologzat/repiceapp/web/rest/FavoriteRelationResourceIT.java 2024-11-30T17:01:12Z
-src/test/java/com/szakdologzat/repiceapp/web/rest/IngredientResourceIT.java 2024-12-01T09:15:11.564589911Z
+src/test/java/com/szakdologzat/repiceapp/web/rest/IngredientResourceIT.java 2024-12-01T10:51:34.067475106Z
 src/test/java/com/szakdologzat/repiceapp/web/rest/InstructionResourceIT.java 2024-11-30T17:01:12Z
 src/test/java/com/szakdologzat/repiceapp/web/rest/PublicUserResourceIT.java 2024-11-30T17:01:12Z
 src/test/java/com/szakdologzat/repiceapp/web/rest/RatingResourceIT.java 2024-11-30T17:01:12Z

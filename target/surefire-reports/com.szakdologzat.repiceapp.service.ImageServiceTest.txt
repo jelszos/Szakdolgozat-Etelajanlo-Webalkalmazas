@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.szakdologzat.repiceapp.service.ImageServiceTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.196 s -- in com.szakdologzat.repiceapp.service.ImageServiceTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.202 s -- in com.szakdologzat.repiceapp.service.ImageServiceTest

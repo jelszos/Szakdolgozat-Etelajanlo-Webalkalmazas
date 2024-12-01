@@ -78,7 +78,7 @@ export default defineComponent({
         .then(() => {
           this.alertService.showSuccess('Successfully updated!');
         })
-        .catch(err => {
+        .catch(() => {
           this.alertService.showError('Something went wrong');
         });
     },
